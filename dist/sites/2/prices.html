@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Prices</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/_bundle.min.css">
+
+
+</head>
+<body>
+
+
+	<!-- если у шапки стоит has-search, то по умолчанию поиск открыт -->
+
+	<header class="main-header typical" v-bind:class="{'active': isSearchOpened}" id="header">
+
+		<div class="container">
+
+			<div class="row nospace-row">
+
+				<div class="col-xs-2">
+
+					<a href="index.html" class="logo">
+
+						<img src="img/logo-dark.svg" alt="">
+
+					</a>
+
+				</div>
+
+				<div class="col-xs-1 col-md-8">
+
+					<nav class="main-nav" v-bind:class="{'active': isMenuOpened}">
+
+						<button class="main-nav-close" v-on:click="closeMenu()">&times;</button>
+
+						<ul class="clear menu">
+
+							<li><a href="index.html">Главная</a></li>
+
+							<li><a href="portfolio.html">Портфолио</a></li>
+
+							<li class="disabled"><span class="badge">скоро</span><a href="#">Дизайнеры</a></li>
+
+							<li class="disabled"><span class="badge">скоро</span><a href="#">Все о дизайне</a></li>
+
+							<li><a href="prices.html">Цены</a></li>
+
+							<li><a href="about.html">О нас</a></li>
+
+							<li><a href="contacts.html">Контакты</a></li>
+
+						</ul>
+
+						<ul class="clear socials-list">
+
+							<li><a href="#"><i class="icon icon-fb"></i></a></li>
+
+							<li><a href="#"><i class="icon icon-p"></i></a></li>
+
+							<li><a href="#"><i class="icon icon-insta"></i></a></li>
+
+							<li><a href="#"><i class="icon icon-vk"></i></a></li>
+
+						</ul>
+
+					</nav>
+
+				</div>
+
+				<div class="col-xs-9 col-md-2 align-right">
+
+					<span class="phone" data-tooltip v-bind:class="{'offseted': isMenuOpened}">
+
+						<a href="tel:88129993600" class="phone">8 812 999 36 00</a>
+
+						<span class="tooltip">
+
+							<span class="button-group">
+
+								<button class="btn" v-on:click="showCallPopup()"><i class="icon icon-phone"></i></button>
+
+								<button class="btn" v-on:click="showMessagePopup()"><i class="icon icon-message"></i></button>
+
+							</span>
+
+						</span>
+
+					</span>
+
+					<button class="btn mobile-button call-popup-btn" v-on:click="showCallPopup()"><i class="icon icon-phone"></i></button>
+
+					<a href="tel:88129993600" class="btn mobile-button call-btn"><i class="icon icon-phone"></i></a>
+
+					<button class="btn mobile-button" v-on:click="showMessagePopup()"><i class="icon icon-message"></i></button>
+
+					<button class="search-btn" v-bind:class="{'offseted': isMenuOpened}" v-on:click="openSearch()">
+
+						<i class="icon icon-search"></i>
+
+					</button>
+
+					<button class="main-nav-toggle" v-on:click="openMenu()">
+
+						<i></i><i></i><i></i>
+
+					</button>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	
+
+		<form action="#" class="search" v-bind:class="{'active': isSearchOpened}">
+
+			<div class="spinner-holder">
+
+				<span class="spinner">
+
+					<span class="spin"></span>
+
+				</span>
+
+			</div>
+
+			<input type="text" class="input" placeholder="Введите фразу поиска...">
+
+			<button class="close-btn" type="button" v-on:click="closeSearch()">&times;</button>
+
+		</form>
+
+	
+
+	</header>
+
+	<main class="typical">
+
+		<section class="section relative" id="priceSection" v-bind:class="{
+			'active': currentRoute !== '#' && currentRoute !== ''
+		}" data-sections="live,public,additionally">
+		
+			<div class="prices-section">
+		
+				<!-- 1 -->
+				<div class="tab" v-bind:class="{'active': currentRoute === '#live/one'}">
+					<div class="column">
+						<div class="head">
+							<i class="icon icon-house2 title-icon"></i>
+							<div class="title">
+								Стоимость за дизайн-проект
+								жилых интерьеров
+							</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Жилые интерьеры</button>
+							<ul class="clear tabs-list">
+								<li class="active"><a href="#live/one">Жилые интерьеры</a></li>
+								<li><a href="#live/two">Отдельные виды работ</a></li>
+								<li><a href="#live/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><div class="text">Разработка концепции интерьера</div></li>
+							<li><div class="text">План перепланировки помещений со расстановкой мебели</div></li>
+							<li><div class="text">
+								Комплект строительных чертежей
+								<span class="icon icon-information-button icon-blue" data-tooltip>
+									<span class="tooltip blue">
+										Демонтажные и монтажные планы<br>
+										Планы размещения мебельного, осветительного и сан. технического оборудования<br>
+										Необходимые развертки/разресы сложных конструктивных эл-тов<br>
+										Ведомость отделки помещений
+									</span>
+								</span>
+							</div></li>
+							<li><div class="text">Визуализация всех помещений</div></li>
+							<li><div class="text">Подбор отделочных материалов</div></li>
+							<li><div class="text">Подбор освещения и мебельного оборудования</div></li>
+							<li><div class="text">Просчет мебели по индивидуальному эскизу</div></li>
+							<li><div class="text">Три выезда с дизайнером на объект либо по подбору материалов</div></li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<a href="#live/two" class="result">
+								Калькулятор
+								<span id="result1">{{
+									(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)
+								}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden" value="{{
+									(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)
+								}}">
+							</a>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Эскизный</div>
+						</div>
+						<div class="price-head">
+							<i>400 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Оптимальный</div>
+						</div>
+						<div class="price-head">
+							<i>1 600 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Комплект чертежей"><i class="icon icon-check"></i></li>
+							<li data-caption="Визуализация помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform4"  data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data){
+									console.log(data)
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Премиум</div>
+						</div>
+						<div class="price-head">
+							<i>2 100 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Комплект чертежей"><i class="icon icon-check"></i></li>
+							<li data-caption="Визуализация помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Подбор материалов"><i class="icon icon-check"></i></li>
+							<li data-caption="Подбор освещения"><i class="icon icon-check"></i></li>
+							<li data-caption="Просчет мебели"><i class="icon icon-check"></i></li>
+							<li data-caption="Три выезда на объект"><i class="icon icon-check"></i></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform5"  data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data){
+									console.log(data)
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#live/two'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-house2 title-icon plus-badge"></i>
+							<div class="title">Скидки</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Отдельные виды работ</button>
+							<ul class="clear tabs-list">
+								<li><a href="#live/one">Жилые интерьеры</a></li>
+								<li class="active"><a href="#live/two">Отдельные виды работ</a></li>
+								<li><a href="#live/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><span class="text">Визуализация помещений</span></li>
+							<li><span class="text">Разработка комплекта строительных чертежей</span></li>
+							<li><span class="text">Составление спецификаций по отделочным материалам</span></li>
+							<li><span class="text">Составление и отправка тех. заданий поставщикам<span class="none--d">, формирование коммерческих предложений по мебельному оборудованию и освещению</span></span></li>
+							<li><span class="text">Выезды дизайнера (коррекция проектных чертежей не входит в стоимость)</span></li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<a href="#live/two" class="result">
+								Калькулятор
+								<span id="result1">{{(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden"  id="res1_1" value="{{
+									(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)
+								}}">
+							</a>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Отдельные виды работ</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list paddless">
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check1" v-model="checked1">
+									<label for="check1">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check1" value="1" maxlength="4"><small>M<sup>2</sup></small>
+											<span class="digit">{{1800 * check1}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Визуализация помещений</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check2" v-model="checked2">
+									<label for="check2">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check2" value="1" maxlength="4"><small>M<sup>2</sup></small>
+											<span class="digit">{{800 * check2}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Разработка чертежей</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check3" v-model="checked3">
+									<label for="check3">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check3" value="1" maxlength="4"><small>M<sup>2</sup></small>
+											<span class="digit">{{100 * check3}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Составление спецификаций</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check4" v-model="checked4">
+									<label for="check4">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check4" value="1" maxlength="4"><small>M<sup>2</sup></small>
+										<span class="digit">{{300 * check4}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Составление тех. заданий</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check5" v-model="checked5">
+									<label for="check5">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check5" value="1" maxlength="4"><small>M<sup>2</sup></small>
+											<span class="digit">{{200 * check5}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Выезды дизайнера</span>
+									</label>
+								</div>
+							</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#live/three'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-house2 title-icon precent-badge"></i>
+							<div class="title">Скидки</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Скидки</button>
+							<ul class="clear tabs-list">
+								<li><a href="#live/one">Жилые интерьеры</a></li>
+								<li><a href="#live/two">Отдельные виды работ</a></li>
+								<li class="active"><a href="#live/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li>Площадь от 500 M2</li>
+							<li>Площадь от 200м2</li>
+							<li>Площадь от 100м2</li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<a href="#live/two" class="result">
+								Калькулятор
+								<span id="result1">{{
+									(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)
+								}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden" value="{{
+									(checked1 ? 1800 * check1 : 0) + (checked2 ? 800 * check2 : 0) + (checked3 ? 100 * check3 : 0) + (checked4 ? 300 * check4 : 0) + (checked5 ? 200 * check5 : 0)
+								}}">
+							</a>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Скидки</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list paddless">
+							<li><div class="text"><b class="none show--t">Площадь от 500 M2</b>Обсуждается индивидуально</div></li>
+							<li><div class="text"><b class="none show--t">Площадь от 200м2</b><span class="strong">10<span class="blue-color">%</span></span> скидка от общей суммы</div></li>
+							<li><div class="text"><b class="none show--t">Площадь от 100м2</b><span class="strong">5<span class="blue-color">%</span></span> скидка от общей суммы</div></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+		
+				<!-- 2 -->
+				<div class="tab" v-bind:class="{'active': currentRoute === '#public/one'}">
+					<div class="column">
+						<div class="head">
+							<i class="icon icon-house title-icon"></i>
+							<div class="title">
+								Стоимость за дизайн-проект
+								жилых интерьеров
+							</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Жилые интерьеры</button>
+							<ul class="clear tabs-list">
+								<li class="active"><a href="#public/one">Жилые интерьеры</a></li>
+								<li><a href="#public/two">Отдельные виды работ</a></li>
+								<li><a href="#public/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><div class="text">Разработка концепции интерьера</div></li>
+							<li><div class="text">План перепланировки помещений со расстановкой мебели</div></li>
+							<li><div class="text">
+								Комплект строительных чертежей
+								<span class="icon icon-information-button icon-blue" data-tooltip>
+									<span class="tooltip blue">
+										Демонтажные и монтажные планы<br>
+										Планы размещения мебельного, осветительного и сан. технического оборудования<br>
+										Необходимые развертки/разресы сложных конструктивных эл-тов<br>
+										Ведомость отделки помещений
+									</span>
+								</span>
+							</div></li>
+							<li><div class="text">Визуализация всех помещений</div></li>
+							<li><div class="text">Подбор отделочных материалов</div></li>
+							<li><div class="text">Подбор освещения и мебельного оборудования</div></li>
+							<li><div class="text">Просчет мебели по индивидуальному эскизу</div></li>
+							<li><div class="text">Три выезда с дизайнером на объект либо по подбору материалов</div></li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<span class="result">
+								Калькулятор
+								<span id="result1">{{result.public.toFixed(2)}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden" value="{{result.public.toFixed(2)}}">
+							</span>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Эскизный</div>
+						</div>
+						<div class="price-head">
+							<i>400 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Оптимальный</div>
+						</div>
+						<div class="price-head">
+							<i>1 600 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Комплект чертежей"><i class="icon icon-check"></i></li>
+							<li data-caption="Визуализация помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+							<li data-caption="-"><span class="none--t">&nbsp;</span></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform4"  data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data){
+									console.log(data)
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Премиум</div>
+						</div>
+						<div class="price-head">
+							<i>2 100 <span>₽</span></i>
+							за 1<small>M<sup>2</sup></small>
+						</div>
+						<ul class="clear price-list">
+							<li data-caption="Разработка концепции"><i class="icon icon-check"></i></li>
+							<li data-caption="План помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Комплект чертежей"><i class="icon icon-check"></i></li>
+							<li data-caption="Визуализация помещений"><i class="icon icon-check"></i></li>
+							<li data-caption="Подбор материалов"><i class="icon icon-check"></i></li>
+							<li data-caption="Подбор освещения"><i class="icon icon-check"></i></li>
+							<li data-caption="Просчет мебели"><i class="icon icon-check"></i></li>
+							<li data-caption="Три выезда на объект"><i class="icon icon-check"></i></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform5"  data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data){
+									console.log(data)
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#public/two'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-house title-icon plus-badge"></i>
+							<div class="title">Скидки</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Отдельные виды работ</button>
+							<ul class="clear tabs-list">
+								<li><a href="#public/one">Жилые интерьеры</a></li>
+								<li class="active"><a href="#public/two">Отдельные виды работ</a></li>
+								<li><a href="#public/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><span class="text">Визуализация помещений</span></li>
+							<li><span class="text">Разработка комплекта строительных чертежей</span></li>
+							<li><span class="text">Составление спецификаций по отделочным материалам</span></li>
+							<li><span class="text">Составление и отправка тех. заданий поставщикам<span class="none--d">, формирование коммерческих предложений по мебельному оборудованию и освещению</span></span></li>
+							<li><span class="text">Выезды дизайнера (коррекция проектных чертежей не входит в стоимость)</span></li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<span class="result">
+								Калькулятор
+								<span id="result1">{{
+									(checked6 ? 1800 * check6 : 0) + (checked7 ? 800 * check7 : 0) + (checked8 ? 100 * check8 : 0) + (checked9 ? 300 * check9 : 0) + (checked10 ? 200 * check10 : 0)
+								}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden" value="{{
+									(checked6 ? 1800 * check6 : 0) + (checked7 ? 800 * check7 : 0) + (checked8 ? 100 * check8 : 0) + (checked9 ? 300 * check9 : 0) + (checked10 ? 200 * check10 : 0)
+								}}">
+							</span>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Отдельные виды работ</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list paddless">
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check6" v-model="checked6">
+									<label for="check6">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check6" value="1" maxlength="2"><small>M<sup>2</sup></small>
+											<span class="digit">{{1800 * check6}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Визуализация помещений</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check7" v-model="checked7">
+									<label for="check7">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check7" value="1" maxlength="2"><small>M<sup>2</sup></small>
+											<span class="digit">{{800 * check7}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Разработка чертежей</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check8" v-model="checked8">
+									<label for="check8">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check8" value="1" maxlength="2"><small>M<sup>2</sup></small>
+											<span class="digit">{{100 * check8}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Составление спецификаций</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check9" v-model="checked9">
+									<label for="check9">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check9" value="1" maxlength="2"><small>M<sup>2</sup></small>
+										<span class="digit">{{300 * check9}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Составление тех. заданий</span>
+									</label>
+								</div>
+							</li>
+							<li>
+								<div class="checkbox">
+									<input type="checkbox" id="check10" v-model="checked10">
+									<label for="check10">
+										<span class="text none--t">
+											за <input type="text" class="mini-model" v-model="check10" value="1" maxlength="2"><small>M<sup>2</sup></small>
+											<span class="digit">{{200 * check10}}</span> <i>₽</i>
+										</span>
+										<span class="text inline--t">Выезды дизайнера</span>
+									</label>
+								</div>
+							</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#public/three'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-house title-icon precent-badge"></i>
+							<div class="title">Скидки</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Скидки</button>
+							<ul class="clear tabs-list">
+								<li><a href="#live/one">Жилые интерьеры</a></li>
+								<li><a href="#live/two">Отдельные виды работ</a></li>
+								<li class="active"><a href="#live/three">Скидки</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li>Площадь от 500 M2</li>
+							<li>Площадь от 200м2</li>
+							<li>Площадь от 100м2</li>
+						</ul>
+						<div class="foot">
+							<i class="icon icon-calculator"></i>
+							<span class="result">
+								Калькулятор
+								<span id="result1">{{result.public.toFixed(2)}}</span>
+								<span class="postfix">₽</span>
+								<input type="hidden" value="{{result.public.toFixed(2)}}">
+							</span>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Скидки</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list paddless">
+							<li><div class="text"><b class="none show--t">Площадь от 500 M2</b>Обсуждается индивидуально</div></li>
+							<li><div class="text"><b class="none show--t">Площадь от 200м2</b><span class="strong">10<span class="blue-color">%</span></span> скидка от общей суммы</div></li>
+							<li><div class="text"><b class="none show--t">Площадь от 100м2</b><span class="strong">5<span class="blue-color">%</span></span> скидка от общей суммы</div></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+		
+				<!-- 3 -->
+				<div class="tab" v-bind:class="{'active': currentRoute === '#additionally/one'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-eye title-icon"></i>
+							<div class="title">Скидки</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Авторский надзор</button>
+							<ul class="clear tabs-list">
+								<li class="active"><a href="#additionally/one">Авторский надзор</a></li>
+								<li><a href="#additionally/two">Декорирование</a></li>
+								<li><a href="#additionally/three">Согласование</a></li>
+								<li><a href="#additionally/four">Страхование</a></li>
+								<li><a href="#additionally/five">Акции</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><span class="text">Регулярные выезды автора проекта<span class="none--d"> (не более 4х раз в месяц) в течении всего срока действия договора</span></span></li>
+							<li><span class="text">Контроль проводимых работ<span class="none--d"> в соответствии с дизайн-проектом</span></span></li>
+							<li><span class="text">Общение с прорабом на объекте<span class="none--d">, в т.ч. и по телефону (консультации по всем представленным чертежам)</span></span></li>
+							<li><span class="text">Внесение изменений в проект<span class="none--d">, возникших после демонтажа старых и возведения новых перегородок,</span></span></li>
+							<li><span class="text">Заказ оборудования и отделочных материалов<span class="none--d"> (от имени и по поручению Заказчика)</span></span></li>
+						</ul>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Авторский надзор</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list larger">
+							<li data-caption="Регулярные выезды автора">
+								от 10000 <span class="blue-color">₽</span> в месяц
+								<span class="icon icon-information-button icon-blue" data-tooltip>
+									<span class="tooltip blue">
+										Демонтажные и монтажные планы<br>
+										Планы размещения мебельного, осветительного и сан. технического оборудования<br>
+										Необходимые развертки/разресы сложных конструктивных эл-тов<br>
+										Ведомость отделки помещений
+									</span>
+								</span>
+							</li>
+							<li data-caption="Контроль работ">
+								от 10000 <span class="blue-color">₽</span> в месяц
+							</li>
+							<li data-caption="Общение с прорабом">
+								от 10000 <span class="blue-color">₽</span> в месяц
+							</li>
+							<li data-caption="Внесение изменений">
+								от 10000 <span class="blue-color">₽</span> в месяц
+							</li>
+							<li data-caption="Заказ оборудования">
+								от 10000 <span class="blue-color">₽</span> в месяц
+							</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#additionally/two'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-eye title-icon"></i>
+							<div class="title">Стоимость авторского надзора <span class="none--t">жилых и общественных</span> интерьеров</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Декорирование</button>
+							<ul class="clear tabs-list">
+								<li><a href="#additionally/one">Авторский надзор</a></li>
+								<li class="active"><a href="#additionally/two">Декорирование</a></li>
+								<li><a href="#additionally/three">Согласование</a></li>
+								<li><a href="#additionally/four">Страхование</a></li>
+								<li><a href="#additionally/five">Акции</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><span class="text">Консультация по выборупредметов интерьера<span class="none--d">, декоративных элементов и аксессуаров</span></span></li>
+							<li><span class="text">Подбор мебельного оборудования, освещения</span></li>
+							<li><span class="text">Подбор текстильного оформления <span class="none--d">(шторы, роллеты, жалюзи, постельное белье, покрывала, декоративные подушки и т.п.)</span></span></li>
+							<li><span class="text">Выезд на объект, по магазинам и салонам</span></li>
+						</ul>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Авторский надзор</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list larger">
+							<li data-caption="Консультация">от 10000 <span class="blue-color">₽</span> в месяц</li>
+							<li data-caption="Подбор оборудования, освещения">от 10000 <span class="blue-color">₽</span> в месяц</li>
+							<li data-caption="Подбор оформления">от 10000 <span class="blue-color">₽</span> в месяц</li>
+							<li data-caption="Выезд на объект">от 10000 <span class="blue-color">₽</span> в месяц</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#additionally/three'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-eye title-icon"></i>
+							<div class="title">Согласование</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Согласование</button>
+							<ul class="clear tabs-list">
+								<li><a href="#additionally/one">Авторский надзор</a></li>
+								<li><a href="#additionally/two">Декорирование</a></li>
+								<li class="active"><a href="#additionally/three">Согласование</a></li>
+								<li><a href="#additionally/four">Страхование</a></li>
+								<li><a href="#additionally/five">Акции</a></li>
+							</ul>
+						</div>
+						<ul class="clear price-list none--t">
+							<li><span class="text">Подбор текстильного оформления <span class="none--d">(шторы, роллеты, жалюзи, постельное белье, покрывала, декоративные подушки и т.п.)</span></span></li>
+						</ul>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Авторский надзор</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear price-list">
+							<li data-caption="Подбор текстильного оформления"><span class="text"><span class="none--d">Согласование общественных интерьеров</span> расчитывается отдельно</span></li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#additionally/four'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-eye title-icon"></i>
+							<div class="title">Предложение по страхованию имущества <span class="none--t">для физических и юридических лиц</span></div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Страхование</button>
+							<ul class="clear tabs-list">
+								<li><a href="#additionally/one">Авторский надзор</a></li>
+								<li><a href="#additionally/two">Декорирование</a></li>
+								<li><a href="#additionally/three">Согласование</a></li>
+								<li class="active"><a href="#additionally/four">Страхование</a></li>
+								<li><a href="#additionally/five">Акции</a></li>
+							</ul>
+						</div>
+						<div class="paragraph">
+							Мы предлагаем застраховать Вашу квартиру, дачу, офис, а также конструктивные элементы зданий, отделку внешнюю и внутреннюю, инженерные системы отопления, водоснабжения, канализации, газоснабжения и т.д
+						</div>
+						<div class="paragraph">
+							Исходя из Ваших интересов и особенностей Вашего имущества, мы готовы подобрать наиболее выгодные условия для страхования в ведущих страховых компаниях Санкт-Петербурга, а именно: РЕСО-Гарантия, Ингосстрах, Пари, Энергогарант и др. СК
+						</div>
+					</div>
+					
+					<div class="column bigger centered">
+						<div class="head">
+							<div class="title">Страховая защита распространяется на следующие риски</div>
+						</div>
+						<div class="price-head none--t"></div>
+						<ul class="clear marked-list">
+							<li>
+								Пожар<span class="none--t">, включая воздействие продуктами сгорания, а также средствами тушения пожара (вода, пена и др.), удар молнии, взрыв газа;</span>
+							</li>
+							<li>
+								Повреждение водой<span class="none--t"> в результате аварии систем водоснабжения, отопления, канализации и т.д.; залив из других жилых помещений;</span>
+							</li>
+							<li>
+								Повреждения в результате стихийных бедствий<span class="none--t">, включая ураган, наводнение, град, землетрясение, оползень и т.п.;</span>
+							</li>
+							<li>
+								Страхование<span class="none--t"> гражданской ответственности владельцев квартир перед соседями;</span>
+							</li>
+							<li>
+								Противоправные действия третьих лиц<span class="none--t"> (кража, грабеж, разбой, умышленное уничтожение).</span>
+							</li>
+							<li>
+								Столкновение, падение деревьев, летательных аппаратов и их частей, наезд транспортных средств.
+							</li>
+							<li>
+								Повреждения в результате стихийных бедствий<span class="none--t">, включая ураган, наводнение, град, землетрясение, оползень и т.п.;</span>
+							</li>
+							<li>
+								Страхование<span class="none--t"> гражданской ответственности владельцев квартир перед соседями;</span>
+							</li>
+							<li>
+								Противоправные действия третьих лиц<span class="none--t"> (кража, грабеж, разбой, умышленное уничтожение).</span>
+							</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+					
+					<div class="column centered">
+						<div class="verticaly-middle">
+							<div class="inner">
+								<div class="strong">
+									Стоимость полиса
+									<div class="strong thin">
+										<i>17.000 <span class="blue-color">₽</span></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab" v-bind:class="{'active': currentRoute === '#additionally/five'}">
+					<div class="column">
+						<div class="head">
+							<!-- .plus-badge - для плюсика в бейджике -->
+							<!-- .precent-badge - для процента в бейджике -->
+							<!-- по умолчанию нет ничего -->
+							<i class="icon icon-eye title-icon"></i>
+							<div class="title">Акции</div>
+							<a href="#" class="btn btn-like btn-close"><i class="icon icon-cross"></i></a>
+						</div>
+						<div class="relative">
+							<button class="tabs-anchor">Акции</button>
+							<ul class="clear tabs-list">
+								<li><a href="#additionally/one">Авторский надзор</a></li>
+								<li><a href="#additionally/two">Декорирование</a></li>
+								<li><a href="#additionally/three">Согласование</a></li>
+								<li><a href="#additionally/four">Страхование</a></li>
+								<li class="active"><a href="#additionally/five">Акции</a></li>
+							</ul>
+						</div>
+						<ul class="price-list none--t">
+							<li>
+								<span class="text">При заказе дизайн-проекта пакет "Оптимальный" подбор отделочных материалов в подарок</span>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="column centered">
+						<div class="head">
+							<div class="title">Акции</div>
+						</div>
+						<div class="price-head"></div>
+						<ul class="clear price-list none--t">
+							<li>&nbsp;</li>
+						</ul>
+						<ul class="price-list show--t">
+							<li>
+								<span class="text"><a href="#">При заказе дизайн-проекта пакет "Оптимальный" подбор отделочных материалов в подарок</a></span>
+							</li>
+						</ul>
+						<div class="foot">
+							<form action="#" class="typical-form bordered" id="typicalform3" data-submit-callback="typicalform1Submit">
+								<div class="form-group" v-bind:class="{
+									'error': errors['name']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['name'] === false}"
+										></i>
+										<i class="icon icon-user normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input"
+										placeholder="Ваше Имя"
+										data-validate="name"
+										name="name"
+										data-minlength="2"
+										maxlength="20"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="form-group" v-bind:class="{
+									'error': errors['phone']
+								}">
+									<div class="spinner-holder">
+										<i class="icon icon-check success-icon"
+											v-bind:class="{'active': errors['phone'] === false}"
+										></i>
+										<i class="icon icon-phone normal-icon"></i>
+										<i class="icon icon-exclamation"></i>
+										<!-- [data-time] - время вращения в милисекундах,
+											если не указывать - по умолчанию 500мс -->
+										<canvas class="progress blue" data-time="1500"></canvas>
+									</div>
+									<input type="text" class="input" placeholder="Ваш Телефон"
+										data-validate="phone"
+										data-minlength="9"
+										maxlength="20"
+										data-mask="+9 99 999 99 99"
+										v-on:focus="setCurrentInput($event)"
+										v-on:keyup="keyup($event)"
+										v-on:keydown="checkStep($event)"
+									>
+									<div class="alert"></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6">
+										<button type="button" class="btn btn-like hide-form-btn"><i class="icon icon-cross"></i></button>
+									</div>
+									<div class="col-xs-6 align-right">
+										<button class="btn btn-transparent btn-block" v-on:click="checkStep($event)"><i class="icon icon-enter-arrow"></i></button>
+									</div>
+								</div>
+								<div class="success-message">
+									<div class="verticaly-middle centered">
+										<div class="inner">
+											<i class="icon icon-logo"></i><br>
+											<div class="paragraph">
+												Ваша заявка отправлена, спасибо!
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
+							<script>
+								window.typicalform1Submit = function(data, form){
+									console.log(data, form);
+									form.find('.success-message').fadeIn(500).delay(5000).fadeOut(500);
+								}
+							</script>
+							<button class="btn btn-transparent show-form-btn">Заказать <i class="icon icon-thin-right-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+		
+			</div>
+		
+			<ul class="clear prices-list" v-bind:class="{
+				'active': currentRoute === '#' || currentRoute === ''
+			}">
+				<li class="item">
+					<div class="image-cover vertical">
+						<img src="temp/price1.jpg" alt="">
+					</div>
+					<div class="content">
+						<i class="icon icon-house2"></i>
+						<div class="title">Стоимость <br> жилых интерьеров</div>
+						<ul class="clear menu">
+							<li><a href="#live/one">Дизайн проект</a></li>
+							<li><a href="#live/two">Отдельные виды работ</a></li>
+							<li><a href="#live/three">Скидки</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<div class="image-cover vertical">
+						<img src="temp/price2.jpg" alt="">
+					</div>
+					<div class="content">
+						<i class="icon icon-house"></i>
+						<div class="title">Стоимость <br> общественных интерьеров</div>
+						<ul class="clear menu">
+							<li><a href="#public/one">Общественные интерьеры</a></li>
+							<li><a href="#public/two">Отдельные виды работ</a></li>
+							<li><a href="#public/three">Скидки</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="item">
+					<div class="image-cover vertical">
+						<img src="temp/price3.jpg" alt="">
+					</div>
+					<div class="content">
+						<i class="icon icon-eye"></i>
+						<div class="title">Дополнительные услуги</div>
+						<ul class="clear menu">
+							<li><a href="#additionally/one">Авторский надзор</a></li>
+							<li><a href="#additionally/two">Декорирование</a></li>
+							<li><a href="#additionally/three">Согласование</a></li>
+							<li><a href="#additionally/four">Страхование</a></li>
+							<li><a href="#additionally/five">Акции</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<section class="footer-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+						<a href="index.html" class="logo">
+							<i class="icon icon-logo"></i>
+						</a>
+						<ul class="clear socials-list">
+							<li><a href="#"><i class="icon icon-fb"></i></a></li>
+							<li><a href="#"><i class="icon icon-p"></i></a></li>
+							<li><a href="#"><i class="icon icon-insta"></i></a></li>
+							<li><a href="#"><i class="icon icon-vk"></i></a></li>
+						</ul>
+						<div class="title">
+							Студия профессиональных дизайнеров-архитекторов.
+						</div>
+						<div class="paragraph">
+							Наш опыт и команда креативных дизайнеров позволяет нам не только создавать стильные, авторские интерьеры, но и проектировать функциональное, комфортное пространство для каждого клиента индивидуально.
+						</div>
+						<div class="row">
+							<div class="col-xs-10 col-xs-offset-1">
+								<div class="row">
+									<div class="col-xs-5 mobile-full">
+										Офис: <a href="tel:88129993600">8 812 999 36 00</a>
+									</div>
+									<div class="col-xs-7 mobile-full">
+										email: <a href="mailto:tutynina@vodstudio.ru">tutynina@vodstudio.ru</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	</main>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-7 mobile-full">
+					The verge of design © 2016. All rights reserved.
+				</div>
+				<div class="col-xs-5 mobile-full align-right">
+					Build by <span class="strong">Studio Elementary™</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="popup" v-bind:class="{'visible': isOpened, 'active': isActive}" id="callPopup" data-submit-callback="callPopupSubmit">
+	
+		<button class="close-popup" v-on:click="closePopup()">
+			<i class="icon icon-cross"></i>
+		</button>
+	
+		<div class="results-group">
+			<ul class="clear" v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+				<li v-for="item in userInfo" v-results-actived v-bind:class="{'faded': $index >= userCurrentStep}">
+					<i class="icon icon-check"></i>
+					<span class="text">{{item}}</span>
+					<button class="edit-btn"
+						data-tooltip
+						v-on:click="setStep($index)"
+						>
+						<i class="icon icon-cross"></i>
+						<span class="tooltip left">Редактировать</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	
+		<div class="inner">
+			<div class="title faded-block" v-bind:class="{'faded': userCurrentStep == userStepsCount}">
+				Оставьте ваши контактные данные <br>
+				и мы свяжемся с вами!
+			</div>
+			<form action="#" class="user-form">
+	
+				<input type="hidden" name="cache-name1" value="{{userInfo[0]}}">
+				<input type="hidden" name="cache-name2" value="{{userInfo[1]}}">
+				<input type="hidden" name="cache-name3" value="{{userInfo[2]}}">
+	
+				<!-- step 1: name -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 0,
+							'done': userCurrentStep > 0,
+							'error': errors['name']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-user normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1000"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваше имя и Фамилия"
+						data-minlength="2"
+						maxlength="20"
+						name="name"
+						data-validate="name"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+						required
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 3: email -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 1,
+							'done': userCurrentStep > 1,
+							'error': errors['email']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-message normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1000"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваш Email"
+						data-validate="email"
+						name="email"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+						required
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 2: number -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 2,
+							'done': userCurrentStep > 2,
+							'error': errors['phone']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-phone normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1000"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваш телефон"
+						data-validate="phone"
+						data-minlength="9"
+						maxlength="20"
+						name="phone"
+						data-mask="+7 (999) 99-99-99"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<div class="final-caption faded-block faded-up" v-bind:class="{
+					'faded-up': userCurrentStep != userStepsCount
+				}">
+					<div class="title">
+						Спасибо <span>{{userInfo[0]}}</span>
+					</div>
+					<div class="paragraph centered">
+						Мы скоро с вами свяжемся.
+					</div>
+					<div class="centered">
+						<button class="btn" type="button" v-on:click="closePopup()">Закрыть</button>
+					</div>
+				</div>
+	
+	
+	
+			</form>
+		</div>
+	
+		<div class="caption"  v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+			После каждого ввода данных <br>
+			жмите <span class="grey">enter <i class="icon icon-enter-arrow"></i></span>
+		</div>
+	
+	</div>
+	<div class="popup" v-bind:class="{'visible': isOpened, 'active': isActive}" id="messagePopup" data-submit-callback="messagePopupSubmit">
+	
+		<button class="close-popup" v-on:click="closePopup()">
+			<i class="icon icon-cross"></i>
+		</button>
+	
+		<div class="results-group">
+			<ul class="clear" v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+				<li v-for="item in userInfo" v-results-actived v-bind:class="{'faded': $index >= userCurrentStep}">
+					<i class="icon icon-check"></i>
+					<span class="text">{{item}}</span>
+					<button class="edit-btn"
+						data-tooltip
+						v-on:click="setStep($index)"
+						>
+						<i class="icon icon-cross"></i>
+						<span class="tooltip left">Редактировать</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	
+		<div class="inner">
+			<div class="title faded-block" v-bind:class="{'faded': userCurrentStep == userStepsCount}">
+				Оставьте нам ваше <br>
+				сообщение!
+			</div>
+			<form action="#" class="user-form" v-bind:class="{
+				'large': userCurrentStep == 3
+			}">
+	
+				<input type="hidden" name="cached1" value="{{userInfo[0]}}">
+				<input type="hidden" name="cached2" value="{{userInfo[1]}}">
+				<input type="hidden" name="cached3" value="{{userInfo[2]}}">
+	
+				<!-- step 1: name -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 0,
+							'done': userCurrentStep > 0,
+							'error': errors['name']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-user normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1500"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваше имя и Фамилия"
+						data-minlength="2"
+						maxlength="20"
+						name="name"
+						data-validate="name"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 3: email -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 1,
+							'done': userCurrentStep > 1,
+							'error': errors['email']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-message normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1500"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваш Email"
+						data-validate="email"
+						name="email"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 4: text -->
+				<div class="step large"
+						v-bind:class="{
+							'active': userCurrentStep == 2,
+							'done': userCurrentStep > 2,
+							'error': errors['text']
+						}"
+					>
+					
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+								<!-- input -->
+								<div class="textarea-outer">
+									<div class="scrolled-block">
+										<textarea class="input"
+											placeholder="Введите текст сообщения..."
+											data-validate="text"
+											data-minlength="20"
+											name="comment"
+										></textarea>
+									</div>
+									<div class="footer">
+										<div class="row">
+											<div class="col-xs-8">
+												<span class="input-file-holder">
+													<input type="file" name="files" multiple id="userMessageFileInput" v-on:change="parseFiles($event)">
+												</span>
+												<label for="userMessageFileInput" class="btn btn-transparent btn-larger select-file-btn" data-tooltip>
+													<i class="icon icon-paperclip"></i>
+													<span class="tooltip">Прикрепить файлы</span>
+												</label>
+												<ul class="clear users-files-list">
+													<li v-for="file in userFiles">
+														<i class="ico icon-file" data-tooltip>
+															<span class="tooltip">{{file.name}}</span>
+														</i>
+														<button class="btn" v-on:click="removeFile($index)">
+															<i class="icon icon-cross-o" data-tooltip>
+																<span class="tooltip">Удалить</span>
+															</i>
+														</button>
+													</li>
+												</ul>
+												<div class="alert"></div>
+											</div>
+											<div class="col-xs-4 align-right clear-left">
+												<div class="spinner-holder">
+													<i class="icon icon-exclamation"></i>
+													<!-- [data-time] - время вращения в милисекундах,
+														если не указывать - по умолчанию 500мс -->
+													<canvas class="progress" data-time="1500"></canvas>
+												</div>
+	
+												<button class="btn btn-transparent" v-on:click="checkStep({keyCode: 13})">
+													Отправить&nbsp;&nbsp;<i class="icon icon-enter-arrow"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+	
+				<div class="final-caption faded-block faded-up" v-bind:class="{
+					'faded-up': userCurrentStep != userStepsCount
+				}">
+					<div class="title">
+						Спасибо <span>{{userInfo[0]}}</span>
+					</div>
+					<div class="paragraph centered">
+						Мы скоро с вами свяжемся.
+					</div>
+					<div class="centered">
+						<button class="btn" type="button" v-on:click="closePopup()">Закрыть</button>
+					</div>
+				</div>
+	
+	
+	
+			</form>
+		</div>
+	
+		<div class="caption"  v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+			После каждого ввода данных <br>
+			жмите <span class="grey">enter <i class="icon icon-enter-arrow"></i></span>
+		</div>
+	
+	</div>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:100,300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
+
+	<script>
+		window.callPopupSubmit = function (data) {
+			$.ajax({
+				type: 'POST',
+				url: 'form.php',
+				data: data
+			})
+		}
+	</script>
+	<script>
+		window.messagePopupSubmit = function (data) {
+			console.log(data)
+		}
+	</script>
+	<script src="js/bundle/bundle.js"></script>
+
+
+</body>
+</html>

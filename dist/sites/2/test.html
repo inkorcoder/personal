@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	* {
+	  box-sizing: border-box;
+	}
+
+	.wrapper {
+	  width: 60px;
+	  height: 60px;
+	  margin: 40px auto;
+	  position: relative;
+	  background: white;
+	  border-radius: 50%;
+	  box-shadow: inset 0 0 0 5px rgba(0,0,0,.1);
+	}
+
+	.pie {
+	  width: 50%;
+	  height: 100%;
+	  transform-origin: 100% 50%;
+	  position: absolute;
+	  /*background: #fff;*/
+	  border: 5px solid #999;
+	}
+
+	.spinner {
+	  border-radius: 100% 0 0 100%/50% 0 0 50%;
+	  z-index: 200;
+	  border-right: none;
+	  animation: rota 2s linear infinite;
+	}
+
+	.spinner:after {
+	  position: absolute;
+	  width: 10px;
+	  height: 10px;
+	  /*background: #fff;*/
+	  border: 1px solid transparent;
+	  box-shadow: none;
+	  border-radius: 50%;
+	  top: 10px;
+	  right: 10px;
+	  content: "";
+	  display: none;
+	}
+
+	.filler {
+	  border-radius: 0 100% 100% 0/0 50% 50% 0;
+	  left: 50%;
+	  opacity: 0;
+	  z-index: 100;
+	  animation: fill 2s steps(1, end) infinite;
+	  border-left: none;
+	}
+
+	.mask {
+	  width: 50%;
+	  height: 100%;
+	  position: absolute;
+	  /*background: #fff;*/
+	  opacity: 1;
+	  z-index: 300;
+	  animation: mask 2s steps(1, end) infinite;
+	}
+
+	@keyframes rota {
+	  0% {
+	    transform: rotate(0deg);
+	  }
+
+	  100% {
+	    transform: rotate(360deg);
+	  }
+	}
+
+	@keyframes mask {
+	  0% {
+	    opacity: 1;
+	  }
+
+	  50%, 100% {
+	    opacity: 0;
+	  }
+	}
+
+	@keyframes fill {
+	  0% {
+	    opacity: 0;
+	  }
+
+	  50%, 100% {
+	    opacity: 1;
+	  }
+	}
+	  </style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="pie spinner"></div>
+		<div class="pie filler"></div>
+		<div class="mask"></div>
+	</div>
+</body>
+</html>

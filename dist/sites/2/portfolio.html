@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Portfolio</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/_bundle.min.css">
+
+	<style>
+
+	.preloader {
+		position: fixed;
+		top: 0; left: 0; width: 100%; height: 100%;
+		background: #fff;
+		z-index: 9999999;
+	}
+	.preloader.error {
+		background: #000082;
+		color: #fff;
+		font-size: 13px;
+		overflow: hidden;
+		font-weight: 100;
+		font-family: monospace;
+		padding: 10%;
+	}
+	.preloader.error .br {
+		display: block;
+		height: 20px;
+	}
+	.preloader.error img,
+	.preloader.error .preloader-spin {
+		display: none;
+	}
+	.preloader img {
+		position: absolute;
+		top: 50%; left: 50%;
+		-webkit-transform: translate(-50%,-100%);
+		    -ms-transform: translate(-50%,-100%);
+		        transform: translate(-50%,-100%);
+	}
+	.preloader-spin{position:absolute;top:50%;left:50%;height:12px;width:12px;margin-top:40px;background:#39464E;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.preloader-spin i{position:absolute;opacity:0;-webkit-transform:scale(.5);-ms-transform:scale(.5);transform:scale(.5);width:100%;height:100%;border:2px solid #ddd;-webkit-animation:preloader-spin-animation 2s infinite;animation:preloader-spin-animation 2s infinite}.preloader-spin i:nth-child(1){top:-120%;left:-120%;-webkit-animation-delay:.1s;animation-delay:.1s}.preloader-spin i:nth-child(2){top:-120%;left:0;-webkit-animation-delay:.2s;animation-delay:.2s}.preloader-spin i:nth-child(3){top:-120%;left:120%;-webkit-animation-delay:.3s;animation-delay:.3s}.preloader-spin i:nth-child(4){top:0;left:120%;-webkit-animation-delay:.4s;animation-delay:.4s}.preloader-spin i:nth-child(5){top:120%;left:120%;-webkit-animation-delay:.5s;animation-delay:.5s}.preloader-spin i:nth-child(6){top:120%;left:0;-webkit-animation-delay:.6s;animation-delay:.6s}.preloader-spin i:nth-child(7){top:120%;left:-120%;-webkit-animation-delay:.7s;animation-delay:.7s}.preloader-spin i:nth-child(8){top:0;left:-120%;-webkit-animation-delay:.8s;animation-delay:.8s}@-webkit-keyframes preloader-spin-animation{0%,100%,80%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}20%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes preloader-spin-animation{0%,100%,80%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}20%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+
+
+	</style>
+
+</head>
+<body>
+
+	<div class="preloader">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFkAAAAqCAMAAADvYwfyAAAAM1BMVEUAAAA5Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk45Rk42VBT9AAAAEHRSTlMAECAwQFBgcICPn6+/z9/vIxqCigAAAitJREFUeF6Fl9uywyAIRaVGc1f+/2vPmB5n0wJ0PzkNCrgCNOm1UAr1WoKHtDwaS3VMZm6Hu7mezO3tYL/Z0zUsq9r8bLhyMlTaeLaO5caBSkrpajosHuo1KR38iLC01UZKzDrxzo/U0Rc/OkbwHGlLKe3D8Fs7v7XYP497ahzplRKN8EjBR1JCC791zwtzdU6LNTlpc/V+xFvRL6hNftPCYqiDzvMommsV04ldGT5MhqCLl+HAupN5iRssTsVwwzH/ouksY72rTeCHtc0QdKuortXe1iQ/Eb95ZVwtfg1OhIq4wSZrxja7v5Lo4vWrNj9YWAzhNX9WyS742Re4wgKJBQwFEYITq0IJFjHDTr/5Sd8HLMwAREZVAi0uv6r5mZcmKFyykfj8rmmh+mDVDJH1pqurOfyQoM9wBSk4QQl7/JDgbQMB4Z6K6I5bzE9YrBP74TM0+J2/+RF1q3HJvnmxplNMfrewOBGaNcQh0An4VTjhgtBuewBA5PJDvwY/GVpWDDsLHS4/Evx26XuNGELLT375s8GIBuIw1PwWk4cc6idCC4Y4Hl4mv2zwq2gR/hDXdNaf/Ppni3D+iGk65PI7ZOuMGe6s6RwuP4xsf1TjiaBj8iP0awwIPao3j2H1+JEs4VuXc/EZhvxybYJZBm2oxUN8Bz9Hm/8ZEP4Re4GfrUbmyfEQB51AOfh0cRmeoOOqohi1XIYFdBy1jGYQKCm1PfyW6htNSwoT+wNu63bI54/jRAAAAABJRU5ErkJggg==" alt="">
+		<div class="preloader-spin">
+			<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+		</div>
+	</div>
+
+	<!-- если у шапки стоит has-search, то по умолчанию поиск открыт -->
+	<header class="main-header typical" v-bind:class="{'active': isSearchOpened}" id="header">
+		<div class="container">
+			<div class="row nospace-row">
+				<div class="col-xs-2">
+					<a href="index.html" class="logo">
+						<img src="img/logo-dark.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-1 col-md-8">
+					<nav class="main-nav" v-bind:class="{'active': isMenuOpened}">
+						<button class="main-nav-close" v-on:click="closeMenu()">&times;</button>
+						<ul class="clear menu">
+							<li><a href="index.html">Главная</a></li>
+							<li><a href="portfolio.html">Портфолио</a></li>
+							<li class="disabled"><span class="badge">скоро</span><a href="#">Дизайнеры</a></li>
+							<li class="disabled"><span class="badge">скоро</span><a href="#">Все о дизайне</a></li>
+							<li><a href="prices.html">Цены</a></li>
+							<li><a href="about.html">О нас</a></li>
+							<li><a href="contacts.html">Контакты</a></li>
+						</ul>
+						<ul class="clear socials-list">
+							<li><a href="#"><i class="icon icon-fb"></i></a></li>
+							<li><a href="#"><i class="icon icon-p"></i></a></li>
+							<li><a href="#"><i class="icon icon-insta"></i></a></li>
+							<li><a href="#"><i class="icon icon-vk"></i></a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-xs-9 col-md-2 align-right">
+					<span class="phone" data-tooltip v-bind:class="{'offseted': isMenuOpened}">
+						<a href="tel:88129993600" class="phone">8 812 999 36 00</a>
+						<span class="tooltip">
+							<span class="button-group">
+								<button class="btn" v-on:click="showCallPopup()"><i class="icon icon-phone"></i></button>
+								<button class="btn" v-on:click="showMessagePopup()"><i class="icon icon-message"></i></button>
+							</span>
+						</span>
+					</span>
+					<button class="btn mobile-button call-popup-btn" v-on:click="showCallPopup()"><i class="icon icon-phone"></i></button>
+					<a href="tel:88129993600" class="btn mobile-button call-btn"><i class="icon icon-phone"></i></a>
+					<button class="btn mobile-button" v-on:click="showMessagePopup()"><i class="icon icon-message"></i></button>
+					<button class="search-btn" v-bind:class="{'offseted': isMenuOpened}" v-on:click="openSearch()">
+						<i class="icon icon-search"></i>
+					</button>
+					<button class="main-nav-toggle" v-on:click="openMenu()">
+						<i></i><i></i><i></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	
+		<form action="#" class="search" v-bind:class="{'active': isSearchOpened}">
+			<div class="spinner-holder">
+				<span class="spinner">
+					<span class="spin"></span>
+				</span>
+			</div>
+			<input type="text" class="input" placeholder="Введите фразу поиска...">
+			<button class="close-btn" type="button" v-on:click="closeSearch()">&times;</button>
+		</form>
+	
+	</header>
+
+	<main class="typical">
+
+		<section class="filter-section">
+			<div class="none header">
+				<ul class="clear filter-breadcrumbs">
+					<li><a href="#">Раздел</a></li>
+					<li><a href="#">Подраздел</a></li>
+					<li><a href="#">Тоже может быть длинное название</a></li>
+					<li class="active"><a href="#">Самый последний раздел</a></li>
+				</ul>
+			</div>
+			<!-- none--m - убирает на мобиле. Тот у кого класса нет - останется на телефоне и будет скроллится -->
+			<div class="column dropdown smaller none--m">
+				<button class="none anchor">Жилые</button>
+				<div class="dropdown-menu">
+					<ul class="clear items-list">
+						<li><a href="#">Все</a></li>
+						<li class="active"><a href="#">Жилые</a><span class="preloader ajax-loading"></span></li>
+						<li><a href="#">Общественные</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="column dropdown dark none--m">
+				<button class="none anchor">Бассейн</button>
+				<div class="dropdown-menu">
+					<div class="scrolled-block">
+						<ul class="clear items-list simple">
+							<li class="active"><a href="#"><i class="icon icon-link"></i>Все</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Бассейн</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Загородный дом</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Таунхауз</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Бассейн</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Загородный дом</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Таунхауз</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Бассейн</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Загородный дом</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Таунхауз</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Бассейн</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Загородный дом</a></li>
+							<li><a href="#"><i class="icon icon-link"></i>Таунхауз</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="column dropdown dark none--m">
+				<button class="none anchor disabled">Голубой бассейн</button>
+				<div class="dropdown-menu">
+					<div class="scrolled-block">
+						<ul class="clear items-list simple">
+							<li class="active"><a href="#">Все</a></li>
+							<li><a href="#">Голубой бассейн</a></li>
+							<li><a href="#">Загородный дом в неоклассике</a></li>
+							<li><a href="#">Детская комната в таунхаузе</a></li>
+							<li><a href="#">Голубой бассейн</a></li>
+							<li><a href="#">Загородный дом в неоклассике</a></li>
+							<li><a href="#">Детская комната в таунхаузе</a></li>
+							<li><a href="#">Голубой бассейн</a></li>
+							<li><a href="#">Загородный дом в неоклассике</a></li>
+							<li><a href="#">Детская комната в таунхаузе</a></li>
+							<li><a href="#">Голубой бассейн</a></li>
+							<li><a href="#">Загородный дом в неоклассике</a></li>
+							<li><a href="#">Детская комната в таунхаузе</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="column dropdown dark">
+				<button class="none anchor disabled">Лиговский проспект</button>
+				<div class="dropdown-menu">
+					<div class="scrolled-block">
+						<ul class="clear items-list simple">
+							<li class="active"><a href="#">Лиговский проспект</a></li>
+							<li><a href="#">пос. Пески</a></li>
+							<li><a href="#">Коттеджный пос. Янино</a></li>
+							<li><a href="#">Лиговский проспект</a></li>
+							<li><a href="#">пос. Пески</a></li>
+							<li><a href="#">Коттеджный пос. Янино</a></li>
+							<li><a href="#">Лиговский проспект</a></li>
+							<li><a href="#">пос. Пески</a></li>
+							<li><a href="#">Коттеджный пос. Янино</a></li>
+							<li><a href="#">Лиговский проспект</a></li>
+							<li><a href="#">пос. Пески</a></li>
+							<li><a href="#">Коттеджный пос. Янино</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="column wide none--md">
+				<article class="new-item">
+					<header class="header">
+						<div class="image">
+							<img src="temp/user.png" alt="">
+						</div>
+						<div class="author">G. Misailidis</div>
+						<ul class="clear rating">
+							<li><i class="icon icon-star"></i></li>
+							<li><i class="icon icon-star"></i></li>
+							<li class="active"><i class="icon icon-star"></i></li>
+							<li><i class="icon icon-star"></i></li>
+							<li><i class="icon icon-star"></i></li>
+							<li class="text">4.0</li>
+						</ul>
+					</header>
+					<div class="body">
+						<div class="title">
+							Функциональная кухня с дизайном по-итальянски
+						</div>
+						<div class="scrolled-block light">
+							Раньше в этой кухне было банальное угловое расположение мебели и уныло стоящие вдоль противоположной стены шкафы, тумбочки и холодильник. Студии «Однушечка» предстояло спроектировать новый современный интерьер. Вопрос о стилистике они решили сами, поскольку у заказчиков отсутствовало общее мнение: глава семьи предпочитает практичные решения, жена — классику, а дочки — все новое. Зато единодушным пожеланием стало достаточное количество мест для хранения и полноценная рабочая поверхность для готовки, которых на прежней кухне не хватало. Именно эта задача и стояла перед дизайнерами как основная — сделать функциональную кухню для трех хозяек. Также семья хотела стол, за которым можно разместить не менее шести человек, организованное место для хранения бутылок и телевизор для
+				
+						</div>
+					</div>
+				</article>
+			</div>
+			<div class="column wide none--t">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="gallery-wrapper">
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item" data-width="2" data-height="2">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span> комментариев
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span> нравится
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<div class="image">
+						<a href="portfolio-detail.html" target="_blank" class="images-gallery owl-carousel">
+							<img src="temp/hero.jpg" alt="">
+							<img src="temp/img1.jpg" alt="">
+							<img src="temp/img2.jpg" alt="">
+						</a>
+					</div>
+					<ul class="clear socials-list">
+						<li><a href="#"><i class="icon icon-fb"></i></a></li>
+						<li><a href="#"><i class="icon icon-p"></i></a></li>
+						<li><a href="#"><i class="icon icon-insta"></i></a></li>
+						<li><a href="#"><i class="icon icon-vk"></i></a></li>
+					</ul>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">67</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">756</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item" data-width="2" data-height="2">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item" data-width="2">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span> комментариев
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span> нравится
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img1.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">814</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item" data-width="2">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<figure class="image">
+						<a href="portfolio-detail.html" target="_blank"><img src="temp/img2.jpg" alt=""></a>
+					</figure>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">43</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="gallery-item">
+					<div class="image">
+						<a href="portfolio-detail.html" target="_blank" class="images-gallery owl-carousel">
+							<img src="temp/img3.jpg" alt="">
+							<img src="temp/img2.jpg" alt="">
+							<img src="temp/img1.jpg" alt="">
+						</a>
+					</div>
+					<ul class="clear socials-list">
+						<li><a href="#"><i class="icon icon-fb"></i></a></li>
+						<li><a href="#"><i class="icon icon-p"></i></a></li>
+						<li><a href="#"><i class="icon icon-insta"></i></a></li>
+						<li><a href="#"><i class="icon icon-vk"></i></a></li>
+					</ul>
+					<div class="content">
+						<div class="row">
+							<div class="col-xs-2">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-10">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">99</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">99</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- класс .grey - делает его светлым -->
+					<!-- класс .white - делает его белым -->
+					<!-- по умолчанию он синий -->
+					<span class="spinner grey active">
+						<span class="spin"></span>
+					</span>
+					<div class="content light">
+						<div class="title">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae qui iste corporis veniam, cupiditate voluptatem illo hic possimus voluptatum maiores dolorem, laboriosam minima! Accusamus suscipit, ipsum, voluptatibus esse cupiditate quibusdam.
+						</div>
+						<!-- .singleline - сделает текст в одну строку и обрезает троеточием -->
+						<div class="text">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi suscipit voluptates sapiente minima quas vel totam nihil facere, deserunt, doloribus qui, cum nulla nemo illum ut, in! Sapiente, at, dolorem!
+						</div>
+						<div class="row">
+							<div class="col-xs-3">
+								<a href="#" class="logo"><i class="icon icon-logo"></i></a>
+							</div>
+							<div class="col-xs-9">
+								<ul class="clear statistic-list">
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-comment"></i><span class="count">65</span>
+										</button>
+									</li>
+									<li>
+										<button class="btn btn-transparent">
+											<i class="icon icon-heart"></i><span class="count">13</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="footer-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+						<a href="index.html" class="logo">
+							<i class="icon icon-logo"></i>
+						</a>
+						<ul class="clear socials-list">
+							<li><a href="#"><i class="icon icon-fb"></i></a></li>
+							<li><a href="#"><i class="icon icon-p"></i></a></li>
+							<li><a href="#"><i class="icon icon-insta"></i></a></li>
+							<li><a href="#"><i class="icon icon-vk"></i></a></li>
+						</ul>
+						<div class="title">
+							Студия профессиональных дизайнеров-архитекторов.
+						</div>
+						<div class="paragraph">
+							Наш опыт и команда креативных дизайнеров позволяет нам не только создавать стильные, авторские интерьеры, но и проектировать функциональное, комфортное пространство для каждого клиента индивидуально.
+						</div>
+						<div class="row">
+							<div class="col-xs-10 col-xs-offset-1">
+								<div class="row">
+									<div class="col-xs-5 mobile-full">
+										Офис: <a href="tel:88129993600">8 812 999 36 00</a>
+									</div>
+									<div class="col-xs-7 mobile-full">
+										email: <a href="mailto:tutynina@vodstudio.ru">tutynina@vodstudio.ru</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-7 mobile-full">
+					The verge of design © 2016. All rights reserved.
+				</div>
+				<div class="col-xs-5 mobile-full align-right">
+					Build by <span class="strong">Studio Elementary™</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="popup" v-bind:class="{'visible': isOpened, 'active': isActive}" id="callPopup" data-submit-callback="callPopupSubmit">
+
+	
+
+		<button class="close-popup" v-on:click="closePopup()">
+
+			<i class="icon icon-cross"></i>
+
+		</button>
+
+	
+
+		<div class="results-group">
+
+			<ul class="clear" v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+
+				<li v-for="item in userInfo" v-results-actived v-bind:class="{'faded': $index >= userCurrentStep}">
+
+					<i class="icon icon-check"></i>
+
+					<span class="text">{{item}}</span>
+
+					<button class="edit-btn"
+
+						data-tooltip
+
+						v-on:click="setStep($index)"
+
+						>
+
+						<i class="icon icon-cross"></i>
+
+						<span class="tooltip left">Редактировать</span>
+
+					</button>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+	
+
+		<div class="inner">
+
+			<div class="title faded-block" v-bind:class="{'faded': userCurrentStep == userStepsCount}">
+
+				Оставьте ваши контактные данные <br>
+
+				и мы свяжемся с вами!
+
+			</div>
+
+			<form action="#" class="user-form">
+
+	
+
+				<input type="hidden" name="cache-name1" value="{{userInfo[0]}}">
+
+				<input type="hidden" name="cache-name2" value="{{userInfo[1]}}">
+
+				<input type="hidden" name="cache-name3" value="{{userInfo[2]}}">
+
+	
+
+				<!-- step 1: name -->
+
+				<div class="step"
+
+						v-bind:class="{
+
+							'active': userCurrentStep == 0,
+
+							'done': userCurrentStep > 0,
+
+							'error': errors['name']
+
+						}"
+
+					>
+
+					<div class="spinner-holder">
+
+						<i class="icon icon-user normal-icon"></i>
+
+						<i class="icon icon-exclamation"></i>
+
+						<!-- [data-time] - время вращения в милисекундах,
+
+							если не указывать - по умолчанию 500мс -->
+
+						<canvas class="progress" data-time="1000"></canvas>
+
+					</div>
+
+					<!-- input -->
+
+					<input type="text" class="input"
+
+						placeholder="Ваше имя и Фамилия"
+
+						data-minlength="2"
+
+						maxlength="20"
+
+						name="name"
+
+						data-validate="name"
+
+						v-on:keyup="checkStep($event)"
+
+						v-on:keydown="keyup($event)"
+
+						required
+
+					>
+
+					<div class="alert"></div>
+
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+
+				</div>
+
+	
+
+				<!-- step 3: email -->
+
+				<div class="step"
+
+						v-bind:class="{
+
+							'active': userCurrentStep == 1,
+
+							'done': userCurrentStep > 1,
+
+							'error': errors['email']
+
+						}"
+
+					>
+
+					<div class="spinner-holder">
+
+						<i class="icon icon-message normal-icon"></i>
+
+						<i class="icon icon-exclamation"></i>
+
+						<!-- [data-time] - время вращения в милисекундах,
+
+							если не указывать - по умолчанию 500мс -->
+
+						<canvas class="progress" data-time="1000"></canvas>
+
+					</div>
+
+					<!-- input -->
+
+					<input type="text" class="input"
+
+						placeholder="Ваш Email"
+
+						data-validate="email"
+
+						name="email"
+
+						v-on:keyup="checkStep($event)"
+
+						v-on:keydown="keyup($event)"
+
+						required
+
+					>
+
+					<div class="alert"></div>
+
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+
+				</div>
+
+	
+
+				<!-- step 2: number -->
+
+				<div class="step"
+
+						v-bind:class="{
+
+							'active': userCurrentStep == 2,
+
+							'done': userCurrentStep > 2,
+
+							'error': errors['phone']
+
+						}"
+
+					>
+
+					<div class="spinner-holder">
+
+						<i class="icon icon-phone normal-icon"></i>
+
+						<i class="icon icon-exclamation"></i>
+
+						<!-- [data-time] - время вращения в милисекундах,
+
+							если не указывать - по умолчанию 500мс -->
+
+						<canvas class="progress" data-time="1000"></canvas>
+
+					</div>
+
+					<!-- input -->
+
+					<input type="text" class="input"
+
+						placeholder="Ваш телефон"
+
+						data-validate="phone"
+
+						data-minlength="9"
+
+						maxlength="20"
+
+						name="phone"
+
+						data-mask="+7 (999) 99-99-99"
+
+						v-on:keyup="checkStep($event)"
+
+						v-on:keydown="keyup($event)"
+
+					>
+
+					<div class="alert"></div>
+
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+
+				</div>
+
+	
+
+				<div class="final-caption faded-block faded-up" v-bind:class="{
+
+					'faded-up': userCurrentStep != userStepsCount
+
+				}">
+
+					<div class="title">
+
+						Спасибо <span>{{userInfo[0]}}</span>
+
+					</div>
+
+					<div class="paragraph centered">
+
+						Мы скоро с вами свяжемся.
+
+					</div>
+
+					<div class="centered">
+
+						<button class="btn" type="button" v-on:click="closePopup()">Закрыть</button>
+
+					</div>
+
+				</div>
+
+	
+
+	
+
+	
+
+			</form>
+
+		</div>
+
+	
+
+		<div class="caption"  v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+
+			После каждого ввода данных <br>
+
+			жмите <span class="grey">enter <i class="icon icon-enter-arrow"></i></span>
+
+		</div>
+
+	
+
+	</div>
+	<div class="popup" v-bind:class="{'visible': isOpened, 'active': isActive}" id="messagePopup" data-submit-callback="messagePopupSubmit">
+	
+		<button class="close-popup" v-on:click="closePopup()">
+			<i class="icon icon-cross"></i>
+		</button>
+	
+		<div class="results-group">
+			<ul class="clear" v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+				<li v-for="item in userInfo" v-results-actived v-bind:class="{'faded': $index >= userCurrentStep}">
+					<i class="icon icon-check"></i>
+					<span class="text">{{item}}</span>
+					<button class="edit-btn"
+						data-tooltip
+						v-on:click="setStep($index)"
+						>
+						<i class="icon icon-cross"></i>
+						<span class="tooltip left">Редактировать</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+	
+		<div class="inner">
+			<div class="title faded-block" v-bind:class="{'faded': userCurrentStep == userStepsCount}">
+				Оставьте нам ваше <br>
+				сообщение!
+			</div>
+			<form action="#" class="user-form" v-bind:class="{
+				'large': userCurrentStep == 3
+			}">
+	
+				<input type="hidden" name="cached1" value="{{userInfo[0]}}">
+				<input type="hidden" name="cached2" value="{{userInfo[1]}}">
+				<input type="hidden" name="cached3" value="{{userInfo[2]}}">
+	
+				<!-- step 1: name -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 0,
+							'done': userCurrentStep > 0,
+							'error': errors['name']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-user normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1500"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваше имя и Фамилия"
+						data-minlength="2"
+						maxlength="20"
+						name="name"
+						data-validate="name"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 3: email -->
+				<div class="step"
+						v-bind:class="{
+							'active': userCurrentStep == 1,
+							'done': userCurrentStep > 1,
+							'error': errors['email']
+						}"
+					>
+					<div class="spinner-holder">
+						<i class="icon icon-message normal-icon"></i>
+						<i class="icon icon-exclamation"></i>
+						<!-- [data-time] - время вращения в милисекундах,
+							если не указывать - по умолчанию 500мс -->
+						<canvas class="progress" data-time="1500"></canvas>
+					</div>
+					<!-- input -->
+					<input type="text" class="input"
+						placeholder="Ваш Email"
+						data-validate="email"
+						name="email"
+						v-on:keyup="checkStep($event)"
+						v-on:keydown="keyup($event)"
+					>
+					<div class="alert"></div>
+					<i class="icon icon-enter-arrow" v-on:mouseup="checkStep($event)"></i>
+				</div>
+	
+				<!-- step 4: text -->
+				<div class="step large"
+						v-bind:class="{
+							'active': userCurrentStep == 2,
+							'done': userCurrentStep > 2,
+							'error': errors['text']
+						}"
+					>
+					
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-lg-8 col-lg-offset-2">
+								<!-- input -->
+								<div class="textarea-outer">
+									<div class="scrolled-block">
+										<textarea class="input"
+											placeholder="Введите текст сообщения..."
+											data-validate="text"
+											data-minlength="20"
+											name="comment"
+										></textarea>
+									</div>
+									<div class="footer">
+										<div class="row">
+											<div class="col-xs-8">
+												<span class="input-file-holder">
+													<input type="file" name="files" multiple id="userMessageFileInput" v-on:change="parseFiles($event)">
+												</span>
+												<label for="userMessageFileInput" class="btn btn-transparent btn-larger select-file-btn" data-tooltip>
+													<i class="icon icon-paperclip"></i>
+													<span class="tooltip">Прикрепить файлы</span>
+												</label>
+												<ul class="clear users-files-list">
+													<li v-for="file in userFiles">
+														<i class="ico icon-file" data-tooltip>
+															<span class="tooltip">{{file.name}}</span>
+														</i>
+														<button class="btn" v-on:click="removeFile($index)">
+															<i class="icon icon-cross-o" data-tooltip>
+																<span class="tooltip">Удалить</span>
+															</i>
+														</button>
+													</li>
+												</ul>
+												<div class="alert"></div>
+											</div>
+											<div class="col-xs-4 align-right clear-left">
+												<div class="spinner-holder">
+													<i class="icon icon-exclamation"></i>
+													<!-- [data-time] - время вращения в милисекундах,
+														если не указывать - по умолчанию 500мс -->
+													<canvas class="progress" data-time="1500"></canvas>
+												</div>
+	
+												<button class="btn btn-transparent" v-on:click="checkStep({keyCode: 13})">
+													Отправить&nbsp;&nbsp;<i class="icon icon-enter-arrow"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+	
+				<div class="final-caption faded-block faded-up" v-bind:class="{
+					'faded-up': userCurrentStep != userStepsCount
+				}">
+					<div class="title">
+						Спасибо <span>{{userInfo[0]}}</span>
+					</div>
+					<div class="paragraph centered">
+						Мы скоро с вами свяжемся.
+					</div>
+					<div class="centered">
+						<button class="btn" type="button" v-on:click="closePopup()">Закрыть</button>
+					</div>
+				</div>
+	
+	
+	
+			</form>
+		</div>
+	
+		<div class="caption"  v-bind:class="{'hidden': userCurrentStep == userStepsCount}">
+			После каждого ввода данных <br>
+			жмите <span class="grey">enter <i class="icon icon-enter-arrow"></i></span>
+		</div>
+	
+	</div>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Exo+2:100,300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
+
+	<script>
+		window.callPopupSubmit = function (data) {
+			$.ajax({
+				type: 'POST',
+				url: 'form.php',
+				data: data
+			})
+		}
+	</script>
+	<script>
+		window.messagePopupSubmit = function (data) {
+			console.log(data)
+		}
+	</script>
+	<script src="js/bundle/bundle.js"></script>
+
+
+</body>
+</html>
