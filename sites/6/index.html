@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+
+	<title>title</title>
+
+	<link href="css/grid.min.css" rel="stylesheet">
+	<link href="css/skin.min.css" rel="stylesheet">
+	<link href="css/jquery.selectBox.css" rel="stylesheet">
+	<link href="css/skin2.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="page-wrapper">
+		<div class="main-header">
+
+			<div class="wrap">
+				<div class="c x1d2 v-middle title-col pad-left-10">
+					<h1 class="title">Terra Antica</h1>
+				</div>
+				<div class="c x1d2 v-middle right">
+					<div>Пользователь: <a href="#">Марина Иванова</a></div>
+					<div>Диллер: <a href="#">"Кухня для всех"</a></div>
+					<div class="pad-top-5">
+						<a href="#" class="button">Выход</a>
+					</div>
+				</div>
+			</div>
+
+			<nav class="main-nav">
+				<ul class="clear-list">
+					<li><a href="#">Новый</a></li>
+					<li><a href="#">Печать</a></li>
+					<li><a href="#" data-call="#savePopup">Сохранить</a></li>
+					<li><a href="#" data-call="#loadPopup">Загрузить</a></li>
+					<li><a href="#" id="help">Помощь</a></li>
+				</ul>
+			</nav>
+
+		</div>
+
+
+		<div id="webglRender"></div>
+
+
+		<div class="controls">
+			<div class="clearfix">
+				<div class="infos pull-left" id="infosBar">
+					Длинна: <span id="roomLength"></span>мм. <span class="pad-left-10"></span>
+					Ширина: <span id="roomWidth"></span>мм. <span class="pad-left-10"></span>
+					Высота: <span id="roomHeight"></span>мм.
+					<span class="pad-h20">|</span>
+					<span id="groupLength">0</span>
+					<span class="pad-h20 none green" id="rotationStatus"><span class="pad-right-20">|</span><b>Включено вращение</b></span>
+				</div>
+				<div class="inline slider">
+					<div id="range-slider"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="view-changer">
+			<input type="radio" id="2dViev" name="view">
+			<input type="radio" id="3dViev" name="view" checked>
+			<label for="2dViev" id="topView">2d</label>
+			<span class="status"><i></i></span>
+			<label for="3dViev" id="defaultView">3d</label>
+		</div>
+
+
+		<div class="instruments">
+			<div class="header"></div>
+			<ul class="clear-list" id="instruments">
+				<li id="roomSettings"><i class="icon icon-crop"></i><span class="help">Параметры комнаты</span></li>
+				<li id="fliping">
+					<i class="icon icon-view_stream"></i>
+					<div class="submenu clearfix">
+						<a href="#" id="sticknessUp" >+<span class="help">Увеличить расстояние</span></a>
+						<b id="sticknessValue" class="text">.3</b>
+						<a href="#" id="sticknessDown" >-<span class="help">Уменьшить расстояние</span></a>
+					</div>
+				</li>
+				<li class="sep"></li>
+				<li id="startView">
+					<i class="icon icon-videocam"></i><span class="help">Начальный вид</span>
+				</li>
+				<li class="sep"></li>
+				<li class="fixed-height">
+					<input type="checkbox" id="fixedFloorDistanceChecker" class="distance-check hiddened-input">
+					<label for="fixedFloorDistanceChecker" class="font-10 pad-top-5"></label>
+				</li>
+				<li class="sep"></li>
+				<li id="enableIndicatorsPopup">
+					<i class="icon icon-open_with"></i><span class="help">Индикатор расстояния от стен</span>
+				</li>
+				<li id="fullscreen"><i class="icon icon-fullscreen"></i><span class="help">На весь экран</span></li>
+				<li id="ruler">
+					<i class="icon icon-straighten"></i><span class="help">Инструмент "Линейка"</span>
+				</li>
+				<li class="sep"></li>
+				<li id="hatch">
+					<i class="icon icon-texture"></i><span class="help">Инструмент "Штрихование"</span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="slider-range">
+			<input type="text" id="objectSpaceHeight" maxlength="3" value="0">
+			<input type="range" min="0" value="0" max="5000" step="10" id="objectSpaceHeight2">
+		</div>
+
+		<aside class="sidebar">
+			<a href="#" class="aside-toggler"></a>
+
+			<div class="categories-list">
+				<ul class="clear-list">
+					<li class="active">
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>Category 1</figcaption>
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>Category 2</figcaption>
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>loooong category name here</figcaption>
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>Category 4</figcaption>
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>Category 5</figcaption>
+						</figure>
+					</li>
+					<li>
+						<figure>
+							<img src="img/category.png" alt="">
+							<figcaption>Category 6</figcaption>
+						</figure>
+					</li>
+				</ul>
+			</div>
+
+			<div class="subcategories">
+				<div class="title"><span>Элементы категории</span></div>
+				<div class="sub scroll-pane">
+					<ul class="clear-list clearfix">
+						<li data-category="0" data-picture="img/temp1.jpg" title="Панель" data-objectmodel="cube.js" data-min="50,50,5" data-texture="wood.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="Панель" data-objectmodel="cock.js" data-min="50,50,5" data-texture="wood.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="Панель с круглым вырезом" data-objectmodel="circle.js" data-min="50,50,5" data-texture="imgo.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="Панель с квадратным вырезом" data-objectmodel="box.js" data-min="50,50,5" data-texture="imgo.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="панель с треугольным вырезом" data-objectmodel="triangle.js" data-min="50,50,5" data-texture="imgo.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="Шкаф" data-objectmodel="cube.js" data-texture="imgo.jpg"><img src="img/temp1.jpg" alt=""></li>
+						<li data-category="0" data-picture="img/temp1.jpg" title="Шкаф" data-objectmodel="cube.js" data-texture="imgo.jpg"><img src="img/temp1.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="materials">
+				<div class="title"><span>Текстура элемента</span></div>
+				<div class="sub scroll-pane">
+					<ul class="clear-list clearfix">
+						<li class="active" data-switch-texture="brook" data-obj-texture="002.jpg" title="brook light">
+							<img src="textures/002.jpg" alt="brook light">
+						</li>
+						<li data-switch-texture="madure" data-obj-texture="003.jpg" title="brook poly">
+							<img src="textures/003.jpg" alt="brook poly">
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</aside>
+
+		<ul class="clear-list contextmenu" id="contextmenu">
+			<li data-for-type="hole">
+				<a href="#" data-call="#createHolePopup"><b>Свойства</b></a>
+			</li>
+			<li data-for-type="hole">
+				<a href="#" id="booleanOperaion">Высечь</a>
+			</li>
+			<li data-for-type="hole">
+				<a href="#" id="hideHole">Скрыть</a>
+			</li>
+			<li data-for-type="obj">
+				<a href="#" data-call="#propertiesPopup"><b>Свойства</b></a>
+			</li>
+			<li data-for-type="obj">
+				<a href="#" id="addHoleObj">Отверстие</a>
+			</li>
+			<li data-for-type="obj" class="sep"></li>
+			<li data-for-type="obj">
+				<a href="#"  id="scale"><i class="icon icon-photo_size_select_small"></i><span class="help">Увеличить / уменьшить</span></a>
+			</li>
+			<li data-for-type="obj" class="sep"></li>
+			<li data-for-type="obj">
+				<a href="#" id="rotateUp" ><i class="icon icon-rotate_right icon-rotate_up"></i><span class="help">Повернуть вверх</span></a>
+			</li>
+			<li data-for-type="obj">
+				<a href="#" id="rotateDown" ><i class="icon icon-rotate_left icon-rotate_down"></i><span class="help">Повернуть вниз</span></a>
+			</li>
+			<span class="sep"></span>
+			<li data-for-type="obj">
+				<a href="#" id="rotateLeft" ><i class="icon icon-rotate_left"></i><span class="help">Повернуть влево</span></a>
+			</li>
+			<li data-for-type="obj">
+				<a href="#" id="rotateRight" ><i class="icon icon-rotate_right"></i><span class="help">Повернуть вправо</span></a>
+			</li>
+			<li data-for-type="obj" class="sep"></li>
+			<li data-for-type="obj">
+				<a href="#" id="deleteObject"><i class="icon icon-clear"></i><span class="help">Удалить</span></a>
+			</li>
+		</ul>
+
+		<div id="propertiesPopup" class="popup large-popup">
+			<div class="header">
+				<input type="text" id="objectName" value="название элемента">
+			</div>
+			<a href="#" class="close-popup" data-close="propertiesPopup">×</a>
+			<div class="">
+				<div>
+					<form action="#">
+						<div class="c x1d2">
+							<div class="c pad-top-10 pad-h5">
+								<h4>Основное</h4>
+							</div>
+							<div>
+								<div class="cc v-top x3d5 pad-bot-10">
+									<div class="cc x1d3 pad-h5">
+										<label for="objectLength">Длинна</label>
+										<input type="text" id="objectLength" maxlength="4">
+									</div>
+									<div class="cc x1d3 pad-h5">
+										<label for="objectWidth">Высота</label>
+										<input type="text" id="objectWidth" maxlength="4">
+									</div>
+									<div class="cc x1d3 pad-h5">
+										<label for="objectHeight">Ширина</label>
+										<input type="text" id="objectHeight" maxlength="4">
+									</div>
+									<div class="pad-h5">
+										<label for="objectSpaceHeight">Высота от пола</label>
+									</div>
+								</div>
+								<div class="c v-top x2d5 pad-bot-10">
+									<div class="ccpreview-picture" id="objectPreview">
+										<img src="img/category.png" alt="" class="r">
+									</div>
+								</div>
+							</div>
+							<div class="pad-h5"><hr></div>
+							<div class="c pad-top-10 pad-h5">
+								<h4>Отступы</h4>
+							</div>
+							<div>
+								<div class="cc x3d4 center pad-left-5">
+									<div class="cc x1d3 pad-h5 pad-top-25">
+										<label for="objectDistanceLeft">Слева</label>
+										<input type="text" class="center" data-direction="X" id="objectDistanceLeft" maxlength="4">
+									</div>
+									<div class="cc x1d3 pad-h5">
+										<div>
+											<label for="objectDistanceFront">Спереди</label>
+											<input type="text" class="center" data-direction="Z" id="objectDistanceFront" maxlength="4">
+										</div>
+										<div>
+											<label for="objectDistanceRear">Сзади</label>
+											<input type="text" class="center" data-direction="z" id="objectDistanceRear" maxlength="4">
+										</div>
+									</div>
+									<div class="cc x1d3 pad-h5 pad-top-25">
+										<label for="objectDistanceRight">Справа</label>
+										<input type="text" class="center" data-direction="x" id="objectDistanceRight" maxlength="4">
+									</div>
+								</div>
+								<div class="c x1d4 center">
+									<div>
+										<label for="objectDistanceTop">Сверху</label>
+										<input type="text" class="center" data-direction="Y" id="objectDistanceTop" maxlength="4">
+									</div>
+									<div>
+										<label for="objectDistanceBottom">Снизу</label>
+										<input type="text" class="center" data-direction="y" id="objectDistanceBottom" maxlength="4">
+									</div>
+								</div>
+							</div>
+							<div class="pad-h5 pad-v10"><hr></div>
+							<div class="pad-bot-10">
+								<div class="c pad-top-10 pad-h5">
+									<h4>Материал</h4>
+								</div>
+								<div class="c x1d5">
+									<label>Материал</label>
+								</div>
+								<div class="c x4d5">
+									<ul class="clear-list clarfix colors-list">
+										<li data-texture-type="brook" data-change-texture="textures/client/brook/light.jpg">
+											<img src="textures/client/brook/light.jpg" alt="">
+										</li>
+										<li data-texture-type="brook" data-change-texture="textures/client/brook/noise.jpg">
+											<img src="textures/client/brook/noise.jpg" alt="">
+										</li>
+										<li data-texture-type="brook" data-change-texture="textures/client/brook/poly.jpg">
+											<img src="textures/client/brook/poly.jpg" alt="">
+										</li>
+										<li data-texture-type="madure" data-change-texture="textures/client/madure/light.jpg">
+											<img src="textures/client/madure/light.jpg" alt="">
+										</li>
+										<li data-texture-type="madure" data-change-texture="textures/client/madure/noise.jpg">
+											<img src="textures/client/madure/noise.jpg" alt="">
+										</li>
+										<li data-texture-type="madure" data-change-texture="textures/client/madure/poly.jpg">
+											<img src="textures/client/madure/poly.jpg" alt="">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="c x1d2">
+							<div data-object-hole="circle" class="island-10 font-12">
+								<div class="cc pad-v10">
+									<h4>Отверстия</h4>
+								</div>
+								<b>Отверстие</b> : круг
+								<div class="table x1d1 marg-top-5">
+									<div class="row font-10 boldest">
+										<div class="cell">Радиус, м.</div>
+										<div class="cell">Диаметр, м.</div>
+										<div class="cell">Площадь, м<sup>2</sup></div>
+									</div>
+									<div class="row font-14">
+										<div class="cell holeRadius">1</div>
+										<div class="cell holeDiameter">2</div>
+										<div class="cell holeArea">2</div>
+									</div>
+								</div>
+								<div class="pad-top-10"><hr></div>
+							</div>
+							<div data-object-hole="triangle" class="island-10 font-12">
+								<div class="cc pad-v10">
+									<h4>Отверстия</h4>
+								</div>
+								<b>Отверстие</b> : треугольник
+								<div class="table x1d1 marg-top-5">
+									<div class="row font-10 boldest">
+										<div class="cell">A, м.</div>
+										<div class="cell">B, м.</div>
+										<div class="cell">C, м.</div>
+										<div class="cell">Площадь, м<sup>2</sup></div>
+									</div>
+									<div class="row font-14">
+										<div class="cell holeSideA">1</div>
+										<div class="cell holeSideB">2</div>
+										<div class="cell holeSideC">2</div>
+										<div class="cell holeArea">2</div>
+									</div>
+								</div>
+								<div class="pad-top-10"><hr></div>
+							</div>
+							<div data-object-hole="box" class="island-10 font-12">
+								<div class="cc pad-v10">
+									<h4>Отверстия</h4>
+								</div>
+								<b>Отверстие</b> : квадрат
+								<div class="table x1d1 marg-top-5">
+									<div class="row font-10 boldest">
+										<div class="cell">Ширина, м.</div>
+										<div class="cell">Длинна, м.</div>
+										<div class="cell">Площадь, м<sup>2</sup></div>
+									</div>
+									<div class="row font-14">
+										<div class="cell holeSideA">1</div>
+										<div class="cell holeSideB">2</div>
+										<div class="cell holeArea">2</div>
+									</div>
+								</div>
+								<div class="pad-top-10"><hr></div>
+							</div>
+							<div>
+								<div class="c pad-v10">
+									<h4>Профиля</h4>
+								</div>
+								<div>
+									<div class="c x1d2">
+										<div>
+											<div class="marg-bot-5">
+												<h5 class="no-marg">Где накладывается</h5>
+											</div>
+											<select id="verticalType" class="vertical-type">
+												<option>-</option>
+												<option value="top">Сверху</option>
+												<option value="middle">По середине</option>
+												<option value="bottom">Снизу</option>
+											</select>
+										</div>
+										<div class="pad-top-10">
+											<div class="marg-bot-5">
+												<h5 class="no-marg">Тип</h5>
+											</div>
+											<select id="materialType" class="material-type">
+												<option>-</option>
+												<option>Направляющие для сборки каркаса</option>
+												<option>Направляющие потолочные</option>
+												<option>Потолочный</option>
+												<option>Стоечный</option>
+												<option>Угловой профиль</option>
+											</select>
+										</div>
+									</div>
+									<div class="c x1d2">
+										<h5 class="no-marg">Тип</h5>
+										<ul class="clear-list padless">
+											<li>
+												<input type="checkbox" id="sideFront" class="distance-check">
+												<label for="sideFront"><span class="green">Спереди</span><span class="red">Спереди</span></label>
+											</li>
+											<li>
+												<input type="checkbox" id="sideRight" class="distance-check">
+												<label for="sideRight"><span class="green">Справа</span><span class="red">Справа</span></label>
+											</li>
+											<li>
+												<input type="checkbox" id="sideRear" class="distance-check">
+												<label for="sideRear"><span class="green">Сзади</span><span class="red">Сзади</span></label>
+											</li>
+											<li>
+												<input type="checkbox" id="sideLeft" class="distance-check">
+												<label for="sideLeft"><span class="green">Слева</span><span class="red">Слева</span></label>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="pad-h5"><hr></div>
+							<div class="marg-top-10 pad-h5">
+								<div class="cc pad-h5 x1d5"><label for="d">Цена</label></div>
+								<div class="cc pad-h5 x4d5"><input type="text" id="d"></div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="roomSettingsPopup" class="popup big-popup">
+			<div class="header">Свойства комнаты</div>
+			<a href="#" class="close-popup" data-close="roomSettingsPopup">×</a>
+			<div class="pad-h15 pad-bot-10 helper">
+				Задайте параметры комнаты (в мм.), которые соответствуют реальным размерам вашей комнаты.
+			</div>
+			<hr>
+			<div class="pad-h10 pad-v5 pad-bot-10">
+				<div class="cc x1d3 pad-h5">
+					<label for="roomLengthInput">Длинна</label>
+					<input type="text" id="roomLengthInput" value="6500" maxlength="4">
+				</div>
+				<div class="cc x1d3 pad-h5">
+					<label for="roomWidthInput">Ширина</label>
+					<input type="text" id="roomWidthInput" value="5500" maxlength="4">
+				</div>
+				<div class="cc x1d3 pad-h5">
+					<label for="roomHeightInput">Высота</label>
+					<input type="text" id="roomHeightInput" value="3500" maxlength="4">
+				</div>
+			</div>
+			<hr>
+			<div class="cc x1d2 v-top pad-right-10">
+<!--         <div class="pad-left-15 pad-v10 helper">
+					<h4>Расстояние от пола <small>(см.)</small></h4>
+					<div>
+						<small>
+							Вы можете использовать колесико мышки для изменения значения
+						</small>
+					</div>
+					<div>
+						<div class="cc x2d5 v-middle pad-top-10">
+							<input type="text" value="0" id="fixedFloorDistance">
+						</div>
+						<div class="cc x3d5 v-middle pad-left-20">
+							
+						</div>
+					</div>
+				</div>
+				<hr> -->
+				<div class="pad-left-15 pad-top-10 helper">
+					<h4>Выберите текстуру обоев</h4>
+				</div>
+				<div class="pad-left-15 pad-v10">
+					<ul class="clear-list clearfix colors-list">
+						<li data-room-texture="textures/t1.jpg">
+							<img src="textures/t1.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t2.jpg">
+							<img src="textures/t2.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t3.jpg">
+							<img src="textures/t3.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t4.jpg">
+							<img src="textures/t4.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t5.jpg">
+							<img src="textures/t5.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t6.jpg">
+							<img src="textures/t6.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t7.jpg">
+							<img src="textures/t7.jpg" alt="">
+						</li>
+						<li data-room-texture="textures/t8.jpg">
+							<img src="textures/t8.jpg" alt="">
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="cc x1d2 v-top pad-left-10">
+				<div class="pad-v10">
+					<h4>Сетка</h4>
+					<div class="cc x2d5 v-top">
+						<div>
+							<input type="radio" id="gridSize2" name="grid-size" value="0.001" class="distance-check">
+							<label for="gridSize2"><span class="red">1 мм</span><span class="green">1 мм</span></label>
+						</div>
+						<div>
+							<input type="radio" id="gridSize3" name="grid-size" value="0.01" class="distance-check">
+							<label for="gridSize3"><span class="red">10 мм</span><span class="green">10 см</span></label>
+						</div>
+						<div>
+							<input checked type="radio" id="gridSize4" name="grid-size" value="0.1" class="distance-check">
+							<label for="gridSize4"><span class="red">100 мм</span><span class="green">100 мм</span></label>
+						</div>
+						<div>
+							<input type="radio" id="gridSize5" name="grid-size" value="0.15" class="distance-check">
+							<label for="gridSize5"><span class="red">150 мм</span><span class="green">150 мм</span></label>
+						</div>
+						<div>
+							<input type="radio" id="gridSize6" name="grid-size" value="0.2" class="distance-check">
+							<label for="gridSize6"><span class="red">200 мм</span><span class="green">200 мм</span></label>
+						</div>
+					</div>
+					<div class="cc x3d5 v-top pad-left-20 pad-top-5">
+						<input type="checkbox" id="gridSizeChecker" class="distance-check">
+						<label for="gridSizeChecker">
+							<span class="green">включено</span><span class="red">выключено</span>
+						</label>
+					</div>
+				</div>
+				<hr>
+				<ul class="clear-list clearfix grid-colors-list">
+					<li data-grid-color="#000000" style="background-color: #000000" title="#000000"></li>
+					<li data-grid-color="#777777" style="background-color: #777777" title="#777777"></li>
+					<li data-grid-color="#aaaaaa" style="background-color: #aaaaaa" title="#aaaaaa"></li>
+					<li data-grid-color="#ffffff" style="background-color: #ffffff" title="#ffffff"></li>
+					<li data-grid-color="#DBB86E" style="background-color: #DBB86E" title="#DBB86E"></li>
+					<li data-grid-color="#DB7F6E" style="background-color: #DB7F6E" title="#DB7F6E"></li>
+					<li data-grid-color="#DB6E91" style="background-color: #DB6E91" title="#DB6E91"></li>
+					<li data-grid-color="#DB6ECD" style="background-color: #DB6ECD" title="#DB6ECD"></li>
+					<li data-grid-color="#AC6EDB" style="background-color: #AC6EDB" title="#AC6EDB"></li>
+					<li data-grid-color="#776EDB" style="background-color: #776EDB" title="#776EDB"></li>
+					<li data-grid-color="#6EA1DB" style="background-color: #6EA1DB" title="#6EA1DB"></li>
+					<li data-grid-color="#6EDBCC" style="background-color: #6EDBCC" title="#6EDBCC"></li>
+					<li data-grid-color="#6EDB8D" style="background-color: #6EDB8D" title="#6EDB8D"></li>
+					<li data-grid-color="#91DB6E" style="background-color: #91DB6E" title="#91DB6E"></li>
+					<li data-grid-color="#D1DB6E" style="background-color: #D1DB6E" title="#D1DB6E"></li>
+				</ul>
+				<hr>
+				<div class="pad-v10">
+					<div>Скрыть стены</div>
+					<div>
+						<input type="checkbox" id="hideRoomSides" class="distance-check" checked>
+						<label for="hideRoomSides"><span class="red">Сейчас скрыты</span><span class="green">Сейчас отображаются</span></label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="helpPopup" class="popup big-popup">
+			<div class="header">Помощь</div>
+			<a href="#" class="close-popup" data-close="roomSettingsPopup">×</a>
+			<div class="popup-content scroll-pane">
+				<div class="pad-h15">
+					<div>
+						<h4>Основные секции редактора</h4>
+						<div class="pad-left-20">
+							<ul class="list">
+								<li><b>Шапка</b> - секция вывода заголовка, основных органов управления и информации о пользователе.</li>
+								<li><b>Сайдбар</b> - секция для выбора типа категории, объектов для перетаскивания на рабочую область, а так же свойств этих объектов.</li>
+								<li><b>Блок управления редактором</b> - здесь расположены все элементы для управления редактором.</li>
+								<li><b>Подвал</b> - вывод текущей информации для более наглядного визуального восприятия информации.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="pad-bot-20">
+						<h4>Шапка</h4>
+						<p>В шапке распологаются кнопки для создания нового проекта (<b>"Новый"</b>), для печати текущего проекта (<b>"Печать"</b>), а так же сохранения проекта (<b>"Сохранить"</b>).</p>
+						<p>
+							Так же, в справа в шапке расположен блок пользователя, где выводится информация о нем и некоторые элементы управления профилем.
+						</p>
+					</div>
+					<div class="pad-bot-20">
+						<h4>Сайдбар</h4>
+						<p>
+							<b>Выбор категоии</b> - позволяет выбрать категорию предметов. Например: столы, стулья, диваны, окна и т.д. После клика на нужную категорию, все доступные предметы этой категории открываются ниже в подразделе "Элементы категории".
+						</p>
+						<p>
+							<b>Элементы категории</b> - позволяет выбрать нужный предмет и перетащить его на рабочую область для дальнейшего редактирования. Для перетаскивания - нажмите мышью на нужный элемент и не отпуская кнопку перемещайте курсор внутрь рабочей области (комнаты) до тех пор, пока расположение объекта станет таким как нужно. 
+						</p>
+						<p>
+							<b>Текстура элемента</b> - это рисунок, который накладывается на объект. Например, для дерева - это узор дерева, для кафеля - узор плитки и т.д. Для каждого типа объекта может использоваться только подходязая текстура.
+						</p>
+					</div>
+					<div class="pad-bot-20">
+						<h4>Блок управления редактором</h4>
+						<p>
+							Это блок со всеми кнопками для управления объектами внутри рабочей области, а так же самой рабочей областью. Далее приводится полный список кнопок и пояснения к ним:
+						</p>
+						<ul class="clear-list pad-left-20 font-12">
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-crop"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Параметры комнаты</b>, позволяет задать размеры комнаты, а так же текстуру обоев (если нужно).
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-view_stream"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Прилипающие элементы</b>, указывает на расстояние, при котором элементы на рабочей области "прилипают" друг к другу, чем выше число, тем больше расстояние. По умолчанию - 0.1
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-videocam"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Вид по умолчанию</b>, задает начальный вид камеры.
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-fullscreen"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Полноэкранный режим</b>, - открывает рабочую область в полноэкранном режиме. При этом прячутся все элементы управления, шапка и футер.
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-filter_center_focus"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Вращение</b>, - включает или выключает вращение мышью (пальцем на сенсорых устройствах). В появляющейся подсказке выводится ТЕКУЩЕЕ свойство. Так же, если включено, - подсвечивается ярче остальных элементов.
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-refresh"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Поворот объекта</b>, позволяет повернуть объект на рабочей области влево/вправо на 90&deg;. Становится доступным, если выбран какой-то объект.
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-create"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Свойства объекта</b>, позволяет редактировать длинну/ширину/высоту объекта, а так же изменить текстуру. Становится доступным, если выбран какой-то объект.
+								</div>
+							</li>
+							<li>
+								<div class="cc x1d10 v-top">
+									<i class="icon font-22 icon-clear"></i>
+								</div>
+								<div class="cc x9d10 v-top">
+									<b>Удалить объект</b>, удаляет выбраный объект. Становится доступным, если выбран какой-то объект.
+								</div>
+							</li>
+						</ul>
+						<p>
+							<b>Переключатель режима</b>, - переключает режим простомтра из 2D плоскости в 3D и наоборот.
+						</p>
+					</div>
+					<div>
+						<h4>Всплывающие окна</h4>
+						<p>
+							В процессе редактирования будут всплявать окошка, в которых производится изменение свойств объектов. Окошко состоит из заголовка, кнопки закрытия окна и контента. Чтобы закрыть окошко, нухно нажать на крестик, расположенный в правой части заголовка.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="createHolePopup" class="popup">
+			<div class="header">Создание отверстия</div>
+			<a href="#" class="close-popup" data-close="roomSettingsPopup">×</a>
+			<div class="popup-content center">
+				<div class="c x2d3 left pad-bot-30">
+					<div class="c">
+						<label for="holeSize">Диаметр (см)</label>
+						<input type="text" id="holeSize" value="50" maxlength="">
+					</div>
+					<div class="c pad-bot-5">
+						<select id="holeType">
+							<option value="circle">Круглое</option>
+							<option value="square">Квадратное</option>
+							<option value="triangle">Треугольное</option>
+						</select>
+					</div>
+					<!-- <div class="c">
+						<button type="button" class="btn btn-block" id="makeHole">Создать</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+
+		<div id="indicatorsPopup" class="popup big-popup">
+			<div class="header">Настройка индикаторов расстояния до стен</div>
+			<a href="#" class="close-popup" data-close="indicatorsPopup">×</a>
+			<div class="popup-content">
+				<div class="pad-h15">
+					<h4>Включить / выключить</h4>
+					<div>
+						<div class="c x1d9 pad-top-5">
+							<div class="red"><span class="font-10">Ось</span> Х</div>
+						</div>
+						<div class="c x6d9">
+							<input type="checkbox" checked class="distance-check" data-indicator-check="X" id="indicatorX">
+							<label for="indicatorX">
+								<span class="green">включено</span><span class="red">выключено</span>
+							</label>
+						</div>
+					</div>
+					<div>
+						<div class="c x1d9 pad-top-5">
+							<div class="green"><span class="font-10">Ось</span> Y</div>
+						</div>
+						<div class="c x6d9">
+							<input type="checkbox" checked class="distance-check" data-indicator-check="Y" id="indicatorY">
+							<label for="indicatorY">
+								<span class="green">включено</span><span class="red">выключено</span>
+							</label>
+						</div>
+					</div>
+					<div>
+						<div class="c x1d9 pad-top-5">
+							<div class="blue"><span class="font-10">Ось</span> Z</div>
+						</div>
+						<div class="c x6d9">
+							<input type="checkbox" checked class="distance-check" data-indicator-check="Z" id="indicatorZ">
+							<label for="indicatorZ">
+								<span class="green">включено</span><span class="red">выключено</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="pad-h15 pad-top-20">
+					<h4>Настройка толщины</h4>
+					<div class="center">
+						<div class="c x1d4">
+							<div class="bold red"><span class="font-10">Ось</span>X</div>
+							<div class="filter-input">
+								<div class="cc x1d4"><span class="plus">+</span></div>
+								<div class="cc x2d4"><input id="lineWidthX" type="text" value="1.0" disabled></div>
+								<div class="cc x1d4"><span class="minus">-</span></div>
+							</div>
+						</div>
+						<div class="c x1d4">
+							<div class="bold green"><span class="font-10">Ось</span>Y</div>
+							<div class="filter-input">
+								<div class="cc x1d4"><span class="plus">+</span></div>
+								<div class="cc x2d4"><input id="lineWidthY" type="text" value="1.0" disabled></div>
+								<div class="cc x1d4"><span class="minus">-</span></div>
+							</div>
+						</div>
+						<div class="c x1d4">
+							<div class="bold blue"><span class="font-10">Ось</span>Z</div>
+							<div class="filter-input">
+								<div class="cc x1d4"><span class="plus">+</span></div>
+								<div class="cc x2d4"><input id="lineWidthZ" type="text" value="1.0" disabled></div>
+								<div class="cc x1d4"><span class="minus">-</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="island-15">
+					<h4>Сделать серыми</h4>
+					<div class="pad-h15">
+						<input type="checkbox" checked class="distance-check" id="isIndicatorsGrey">
+						<label for="isIndicatorsGrey">
+							<span class="green">Сейчас цветные</span><span class="red">Сейчас серые</span>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="savePopup" class="popup">
+			<div class="header">Сохранить проект</div>
+			<a href="#" class="close-popup" data-close="savePopup">×</a>
+			<div class="popup-content center">
+				<div class="c bold left pad-bot-10">
+					Вы уверены, что хотите сохранить проект? Отверстия, которые Вы сделали сохранятся и изменить их будет нельзя!
+				</div>
+				<hr>
+				<div class="right pad-top-10">
+					<div class="c x1d3">
+						<button type="button" class="btn btn-block btn-dark" data-close="savePopup">Отмена</button>
+					</div>
+					<div class="c x1d2">
+						<button type="button" class="btn btn-block" id="save">Сохранить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="loadPopup" class="popup">
+			<div class="header">Загрузить проэкт</div>
+			<a href="#" class="close-popup" data-close="loadPopup">×</a>
+			<div class="popup-content center">
+				<div class="c bold left pad-bot-10">
+					Вы уверены, что хотите загрузить сохраненный проект? Данные, которые Вы не сохранили удалятся!
+				</div>
+				<hr>
+				<div class="right pad-top-10">
+					<div class="c x1d3">
+						<button type="button" class="btn btn-block btn-dark" data-close="loadPopup">Отмена</button>
+					</div>
+					<div class="c x1d2">
+						<button type="button" class="btn btn-block" id="load">Загрузить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<link rel="stylesheet" href="css/icons.css">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+	<link href="css/nouislider.min.css" rel="stylesheet">
+	<script src="js/vendor/nouislider.js"></script>
+
+	<script src="js/vendor/modernizr-2.7.1.min.js"></script>
+	<script src="js/vendor/minify.min.js"></script>
+	<script src="js/vendor/jquery-2.1.0.min.js"></script>
+	<script src="js/vendor/jquery.selectBox.js"></script>
+
+	<link href="css/owl.carousel.css" rel="stylesheet">
+	<link href="css/owl.theme.css" rel="stylesheet">
+	<script src="js/vendor/owl.carousel.min.js"></script>
+
+	<link href="css/jquery.jscrollpane.css" rel="stylesheet">
+	<script src="js/vendor/jquery.jscrollpane.min.js"></script>
+	<script src="js/vendor/jquery.mousewheel.js"></script>
+	<script src="js/utils.js"></script>
+
+	<script src="js/main.js"></script>
+
+	<script src="js/three.js"></script>
+	<script src="js/exporter.js"></script>
+	<script src="js/importer.js"></script>
+	<script src="js/csg.js"></script>
+	<script src="js/ThreeCSG.js"></script>
+	<script src="js/three/renderers/Projector.js"></script>
+	<script src="js/three/loaders/OBJLoader.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<script src="js/TransformControls.js"></script>
+
+	<script src="js/frameFunction.js"></script>
+	<script src='js/dynamictexture.js'></script>
+	<script src='js/hint.js'></script>
+	<script src="js/room.js"></script>
+	<script src="js/grid.js"></script>
+	<script src="js/ruler.js"></script>
+	<script src="js/object.js"></script>
+	<script src="js/events.js"></script>
+	<script src="js/core.js"></script>
+
+</body>
+</html>
