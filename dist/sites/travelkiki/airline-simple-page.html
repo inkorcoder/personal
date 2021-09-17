@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Travelkiki :: Airline</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header collapsed fixed">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-4 sm-show">
+	<!-- 				<button type="button" data-toggle-copy>
+						<i class="icon icon-share"></i>
+					</button> -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="main-menu">
+		<div class="wrapper">
+			<div class="header">
+				<ul class="clear socials">
+					<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+				</ul>
+			</div>
+			<div class="body">
+				<ul class="clear menu">
+					<li><a href="#" class="active">Home</a></li>
+					<li><a href="#">Cities</a></li>
+					<li><a href="#">Airlines</a></li>
+					<li><a href="#">Map</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+			<div class="footer">
+				<ul class="clear links">
+					<li><a href="terms.html" class="link">Terms</a></li>
+					<li><a href="#" class="link">Privacy policy</a></li>
+					<li><a href="contacts.html" class="link">Contact Us</a></li>
+				</ul>
+				<div class="copyright">© 2016 Travelkiki.</div>
+				<div data-dropdown class="language">
+					<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+					<div class="dropdown">
+						<ul class="lang-list clear">
+							<li class="item active">
+								<a href="#" class="lang-select">
+									<img src="img/icons/en.svg" alt="en" class="img-icon">
+									English
+								</a>
+							</li>
+							<li class="item">
+								<a href="#" class="lang-select">
+									<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+									Greek
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<button type="button" data-main-menu-toggler>
+		<i></i>
+		<i></i>
+	</button>
+	
+	<!-- <div data-dropdown class="language">
+		<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+		<div class="dropdown">
+			<ul class="lang-list clear">
+				<li class="item active">
+					<a href="#" class="lang-select">
+						<img src="img/icons/en.svg" alt="en" class="img-icon">
+						English
+					</a>
+				</li>
+				<li class="item">
+					<a href="#" class="lang-select">
+						<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+						Greek
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+
+	<main>
+
+		<!-- search engine, just to be short -->
+		<section class="s-engine" id="newSearchEngine" v-bind:class="{collapsed: collapsed, 'has-filters': filters.enabled, 'hidden-background': scrollTop > 10, 'expanded': mobile.expanded, 'full-size': mobile.fullSize, 'hide-anchor': $refs.searchFilters && $refs.searchFilters.active}">
+				<div class="background-wrapper" data-parallax-ratio="1" v-cloak v-if="showBackground">
+					<div class="background" v-bind:class="{hidden: scrollTop > 10}" style="background-image: url(temp/book1.jpg);"></div>
+					<img src="temp/airline4.png" alt="" class="airline-logo">
+				</div>
+			<div class="fake-trigger" v-if="collapsed" v-on:click="collapsed = false" v-bind:class="{small: filters.enabled}"></div>
+			<form action="#" autocomplete="always">
+		
+				<div class="container">
+		
+					<div class="mobile-body"
+						v-bind:style="[mobile.swipeOffset ? {transform: 'translate3d(0,'+mobile.swipeOffset+'px,0)'} : {}]"
+						v-bind:class="{'transition': !mobile.swipeOffset}"
+					>
+		
+						<!-- fake for mobile -->
+						<div class="mobile-fake" v-bind:style="{opacity: 1-Math.min(1, mobile.getFadingProgress()*2)}"
+							v-on:click="mobile.expanded = true"
+						>
+							<div class="form-group" v-if="!to.selected && from.selected" v-cloak>
+								<label>{{from.selected.location}}, {{from.selected.country}}, {{from.selected.code}}</label>
+								<div class="input" data-dir="from">{{from.selected.airport}} <i class="icon icon-arrow-right"></i></div>
+							</div>
+							<div class="form-group" v-if="to.selected" v-cloak>
+								<label>{{to.selected.location}}, {{to.selected.country}}, {{to.selected.code}}</label>
+								<div class="input" data-dir="to">{{to.selected.airport}} <i class="icon icon-arrow-right"></i></div>
+							</div>
+						</div>
+						<!-- fake for mobile -->
+		
+						<!-- top filter -->
+						<div class="row top-filter">
+							<div class="col-xs-12 col-sm-4 col-sm-offset-3 col-lg-4 col-lg-offset-2">
+								<div class="form-group">
+									<div class="trip-type">
+										<input type="radio" name="trip-type" v-on:change="setType('roundtrip')" value="roundtrip" id="roundtripType" checked>
+										<label for="roundtripType">Roundtrip</label>
+										<input type="radio" name="trip-type" v-on:change="setType('oneway')" value="oneway" id="onewayType">
+										<label for="onewayType">Oneway</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4 col-md-3 col-lg-3 sm-show" id="passengersDesktopPlace">
+								<div data-dropdown="" data-desktop="#passengersDesktopPlace" data-mobile="#passengersMobilePlace">
+									<div class="sm-hide label">Passengers</div>
+									<button type="button" class="btn btn-link btn-block anchor" v-on:click="mobile.enterFullSize('passengers')">
+										<span v-cloak>
+											{{totalPassengers() || ""}} Passenger{{totalPassengers() > 1 || !totalPassengers() ? "s" : ""}}
+										</span>
+										<i class="icon2 icon-chevron-down-thick" v-cloak></i>
+									</button>
+									<div class="dropdown">
+										<div class="mobile-scrolled">
+											<div class="block">
+												<div class="title">
+													Adult <span class="badge">16+</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.adult < 1}">
+													<span class="minus" v-on:click="decreasePassenger('adult')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.adult">
+													<span class="plus" v-on:click="increasePassenger('adult')">+</span>
+												</div>
+											</div>
+											<div class="block">
+												<div class="title">
+													Child <span class="badge">2-15</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.children < 1}">
+													<span class="minus" v-on:click="decreasePassenger('children')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.children">
+													<span class="plus" v-on:click="increasePassenger('children')">+</span>
+												</div>
+											</div>
+											<div class="block">
+												<div class="title">
+													Baby <span class="badge">0-2</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.babies < 1}">
+													<span class="minus" v-on:click="decreasePassenger('babies')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.babies">
+													<span class="plus" v-on:click="increasePassenger('babies')">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="sm-hide">
+											<button type="button" class="btn btn-block submit-btn" data-dismiss="passengers"
+												v-on:click="mobile.exitFullSize()"
+											>Ok</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- / top filter -->
+		
+						<div class="sm-hide dir-indicator">
+							<span class="from" v-bind:class="{filled: from.search}"></span>
+							<span class="arrow"></span>
+							<span class="to" v-bind:class="{filled: to.search}"></span>
+						</div>
+		
+						<!-- main search -->
+						<div class="row bottom-xs main-search">
+							<div class="col-xs-12 col-sm-3" data-from-col>
+								<div class="search-dropdown city" data-city="from" v-bind:class="{active: from.open}">
+									<div class="form-group" v-bind:class="{attention: !valid.from}">
+										<label for="fromCity" v-bind:class="{empty: !from.selected}">
+											From
+											<span v-cloak v-html="getActiveVariantString('from')">&nbsp;</span>
+										</label>
+										<input type="text" class="input" id="fromCity" placeholder="From City"
+											v-model="from.search"
+											v-bind:class="{filled: from.search}"
+											v-on:focus="from.open = true; mobile.enterFullSize('from_search')"
+											v-on:blur="hideSearch('from')"
+											autocorrect="off" autocapitalize="off" spellcheck="false"
+											v-on:input="handleSearch('from', '', $event); from.search = $event.target.value"
+											v-on:keydown="navigateByKeys('from', $event); handleSearch('from', '', $event); from.search = $event.target.value"
+											autocomplete="always"
+											tabindex="1"
+										>
+										<span class="line"></span>
+										<span class="input-fader"></span>
+										<button type="button" class="clear-input"
+											v-if="(from.search && !collapsed && !mobile.active) || (mobile.fullSize && from.search)"
+											v-on:mousedown="clearVariant('from')"
+											v-on:touchend="clearVariant('from')"
+											v-cloak tabindex="-1"
+										>
+											<i class="icon icon-close"></i>
+										</button>
+									</div>
+									<div class="dropdown"
+										v-bind:class="{active: from.open}"
+									>
+										<div class="scrolled" ref="fromList">
+											<ul class="clear airports-list" v-if="from.filtered.length">
+												<li v-for="(airport, index) in from.filtered"
+													v-on:mousedown="setActiveVariant('from', index)"
+													v-bind:class="{hightlighted: from.hightlighted === index}"
+													v-if="airport !== from.selected"
+												>
+													<div class="location">{{airport.location}}, {{airport.country}}</div>
+													<div class="name">{{airport.airport}} <span>{{airport.code}}</span></div>
+												</li>
+											</ul>
+											<div v-if="getSuggestion('from') && !from.filtered.length" class="airport-suggestion"
+												v-on:mousedown="activateSuggestion('from')"
+											>
+												<div class="location">Tap to choose your location</div>
+												<div class="name">
+													<i class="icon2 icon-location"></i> {{getSuggestion('from').location}}, {{getSuggestion('from').country}}
+												</div>
+											</div>
+											<div class="no-results" v-if="!from.filtered.length && !getSuggestion('from')"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-1 switch-col">
+								<button type="button" class="btn btn-link btn-block switch-button"
+									v-on:mousedown="switchPlaces($event)"
+									v-bind:class="{colored: from.selected && to.selected}"
+									tabindex="-1"
+								>
+									<i class="icon icon-arrows"></i>
+								</button>
+							</div>
+							<div class="col-xs-12 col-sm-3" data-to-col>
+								<div class="search-dropdown city" data-city="to" v-bind:class="{active: to.open}">
+									<div class="form-group" v-bind:class="{attention: !valid.to}">
+										<label for="toCity" v-bind:class="{empty: !to.selected}">
+											To
+											<span v-cloak v-html="getActiveVariantString('to')">&nbsp;</span>
+										</label>
+										<input type="text" class="input" id="toCity"
+											autocorrect="off" autocapitalize="off" spellcheck="false"
+											v-model="to.search"
+											v-bind:class="{filled: to.search}"
+											v-on:focus="to.open = true; mobile.enterFullSize('to_search')"
+											v-on:blur="hideSearch('to')"
+											v-on:input="handleSearch('to', '', $event); to.search = $event.target.value"
+											v-on:keydown="navigateByKeys('to', $event); handleSearch('to', '', $event); to.search = $event.target.value"
+											autocomplete="always"
+											tabindex="2"
+										>
+										<span class="line"></span>
+										<span class="input-fader"></span>
+										<ul class="clear fake-cities" v-if="!to.search && !to.open">
+											<li v-for="(city, index) in fakeCities" v-bind:class="{active: activeFakeCity === index}">{{city}}</li>
+										</ul>
+										<button type="button" class="clear-input"
+											v-if="(to.search && !collapsed && !mobile.active) || (mobile.fullSize && to.search)"
+											v-on:mousedown="clearVariant('to')"
+											v-on:touchend="clearVariant('to')"
+											v-cloak tabindex="-1"
+										>
+											<i class="icon icon-close"></i>
+										</button>
+									</div>
+									<div class="dropdown"
+										v-bind:class="{active: to.open}"
+									>
+										<div class="scrolled" ref="toList">
+											<ul class="clear airports-list" v-if="to.filtered.length">
+												<li v-for="(airport, index) in to.filtered"
+													v-on:mousedown="setActiveVariant('to', index)"
+													v-bind:class="{hightlighted: to.hightlighted === index}"
+													v-if="airport !== to.selected"
+												>
+													<div class="location">{{airport.location}}, {{airport.country}}</div>
+													<div class="name">{{airport.airport}} <span>{{airport.code}}</span></div>
+												</li>
+											</ul>
+											<div v-if="getSuggestion('to') && !to.filtered.length" class="airport-suggestion"
+												v-on:mousedown="activateSuggestion('to')"
+											>
+												<div class="location">Tap to choose your location</div>
+												<div class="name">
+													<i class="icon2 icon-location"></i> {{getSuggestion('to').location}}, {{getSuggestion('to').country}}
+												</div>
+											</div>
+											<div class="no-results" v-if="!to.filtered.length && !getSuggestion('to')"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3 calendar-col">
+								<div class="search-dropdown dates">
+									<div class="form-group" id="date-range-parent" v-bind:class="{attention: !valid.dates}">
+										<label class="empty" v-on:click="toggleCalendar()">
+											When
+											<span v-cloak>&nbsp;</span>
+										</label>
+										<input type="text" id="date-range" tabindex="3">
+										<button class="input" type="button" v-on:click="toggleCalendar()"
+											id="date-button" v-bind:class="{active: dates.departure && dates.arriving}"
+											tabindex="-1"
+										>
+											<span v-cloak>{{getDatesString() || 'Departure - Arriving'}}</span>
+											<i class="icon2 icon-chevron-down-thick" v-cloak></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-1 col-md-2 submit-search-col">
+								<!-- passengers for mobile -->
+								<div id="passengersMobilePlace"></div>
+								<!-- / passengers for mobile -->
+								<button class="btn btn-submit-search" type="button" v-bind:class="{active: isFormValid() && !collapsed}" v-on:click="submit()" tabindex="4">
+									<span>Search</span>
+									<i class="icon2 icon-search"></i>
+								</button>
+							</div>
+						</div>
+						<!-- main search -->
+		
+						<div class="row">
+							<div class="col-xs-12 col-md-10 col-md-offset-1">
+								<div class="relative" data-calendar-wrapper>
+									<calendar v-bind:model="'date-range'" v-bind:single="type === 'oneway'" v-bind:header="true" ref="calendar" v-bind:mobile="mobile" v-on:change="setDates($event)" v-on:onfocus="hideAllSearches()"></calendar>
+								</div>
+							</div>
+						</div>
+		
+					</div>
+		
+				</div>
+		
+				<!-- filters -->
+				<search-filters v-if="filters.enabled" v-bind:alliances="filters.alliances" ref="searchFilters" v-bind:class="{'disabled': mobile.expanded}" v-bind:mobile="mobile" v-on:toggle="$event ? mobile.enterFullSize() : mobile.exitFullSize()"></search-filters>
+				<!-- / filters -->
+		
+			</form>
+		
+			<!-- mobile fixed button -->
+			<button class="btn btn-submit-search fixed" v-cloak type="button"
+				v-bind:class="{active: isFormValid() && !collapsed, hidden: mobile.fullSize}"
+				v-on:click="submit()"
+				v-bind:style="{width: 'calc('+(mobile.getFadingProgress()*100)+'% - 30px)'}"
+			>
+				<span
+					v-bind:style="{width: 'calc('+(mobile.getFadingProgress()*100)+'% - 40px', transform: 'translateX('+(mobile.getFadingProgress()*20)+'px)'}"
+				>Search</span>
+				<i class="icon2 icon-search"></i>
+			</button>
+		
+			<div class="loading" v-bind:class="{preloading: preloading, postloading: postloading}"><span></span></div>
+		</section>
+
+		<div class="sm-hide form-hero-background" style="background-image: url(temp/book1.jpg);"></div>
+
+		<section class="section city-hero-section">
+			<div class="container-fluid">
+				<div class="city-hero">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+							<h2 class="name">Lufthansa</h2>
+							<div class="subtitle">
+								<span class="sm-inline">
+									<img src="temp/provider1.svg" alt="" class="inline-logo">
+								</span>
+								<span class="sm-inline">
+									<a href="http://www.lufthansa.com" class="link" target="_blank">
+										<i class="icon icon-share"></i>
+										www.lufthansa.com
+									</a>
+								</span>
+								<span class="sm-hide">
+									<span class="premium-mobile">
+										<i class="icon icon-union-star"></i>
+										Airline of the month
+									</span>
+								</span>
+							</div>
+							<div id="detailsDesktopPlace" class="sm-show">
+								<ul class="clear properties-table"  data-mobile="#detailsMobilePlace" data-desktop="#detailsDesktopPlace">
+									<li style="width: 100px;">
+										<dl>
+											<dt>IATA</dt><dd>LH</dd>
+										</dl>
+									</li>
+									<li style="width: 150px;">
+										<dl>
+											<dt>Alliance</dt><dd>Star Alliance</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>ICAO</dt><dd>Example</dd>
+										</dl>
+									</li>
+								</ul>
+							</div>
+							<div class="sm-hide align-center">
+								<button type="button" class="btn btn-round larger dark" data-call="#information-popup">
+									<i class="icon icon-info"></i>
+								</button>
+							</div>
+							<!-- <div class="hidden" data-expand="#details1" id="detailsMobilePlace"></div> -->
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+							<div class="paragraph spaced-top spaced-xs">
+								Βρείτε τα π>Travelkiki.com</a> & κάντε online κράτηση. Το TravelKiki βρίσκει όλες τις πτήσεις και τα πιο φθηνά αεροπορικά εισιτήρια της Lufthansa για εσάς. Εσείς, απλά κλείστε το εισιτήριό σας και πετάξτε προς τον προορισμό σας.
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 col-lg-offset-1 md-show" data-destinations>
+							<h2>Top Destinations</h2>
+							<ul class="clear destinations-list">
+								<li>
+									<i class="icon icon-price-up"></i>
+									<div class="cost">140€</div>
+									<div class="city">Thessaloniki <span class="divider"></span> London</div>
+								</li>
+								<li>
+									<i class="icon icon-price-down"></i>
+									<div class="cost">220€</div>
+									<div class="city">Athens <span class="divider"></span> Berlin</div>
+								</li>
+								<li>
+									<i class="icon icon-price-up"></i>
+									<div class="cost">140€</div>
+									<div class="city">Thessaloniki <span class="divider"></span> London</div>
+								</li>
+								<li>
+									<i class="icon icon-price-down"></i>
+									<div class="cost">220€</div>
+									<div class="city">Athens <span class="divider"></span> Berlin</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="section collapsed-top-xs">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-9 col-md-4 col-lg-5 sticky-parent">
+						<ul class="anchors-list clear" data-sticky data-tabs="#tabContent1" id="anchorList">
+							<li class="item tab-item active">
+								<a href="#firstLink" class="anchor-link active">
+									<span class="text-icon">
+										<i class="icon icon-info"></i>
+									</span>
+									<span class="text">Γενικά</span>
+								</a>
+							</li>
+							<li class="item tab-item">
+								<a href="#secondLink" class="anchor-link">
+									<span class="text-icon">
+										<i class="icon icon-info"></i>
+									</span>
+									<span class="text">Αποσκευές</span>
+								</a>
+							</li>
+							<li class="item tab-item">
+								<a href="#thirdLink" class="anchor-link">
+									<span class="text-icon">
+										<i class="icon icon-info"></i>
+									</span>
+									<span class="text">Στόλος</span>
+								</a>
+							</li>
+							<li class="item fake" data-toggle="#anchorList">
+								<div class="anchor-link">
+									<span class="text-icon">
+										<i class="icon icon-info"></i>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+						<div class="tabs info-block" id="tabContent1">
+							<!-- tab 1 -->
+							<div class="tab-content active" data-tab="0">
+								<h2>Γενικές Πληροφορίες</h2>
+								<p>
+									Τον Ιανουάριο του 1926 ιδρύθηκε η 
+									<a href="#">“Deutsche Luft Hansa AG”</a>,
+									η εθνική γερμανική αεροπορική εταιρεία. Η σημερινή Lufthansa πήρε επίσημη νομική ισχύ το 1953, κατοχυρώνοντας το όνομα και το λογότυπο της προηγούμενης εταιρείας.
+								</p>
+								<p>
+									Είναι ο εθνικός αερομεταφορέας της Γερμανίας και αποτελεί τη μεγαλύτερη αεροπορική εταιρεία της Ευρώπης, τόσο σε επιβατικό κοινό, όσο και σε μέγεθος στόλου. Εξυπηρετεί 260 προορισμούς και ο στόλος της ξεπερνά τα 280 αεροσκάφη και τα 668 εάν συμπεριληφθούν οι στόλοι των συνεργασιών και θυγατρικών της εταιρειών.
+								</p>
+								<p>
+									Βασικά κέντρα της
+									<a href="#">Lufthansa</a>
+									είναι τα αεροδρόμια της Φρανκφούρτης και του Μονάχου.
+								</p>
+								<p>
+									Είναι ιδρυτικό μέλος της
+									<a href="#">Star Alliance</a>,
+									της μεγαλύτερης αεροπορικής συμμαχίας στον κόσμο, ενώ συμμετέχει σε ένα πλήθος συνεργασιών και κοινοπραξιών:
+								</p>
+								<br>
+								<h2>Lufthansa Group</h2>
+								<p>
+									Δημιουργήθηκε από τη συνεργασία και συγχώνευση της
+									<a href="#">Lufthansa</a>
+									με τις
+									<a href="#">Austrian Airlines</a>,
+									russels Airlines, Germanwings, Lufthansa and SWISS
+								</p>
+								<br>
+								<h2>Lufthansa Regional</h2>
+								<p>
+									Το δίκτυο 
+									<a href="#">Lufthansa Regional</a>
+									πραγματοποιεί πτήσεις εντός Γερμανίας, εξυπηρετώντας περισσότερους από 80 προορισμούς.
+								</p>
+								<br>
+								<h2>Περαιτέρω συνεργασίες</h2>
+								<p>
+									Επιπλέον, η Lufthansa διατηρεί συνεργασίες-κλειδί με επιλεγμένες αεροπορικές που περιλαμβάνουν τις 
+									<a href="#">Air India,</a>
+									<a href="#">Air Malta,</a>
+									<a href="#">Luxair,</a>
+									bmi regional και LATAM.
+								</p>
+								<br>
+								<h2>Συνεργαζόμενες Εταιρείες Κοινού Κώδικα</h2>
+								<p>
+									Πέρα από τις αεροπορικές εταιρείες-μέλη της συμμαχίας Star Alliance, η Lufthansa πραγματοποιεί πτήσεις κοινού κώδικα με τις εξής συνεργαζόμενες εταιρείες: Air Malta, JetBlue Airways, Luxair, Germanwings, Avianca και SpiceJet.
+								</p>
+								<br>
+								<h2>Κοινοπραξίες</h2>
+								<p>
+									Η Lufthansa συμμετέχει σε δύο κοινοπραξίες μεγάλης στρατηγικής και εμπορικής σημασίας: Στην υπερατλαντική κοινοπραξία Α++ μαζί με τις United Airlines και Air Canada και στην J+ κοινοπραξία Ευρώπης/Ιαπωνίας, με την All Nippon Airways (ANA)
+								</p>
+								<br>
+								<ul>
+									<li>
+										<span>Ίδρυση</span>
+										1953
+									</li>
+									<li>
+										<span>IATA</span>
+										LH
+									</li>
+									<li>
+										<span>Μέλος αεροπορικής συμμαχίας</span>
+										Star Alliance
+									</li>
+									<li>
+										<span>Πρόγραμμα προνομίων μελών</span>
+										Miles & More
+									</li>
+									<li>
+										<span>Προορισμοί</span>
+										260
+									</li>
+								</ul>
+								<br>
+								<h2>Θυγατρικές</h2>
+								<p>
+									Austrian Airlines, Swiss International Air Lines, Lufthansa Regional, Germanwings, Lufthansa Cargo, LSG Sky Chefs, Lufthansa Consulting, Lufthansa Flight Training, Lufthansa Systems, Lufthansa Technik, Delvag, Global Load Control, AeroLogic, SunExpress
+								</p>
+								<br>
+								<h2>Προορισμοί</h2>
+								<p>
+									Το δίκτυο
+									<a href="#">Lufthansa Group</a>
+									ξυπηρετεί 260 προορισμούς, σε 100 χώρες και 4 ηπείρους. Η Lufthansa Cargo εξυπηρετεί 300 προορισμούς, σε 100 χώρες
+								</p>
+								<br>
+								<h2>Κατηγορίες Θέσεων</h2>
+								<h3>Economy Class</h3>
+								<p>
+									Είναι η Οικονομική Θέση της Lufthansa και προσφέρει άνεση και ποιότητα στην πτήση σας, γεύματα και υπηρεσίες, διατηρώντας τις χαμηλότερες τιμές στα εισιτήρια
+								</p>
+								<ul>
+									<li>
+										Δυνατότητα μεταφοράς ενός τεμαχίου χειραποσκευής σε όλους τους ναύλους Economy
+									</li>
+									<li>
+										Δυνατότητα δωρεάν μεταφοράς μίας αποσκευής βάρους ως 23 κιλά στους ναύλους Economy Classic και Economy Flex (δε συμπεριλαμβάνεται δωρεάν μεταφορά αποσκευής στο ναύλο Economy Light)
+									</li>
+									<li>
+										Άνετα καθίσματα με χώρο για τα πόδια και δυνατότητα κλίσης της πλάτης τους
+									</li>
+									<li>
+										Στις μακρινές πτήσεις τα καθίσματα είναι εξοπλισμένα με μαξιλάρι και προσαρμόσιμο σύστημα υποστήριξης της κεφαλής
+									</li>
+									<li>
+										Επιλογές ψυχαγωγίας εν πτήσει με κινηματογραφικές ταινίες, τηλεοπτικές σειρές και διεθνείς ραδιοφωνικούς σταθμούς
+									</li>
+									<li>
+										Πλήρη γεύματα, snacks και ζεστά ή κρύα ροφήματα, ποτά και αναψυκτικά
+									</li>
+									<li>
+										Στους ναύλους Economy Flex υπάρχει η δυνατότητα δωρεάν αλλαγής του εισιτηρίου και σε περίπτωση ακύρωσης επιστρέφεται ολόκληρη η αξία του
+									</li>
+									<li>
+										Οι ναύλοι Economy Basic προσφέρουν τη χαμηλότερη διαθέσιμη τιμή για ένα εισιτηρίου και υπόκεινται σε συγκεκριμένους όρους και προϋποθέσεις
+									</li>
+								</ul>
+								<h2>Premium Economy Class</h2>
+								<p>
+									Η Premium Economy Class εισήχθη για πρώτη φορά το 2014 και αποτελεί την Premium επιλογή της Οικονομικής Θέσης της Lufthansa. Εφαρμόζεται σε επιλεγμένα αεροσκάφη και δρομολόγια και προσφέρει μεγαλύτερη άνεση, σε τιμές Economy.
+								</p>
+								<ul>
+									<li>
+										Δυνατότητα μεταφοράς δύο τεμαχίων αποσκευών βάρους ως 23 κιλά η καθεμιά και μίας χειραποσκευής
+									</li>
+									<li>
+										Ακόμα πιο άνετα καθίσματα, με 50% περισσότερο προσωπικό χώρο, ειδικές θέσεις στήριξης κεφαλής και ξεκούρασης των άκρων και μεγαλύτερο χώρο για τα πόδια
+									</li>
+									<li>
+										Δυνατότητα πρόσβασης στα Business Lounges της Lufthansa, με πληρωμή του ανάλογου αντιτίμου
+									</li>
+									<li>
+										Επιπλέον επιλογές ψυχαγωγίας εν πτήσει, με ιδιωτικές οθόνες σε κάθε κάθισμα, διαθέσιμες πρίζες και περιοδικά
+									</li>
+									<li>
+										Καλωσόρισμα στο αεροσκάφος με “welcome drinks”
+									</li>
+									<li>
+										Επιλογή γευμάτων από ειδικό μενού και σερβίρισμα σε πορσελάνινο σερβίτσιο
+									</li>
+									<li>
+										Snacks, ροφήματα, ποτά και αναψυκτικά και δωρεάν παροχή ενός μπουκαλιού νερό σε κάθε κάθισμα
+									</li>
+								</ul>
+								<p class="marked">
+									Premium Economy Class θέσεις θα βρείτε στα αεροσκάφη Boeing 747-8, σε πτήσεις προς Αμερική και Ασία, ενώ αναμένονται επίσης στα Airbus A340-600 και A380.
+								</p>
+								<br>
+								<h2>Business Class</h2>
+								<p>
+									Η Business Class της Lufthansa είναι η ιδανική επιλογή για μία απολαυστική εμπειρία πτήσης με ποιότητα και άνεση, μοναδικές υπηρεσίες γευμάτων και ψυχαγωγίας και ποικιλία παροχών πριν, κατά τη διάρκεια και μετά την πτήση σας.
+								</p>
+								<ul>
+									<li>
+										Δυνατότητα μεταφοράς δύο τεμαχίων αποσκευών βάρους ως 32 κιλά η καθεμιά και δύο χειραποσκευών
+									</li>
+									<li>
+										Πρόσβαση στα Business Lounges της Lufthansa
+									</li>
+									<li>
+										Προτεραιότητα σε check-in, έλεγχο ασφαλείας, επιβίβαση, αποβίβαση και παραλαβή αποσκευών
+									</li>
+									<li>
+										Extra άνετα καθίσματα με τη μεσαία θέση κενή 
+									</li>
+									<li>
+										Στις μακρινές πτήσεις τα καθίσματα είναι πλήρως μετατρέψιμα σε κρεβάτια μήκους 2 μέτρων
+									</li>
+									<li>
+										Αναβαθμισμένο ιδιωτικό σύστημα ψυχαγωγίας
+									</li>
+									<li>
+										Εκλεκτά γεύματα από κορυφαίους σεφ και μεγάλη συλλογή ποτών
+									</li>
+									<li>
+										Αλλαγή ή ακύρωση του εισιτηρίου χωρίς χρέωση, με επιστροφή χρημάτων
+									</li>
+								</ul>
+								<br>
+								<h2>First Class</h2>
+								<p>
+									Το ταξίδι στη First Class της Lufthansa είναι η απόλυτη ταξιδιωτική εμπειρία πτήσης. Βραβευμένη με 5 Skytrax αστέρια, η First Class είναι συνώνυμη της τελειότητας. Εξειδικευμένο προσωπικό αφιερωμένο στις προσωπικές ανάγκες του κάθε επιβάτη αναλαμβάνουν να μετατρέψουν το ταξίδι σας σε μία ξεκούραση, ανανεωτική εμπειρία.
+								</p>
+								<ul>
+									<li>
+										Πρόσβαση στα First Class Lounges της Lufthansa, καθώς και στο First Class Terminal στο αεροδρόμιο της Φρανκφούρτης
+									</li>
+									<li>
+										Πολυτελή καθίσματα που μετατρέπονται σε κρεβάτι μήκους 2 μέτρων, εξοπλισμένα με σεντόνι, μαξιλάρι και κουβέρτα
+									</li>
+									<li>
+										Σύστημα ψυχαγωγίας με απεριόριστες επιλογές ταινιών σε 8 γλώσσες, τηλεοπτικά προγράμματα, νέα και αθλητικά, μουσική, CD, περιοδικά από όλον τον κόσμο, audio books, ραδιοφωνικούς σταθμούς, παιχνίδια και εφημερίδες
+									</li>
+									<li>
+										Gourmet γεύματα από διεθνώς αναγνωρισμένους σεφ και εκλεκτές συλλογές κρασιών 
+									</li>
+									<li>
+										Εξατομικευμένη εξυπηρέτηση όποτε εσείς τη χρειαστείτε
+									</li>
+									<li>
+										Παροχή δωρεάν προσωπικών κιτ με είδη περιποίησης και ό,τι χρειάζεστε για να φτάσετε στον προορισμό σας φρέσκοι και ανανεωμένοι
+									</li>
+									<li>
+										Δυνατότητα μεταφοράς τριών τεμαχίων αποσκευών βάρους ως 32 κιλά η καθεμιά και δύο χειραποσκευών
+									</li>
+								</ul>
+								<br>
+							</div>
+							<!-- tab 2 -->
+							<div class="tab-content" data-tab="1">
+								<h2>Χειραποσκευές</h2>
+								<p>
+									Ακολουθούν τα επιτρεπόμενα όρια βάρους και διαστάσεων στις χειραποσκευές που μπορούν να μεταφέρουν οι επιβάτες της 
+									<a href="#">Lufthansa</a>
+									δωρεάν
+								</p>
+								<div>
+									<table>
+										<thead>
+											<tr>
+												<th>Travel Class</th>
+												<th>Αριθμός Τεμαχίων</th>
+												<th>Μέγιστο Βάρος ανά Τεμάχιο (κιλά)</th>
+												<th>Μέγιστες Διαστάσεις Τεμαχίου (μήκοςxπλάτοςxύψος)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Economy</td>
+												<td><span>1</span></td>
+												<td><span>8</span></td>
+												<td><span>55x40x23 εκ.</span></td>
+											</tr>
+											<tr>
+												<td>Premium Economy</td>
+												<td><span>1</span></td>
+												<td><span>8</span></td>
+												<td><span>55x40x23 εκ.</span></td>
+											</tr>
+											<tr>
+												<td>Business</td>
+												<td><span>2</span></td>
+												<td><span>8</span></td>
+												<td><span>55x40x23 εκ.</span></td>
+											</tr>
+											<tr>
+												<td>First</td>
+												<td><span>2</span></td>
+												<td><span>8</span></td>
+												<td><span>55x40x23 εκ.</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<br>
+							</div>
+							<!-- tab 3 -->
+							<div class="tab-content" data-tab="2">
+								<p>
+									Ο στόλος της Lufthansa αποτελείται από 668 αεροσκάφη, στα οποία συμπεριλαμβάνονται οι στόλοι όλων των συνεργασιών και θυγατρικών αεροπορικών εταιρειών.
+								</p>
+								<h2>Lufthansa (συμπ. Lufthansa Regional και Germanwings)</h2>
+								<div>
+									<table>
+										<thead>
+											<tr>
+												<th>Μακρινές Πτήσεις</th>
+												<th>Μεσαίες Πτήσεις</th>
+												<th>Σύντομες Πτήσες</th>
+												<th>Germanwings</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Airbus A321-100</td>
+												<td>Airbus A321-200</td>
+												<td>Embraer ERJ-195</td>
+												<td>Airbus A319-100</td>
+											</tr>
+											<tr>
+												<td>Boeing 747-8</td>
+												<td>Airbus A321-200</td>
+												<td>Embraer ERJ-190</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Boeing 747-400</td>
+												<td>Airbus A320-200</td>
+												<td>Bombardier CRJ900</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Airbus A350-900</td>
+												<td>Airbus A319-100</td>
+												<td>Bombardier CRJ700</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Airbus A340-600</td>
+												<td>Boeing 737-500</td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Airbus A340-300</td>
+												<td>Boeing 737-300</td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Airbus A330-300</td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>Boeing BBJ 737-800 IGW</td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<br>
+								<h2>Lufthansa Cargo</h2>
+								<table>
+									<tbody>
+										<tr>
+											<td>MD-11F</td>
+											<td>Boeing 777F</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section tag-section">
+		<div class="container">
+			<h2 class="marked-title">
+				Με Lufthansa μπορεί να πάει κανείς, μεταξύ <br>
+				άλλων, με απευθείας πτήσεις:
+			</h2>
+			<ul class="tag-list clear">
+				<li class="item">
+					<a href="#" class="tag">Μόναχο</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Φρανκφούρτη</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Αθήνα</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Ντίσελντορφ</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Θεσσαλονίκη</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Λονδίνο</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Μπράιτον</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Στουτγκάρδη</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Βρυξέλλες</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Γάνδη</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Μπριζ</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Βιέννη</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Άμστερνταμ</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Λάιντεν</a>
+				</li>
+				<li class="item">
+					<a href="#" class="tag">Νέιμεχεν</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+</main>
+
+<a href="#" class="scroll-top">
+	<i class="icon icon-arrow-up"></i>
+</a>
+
+<div class="popup" id="information-popup">
+	<div class="inner" data-align="bottom" style="padding-bottom: 120px">
+		<button type="button" class="btn btn-round close-popup dark">
+			<i class="icon icon-close"></i>
+		</button>
+		<div class="title align-center">Lufthansa</div>
+		<div id="premiumMobilePlace"></div>
+		<div class="align-center">
+			<a href="www.lufthansa.com" class="link">www.lufthansa.com</a>
+		</div>
+		<div id="detailsMobilePlace"></div>
+	</div>
+</div>
+
+<footer class="main-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-9 sm-show">
+				<ul class="clear menu">
+					<li><a href="#" class="active">Home</a></li>
+					<li><a href="#">Cities</a></li>
+					<li><a href="#">Airlines</a></li>
+					<li><a href="#">Map</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-3">
+				<div class="row">
+					<div class="col-xs-12 col-sm-7">
+						<ul class="clear socials">
+							<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-5 align-right first-xs last-sm">
+<!-- 						<a href="#" class="language">
+							EN<img src="img/icons/en.svg" alt="">
+						</a> -->
+						<div data-dropdown class="language">
+							<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+							<div class="dropdown">
+								<ul class="lang-list clear">
+									<li class="item active">
+										<a href="#" class="lang-select">
+											<img src="img/icons/en.svg" alt="en" class="img-icon">
+											English
+										</a>
+									</li>
+									<li class="item">
+										<a href="#" class="lang-select">
+											<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+											Greek
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+					<span class="copyright">© 2016 Travelkiki.</span>
+					<a href="terms.html" class="link">Terms</a>
+					<a href="#" class="link">Privacy policy</a>
+					<a href="contacts.html" class="link">Contact Us</a>
+				</div>
+				<div class="col-xs-12 col-sm-4 align-right">
+					<a href="#" class="information">@ Inform me about Travelkiki</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+<script>
+	function subscribeCallback(event){
+		console.log(this, event);
+	}
+</script>
+
+<form action="#" class="subscribe-form validate-form" data-skip-input data-callback="subscribeCallback">
+	<div class="preloader"></div>
+	<div class="container">
+		<div class="form-group">
+			<input type="text" class="input email" data-validate="email" placeholder="Type your email">
+			<div class="error">Please enter a valid email!</div>
+			<button type="submit" class="btn faded">
+				<img src="img/icons/send.svg" alt="">
+				<img src="img/icons/send-error.svg" alt="">
+			</button>
+		</div>
+	</div>
+	<!-- .active - for showing -->
+	<div class="success success-fadein">
+		<div class="container">
+			<i class="icon icon-checked"></i>
+			Your email was sent successfully!
+		</div>
+	</div>
+</form>
+
+<div id="classDetail" class="popup class-popup">
+	<button type="button" class="close-popup show-ms" data-close="#classDetail">
+		<i class="icon icon-close"></i>
+	</button>
+	<div class="inner">
+		<div class="header">
+			<div class="title">
+				<img src="temp/class-economy-white.svg" alt="icon" class="title-icon">
+				<span class="text">Economy class</span>
+			</div>
+			<button type="button" class="close-popup hidden-ms" data-close="#classDetail">
+				<i class="icon icon-close"></i>
+			</button>
+		</div>
+		<div class="content relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-7">
+					<div class="row">
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag active-mobile" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Hand</div>
+								<div class="value">
+									1 place <b>8kg</b>
+								</div>
+							</div>
+							<hr class="ms-hide">
+						</div>
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag2.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Luggage</div>
+								<div class="value">
+									1 place <b>23kg</b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs" id="infoDesktop">
+							<div class="spaced-info" data-desktop="#infoDesktop" data-mobile="#infoMobile">
+								<div class="marked-title small ms-offset-top">Details</div>
+								<ul class="clear simple-list part">
+									<li>
+										<span data-tooltip="Tooltip 1"><i class="icon icon-info danger"></i></span> &nbsp; Online
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 2"><i class="icon icon-info danger"></i></span> &nbsp; App
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 3"><i class="icon icon-info danger"></i></span> &nbsp; Airport
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 4"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 5"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-5 scrolled to-top">
+					<div class="marked-title">Extra baggage cost</div>
+					<div class="paragraph">
+						<b>Tariff Light</b> provides to buy <b>1 place</b> of baggage weighing up to <b>23kg</b> online on the airline's website. The price will be significantly lower than at the airport. 
+					</div>
+					<dl class="simple-dl">
+						<dt>15€</dt>
+						<dd>Flights in Germany</dd>
+					</dl>
+					<dl class="simple-dl">
+						<dt>25€</dt>
+						<dd>International flights</dd>
+					</dl>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+				</div>
+				<div class="col-xs-12 show-xs" id="infoMobile"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="classDetail2" class="popup class-popup">
+	<button type="button" class="close-popup show-ms" data-close="#classDetail2">
+		<i class="icon icon-close"></i>
+	</button>
+	<div class="inner">
+		<div class="header">
+			<div class="title">
+				<img src="temp/class-bussines-white.svg" alt="icon" class="title-icon">
+				<span class="text">Business class</span>
+			</div>
+			<button type="button" class="close-popup hidden-ms" data-close="#classDetail2">
+				<i class="icon icon-close"></i>
+			</button>
+		</div>
+		<div class="content relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-7">
+					<div class="row">
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag active-mobile" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Hand</div>
+								<div class="value">
+									1 place <b>8kg</b>
+								</div>
+							</div>
+							<hr class="ms-hide">
+						</div>
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag2.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Luggage</div>
+								<div class="value">
+									1 place <b>23kg</b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs" id="infoDesktop2">
+							<div class="spaced-info" data-desktop="#infoDesktop2" data-mobile="#infoMobile2">
+								<div class="marked-title small ms-offset-top">Details</div>
+								<ul class="clear simple-list part">
+									<li>
+										<span data-tooltip="Tooltip 1"><i class="icon icon-info danger"></i></span> &nbsp; Online
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 2"><i class="icon icon-info danger"></i></span> &nbsp; App
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 3"><i class="icon icon-info danger"></i></span> &nbsp; Airport
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 4"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 5"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-5 scrolled to-top">
+					<div class="marked-title">Extra baggage cost</div>
+					<div class="paragraph">
+						<b>Tariff Light</b> provides to buy <b>1 place</b> of baggage weighing up to <b>23kg</b> online on the airline's website. The price will be significantly lower than at the airport. 
+					</div>
+					<dl class="simple-dl">
+						<dt>15€</dt>
+						<dd>Flights in Germany</dd>
+					</dl>
+					<dl class="simple-dl">
+						<dt>25€</dt>
+						<dd>International flights</dd>
+					</dl>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+				</div>
+				<div class="col-xs-12 show-xs" id="infoMobile2"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="classDetail3" class="popup class-popup">
+	<button type="button" class="close-popup show-ms" data-close="#classDetail3">
+		<i class="icon icon-close"></i>
+	</button>
+	<div class="inner">
+		<div class="header">
+			<div class="title">
+				<img src="temp/class-first-white.svg" alt="icon" class="title-icon">
+				<span class="text">First class</span>
+			</div>
+			<button type="button" class="close-popup hidden-ms" data-close="#classDetail3">
+				<i class="icon icon-close"></i>
+			</button>
+		</div>
+		<div class="content relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-7">
+					<div class="row">
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag active-mobile" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Hand</div>
+								<div class="value">
+									1 place <b>8kg</b>
+								</div>
+							</div>
+							<hr class="ms-hide">
+						</div>
+						<div class="col-xs-12 col-ms-6">
+							<div class="airline-bag" data-mobile-inviewport>
+								<div class="relative">
+									<img src="temp/bag2.svg" alt="" class="adaptive">
+									<div class="width"><span class="unit"><b>55</b>cm</span></div>
+									<div class="height"><span class="unit"><b>40</b>cm</span></div>
+									<div class="depth"><span class="unit"><b>23</b>cm</span></div>
+								</div>
+								<div class="bag-title">Luggage</div>
+								<div class="value">
+									1 place <b>23kg</b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 hidden-xs" id="infoDesktop3">
+							<div class="spaced-info" data-desktop="#infoDesktop3" data-mobile="#infoMobile3">
+								<div class="marked-title small ms-offset-top">Details</div>
+								<ul class="clear simple-list part">
+									<li>
+										<span data-tooltip="Tooltip 1"><i class="icon icon-info danger"></i></span> &nbsp; Online
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 2"><i class="icon icon-info danger"></i></span> &nbsp; App
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 3"><i class="icon icon-info danger"></i></span> &nbsp; Airport
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 4"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+									<li>
+										<span data-tooltip="Tooltip 5"><i class="icon icon-info danger"></i></span> &nbsp; 40m
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-5 scrolled to-top">
+					<div class="marked-title">Extra baggage cost</div>
+					<div class="paragraph">
+						<b>Tariff Light</b> provides to buy <b>1 place</b> of baggage weighing up to <b>23kg</b> online on the airline's website. The price will be significantly lower than at the airport. 
+					</div>
+					<dl class="simple-dl">
+						<dt>15€</dt>
+						<dd>Flights in Germany</dd>
+					</dl>
+					<dl class="simple-dl">
+						<dt>25€</dt>
+						<dd>International flights</dd>
+					</dl>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+					<div class="paragraph">
+						The data collected by Lufthansa is generally used to fulfil the contract of carriage you have with us. It includes both passenger and baggage data. To ensure the onward transportation of your baggage with other airlines, as well as its timely processing at airports, we pass data on to the airlines and airports concerned. In addition, we support the German Customs authorities in the fulfilment of their legal duties by allowing limited access to selected data.
+					</div>
+				</div>
+				<div class="col-xs-12 show-xs" id="infoMobile3"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/vue.js"></script>
+<script src="js/lib/math.js"></script>
+<script src="js/lib/array.js"></script>
+<script src="js/lib/graph.js"></script>
+<script src="js/plugins/jquery.mousewheel.min.js"></script>
+<script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<script src="js/plugins/owl.carousel.min.js"></script>
+<script src="js/plugins/moment.js"></script>
+<script src="js/plugins/nouislider.min.js"></script>
+<script src="js/plugins/progress.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/validator.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+<script src="js/init/checkbox-class.js"></script>
+<script src="js/init/validation.js"></script>
+<script src="js/init/hero-parallax.js"></script>
+
+<script src="js/init/copy-link.js"></script>
+
+<script src="js/init/scrollbar.js"></script>
+<script src="js/init/activate.js"></script>
+<script src="js/init/expander.js"></script>
+<script src="js/init/dropdown.js"></script>
+<!-- for mobile version -->
+<script src="js/init/text-animation.js"></script>
+<script src="js/init/validation.js"></script>
+<script src="js/init/vue.calendar-component.js"></script>
+<script src="js/init/vue.search-filters.js"></script>
+
+
+<script src="js/init/popup.js"></script>
+
+<script src="js/init/offers-canvas.js"></script>
+<script src="js/init/sticky-block.js"></script>
+<script src="js/init/scroll-spy.js"></script>
+<script src="js/init/data-toggle.js"></script>
+<script src="js/init/tabs.js"></script>
+
+<script src="js/new.search.i18n.js"></script>
+<script src="js/new.search.engine.js"></script>
+<script src="js/init/main-menu.js"></script>
+
+<script>
+		SEARCH_ENGINE.showBackground = true; // we need it to prevent form collapsing by click 
+
+		// fake cities in "to" input
+		SEARCH_ENGINE.fakeCities = ["Berlin", "Praga", "London", "Dubai", "San Francisco"];
+
+		// suggestion, are you from this city?
+		SEARCH_ENGINE.setSuggestion('from', {
+			"location": "Athens",
+			"airport": "Athens International Airport",
+			"code": "ATH",
+			"country": "Greece"
+		});
+		SEARCH_ENGINE.activateSuggestion('from');
+
+		SEARCH_ENGINE.setSuggestion('to', {
+			"location": "Kalamata",
+			"airport": "Kalamata International Airport",
+			"code": "KLX",
+			"country": "Greece"
+		});
+
+		// go to results smoothly
+		$('#newSearchEngine').on('custom.submit', function(event) {
+			SEARCH_ENGINE.filters.enabled = true;
+			setTimeout(function() {
+				location.href = 'tickets.html';
+			}, 300);
+		});
+
+	</script>
+
+</body>
+</html>

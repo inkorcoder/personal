@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<div class="copy-block">
+		<div class="container-fluid">
+			<div class="layout">
+				<div class="column">
+					<div data-tooltip="Copy to clipboard" data-tooltip-copied="Copied to clipboard!">
+						<button type="button" class="btn btn-round" data-copy-link="copyLink">
+							<i class="icon icon-copy"></i>
+						</button>
+						<button type="button" class="btn btn-link sm-hide" data-copy-link="copyLink">
+							Copy link
+						</button>
+					</div>
+				</div>
+				<div class="column">
+					<input type="text" readonly value="https://www.travelkiki.com/en/airlines/lufthansa/" id="copyLink">
+				</div>
+				<div class="column">
+					<div data-tooltip="Share with Facebook">
+						<button class="btn btn-round">
+							<i class="icon icon-facebook"></i>
+						</button>
+					</div>
+					<div data-tooltip="Share with Messenger">
+						<button class="btn btn-round">
+							<i class="icon icon-messenger"></i>
+						</button>
+					</div>
+					<div data-tooltip="Share with Viber">
+						<button class="btn btn-round">
+							<i class="icon icon-viber"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<ul class="clear breadcrumbs">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Airlines</a></li>
+				<li class="active">Lufthansa</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header static collapsed">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+					<button type="button" class="btn btn-round sm-hide" data-toggle-copy>
+						<i class="icon icon-share inactive"></i>
+						<i class="icon icon-close active"></i>
+					</button>
+				</div>
+				<div class="col-xs-4 align-center sm-show">
+	<!-- 				<div data-tooltip="Share">
+						<button type="button" class="btn btn-round dark" data-toggle-copy>
+							<i class="icon icon-share inactive"></i>
+							<i class="icon icon-close active"></i>
+						</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="main-menu">
+		<div class="wrapper">
+			<div class="header">
+				<ul class="clear socials">
+					<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+				</ul>
+			</div>
+			<div class="body">
+				<ul class="clear menu">
+					<li><a href="#" class="active">Home</a></li>
+					<li><a href="#">Cities</a></li>
+					<li><a href="#">Airlines</a></li>
+					<li><a href="#">Map</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+			<div class="footer">
+				<ul class="clear links">
+					<li><a href="terms.html" class="link">Terms</a></li>
+					<li><a href="#" class="link">Privacy policy</a></li>
+					<li><a href="contacts.html" class="link">Contact Us</a></li>
+				</ul>
+				<div class="copyright">© 2016 Travelkiki.</div>
+				<div data-dropdown class="language">
+					<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+					<div class="dropdown">
+						<ul class="lang-list clear">
+							<li class="item active">
+								<a href="#" class="lang-select">
+									<img src="img/icons/en.svg" alt="en" class="img-icon">
+									English
+								</a>
+							</li>
+							<li class="item">
+								<a href="#" class="lang-select">
+									<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+									Greek
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<button type="button" data-main-menu-toggler>
+		<i></i>
+		<i></i>
+	</button>
+	
+	<!-- <div data-dropdown class="language">
+		<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+		<div class="dropdown">
+			<ul class="lang-list clear">
+				<li class="item active">
+					<a href="#" class="lang-select">
+						<img src="img/icons/en.svg" alt="en" class="img-icon">
+						English
+					</a>
+				</li>
+				<li class="item">
+					<a href="#" class="lang-select">
+						<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+						Greek
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+
+	<div class="fixed-nav fixed collapsed">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-lg-2">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-1 col-lg-2 align-center">
+					<div data-tooltip="Share">
+						<button type="button" class="btn btn-round dark" data-toggle-copy>
+							<i class="icon icon-share inactive"></i>
+							<i class="icon icon-close active"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8" id="nav-copy">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main>
+
+		<!-- data-parallax-ratio = 1 by default. Could be from 0 to 2 -->
+		<div class="hero" data-parallax-ratio="1">
+			<div class="background" style="background: url(temp/book1.jpg) no-repeat center; background-size: auto 100%; background-size: cover;"></div>
+			<div class="content">
+				<div class="verticaly-bottom">
+					<div class="inner">
+						<div class="container align-center">
+							<div class="main-city">
+								<figure class="image-cover">
+									<img src="temp/book1.jpg" alt="">
+								</figure>
+								<div class="chevron">
+									<i class="icon icon-union-star"></i>
+								</div>
+								<div class="title">London</div>
+								<div class="subtitle">Destination of the month </div>
+								<div class="text"><b>4.5 million</b> visitors per week</div>
+							</div>
+							<div class="filter-nav">
+								<ul class="clear">
+									<li class="active"><a href="#all">All</a></li>
+									<li><a href="#europe">Europe</a></li>
+									<li><a href="#america">Americas</a></li>
+									<li><a href="#asia">Asia pacific</a></li>
+									<li><a href="#middle">Middle &amp; East Africa</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="section collapsed-top">
+			<div class="container" id="cities-container" style="min-height: 70vh;">
+				<div class="lined-title">
+					<i class="icon icon-union-star"></i>
+					Featured Destinations
+				</div>
+				<!-- primary, info, danger - has a star at the top -->
+				<a href="city.html" class="city-card primary">
+					<div class="column">
+						<div class="image-cover primary">
+							<img src="temp/book1.jpg" alt="">
+							<span class="fader"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="title">London</div>
+						<div class="text">
+							City of Big Ben, Buckingham Palace and the red double decker buses.
+						</div>
+					</div>
+					<div class="column">
+						<ul class="features">
+							<li><span data-tooltip="Departure date"><b>23</b>mon</span></li>
+							<li><span data-tooltip="Light rain"><i class="icon icon-weather-rain"></i>15&deg;</span></li>
+							<li><span data-tooltip="Price"><i class="icon icon-price-down"></i>1234&euro;</span></li>
+							<li><span data-tooltip="Monthly visitors"><i class="icon icon-person"></i>4.5m</span></li>
+						</ul>
+					</div>
+					<div class="column">
+						<i class="icon icon-arrow-right"></i>
+					</div>
+				</a>
+				<a href="city.html" class="city-card info">
+					<div class="column">
+						<div class="image-cover info">
+							<img src="temp/book2.jpg" alt="">
+							<span class="fader"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="title">Barcelona</div>
+						<div class="text">
+							Legendary city, founded by Hercules according to mythology.
+						</div>
+					</div>
+					<div class="column">
+						<ul class="features">
+							<li><span data-tooltip="Departure date"><b>23</b>mon</span></li>
+							<li><span data-tooltip="Light rain"><i class="icon icon-weather-rain"></i>15&deg;</span></li>
+							<li><span data-tooltip="Price"><i class="icon icon-price-up"></i>134&euro;</span></li>
+							<li><span data-tooltip="Monthly visitors"><i class="icon icon-person"></i>421.5m</span></li>
+						</ul>
+					</div>
+					<div class="column">
+						<i class="icon icon-arrow-right"></i>
+					</div>
+				</a>
+				<a href="city.html" class="city-card danger">
+					<div class="column">
+						<div class="image-cover danger">
+							<img src="temp/book3.jpg" alt="">
+							<span class="fader"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="title">Paris</div>
+						<div class="text">
+							La Ville Lumière, the city of light, city of love, capital of France.
+						</div>
+					</div>
+					<div class="column">
+						<ul class="features">
+							<li><span data-tooltip="Departure date"><b>23</b>mon</span></li>
+							<li><span data-tooltip="Light rain"><i class="icon icon-weather-rain"></i>15&deg;</span></li>
+							<li><span data-tooltip="Price"><i class="icon icon-price-down"></i>1234&euro;</span></li>
+							<li><span data-tooltip="Monthly visitors"><i class="icon icon-person"></i>4.5m</span></li>
+						</ul>
+					</div>
+					<div class="column">
+						<i class="icon icon-arrow-right"></i>
+					</div>
+				</a>
+				<div class="lined-title">
+					Other Destinations
+				</div>
+				<a href="city.html" class="city-card">
+					<div class="column">
+						<div class="image-cover">
+							<img src="temp/book1.jpg" alt="">
+							<span class="fader"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="title">Detroit</div>
+						<div class="text">
+							The most iconic manufacture - Ford
+						</div>
+					</div>
+					<div class="column">
+						<ul class="features">
+							<li><span data-tooltip="Departure date"><b>23</b>mon</span></li>
+							<li><span data-tooltip="Light rain"><i class="icon icon-weather-rain"></i>15&deg;</span></li>
+							<li><span data-tooltip="Price"><i class="icon icon-price-down"></i>1234&euro;</span></li>
+							<li><span data-tooltip="Monthly visitors"><i class="icon icon-person"></i>4.5m</span></li>
+						</ul>
+					</div>
+					<div class="column">
+						<i class="icon icon-arrow-right"></i>
+					</div>
+				</a>
+				<!-- do not remove it! And paste a new tickets before it -->
+				<div class="city-fake">
+					<div class="column">
+						<div class="image"></div>
+					</div>
+					<div class="column">
+						<div class="title"></div>
+						<div class="text"></div>
+						<div class="text"></div>
+					</div>
+					<div class="column">
+						<ul class="features">
+							<li><span></span></li>
+							<li><span></span></li>
+							<li><span></span></li>
+							<li><span></span></li>
+						</ul>
+					</div>
+					<div class="column">
+						<div class="icon"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</main>
+
+	<div class="letters-filter-wrapper">
+		<div class="hint">o</div>
+		<div class="wrapper">
+			<ul class="clear letters-filter">
+				<li data-tooltip="Featured" data-origin="left" class="active" data-first="true">
+					<a href="#"><i class="icon icon-union-star"></i></a>
+				</li>
+				<li><a href="#" data-title="a">a</a></li>
+				<li><a href="#" data-title="b">b</a></li>
+				<li><a href="#" data-title="c">c</a></li>
+				<li><a href="#" data-title="d">d</a></li>
+				<li><a href="#" data-title="e">e</a></li>
+				<li><a href="#" data-title="f">f</a></li>
+				<li><a href="#" data-title="g">g</a></li>
+				<li><a href="#" data-title="h">h</a></li>
+				<li><a href="#" data-title="i">i</a></li>
+				<li><a href="#" data-title="j">j</a></li>
+				<li><a href="#" data-title="k">k</a></li>
+				<li><a href="#" data-title="l">l</a></li>
+				<li><a href="#" data-title="m">m</a></li>
+				<li><a href="#" data-title="n">n</a></li>
+				<li><a href="#" data-title="o">o</a></li>
+				<li><a href="#" data-title="p">p</a></li>
+				<li><a href="#" data-title="q">q</a></li>
+				<li><a href="#" data-title="r">r</a></li>
+				<li><a href="#" data-title="s">s</a></li>
+				<li><a href="#" data-title="t">t</a></li>
+				<li><a href="#" data-title="u">u</a></li>
+				<li><a href="#" data-title="v">v</a></li>
+				<li><a href="#" data-title="w">w</a></li>
+				<li><a href="#" data-title="x">x</a></li>
+				<li><a href="#" data-title="y">y</a></li>
+				<li><a href="#" data-title="z">z</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<a href="#" class="scroll-top">
+		<i class="icon icon-arrow-up"></i>
+	</a>
+
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9 sm-show">
+					<ul class="clear menu">
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="#">Cities</a></li>
+						<li><a href="#">Airlines</a></li>
+						<li><a href="#">Map</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Jobs</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7">
+							<ul class="clear socials">
+								<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-5 align-right first-xs last-sm">
+	<!-- 						<a href="#" class="language">
+								EN<img src="img/icons/en.svg" alt="">
+							</a> -->
+							<div data-dropdown class="language">
+								<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+								<div class="dropdown">
+									<ul class="lang-list clear">
+										<li class="item active">
+											<a href="#" class="lang-select">
+												<img src="img/icons/en.svg" alt="en" class="img-icon">
+												English
+											</a>
+										</li>
+										<li class="item">
+											<a href="#" class="lang-select">
+												<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+												Greek
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="copyright">© 2016 Travelkiki.</span>
+						<a href="terms.html" class="link">Terms</a>
+						<a href="#" class="link">Privacy policy</a>
+						<a href="contacts.html" class="link">Contact Us</a>
+					</div>
+					<div class="col-xs-12 col-sm-4 align-right">
+						<a href="#" class="information">@ Inform me about Travelkiki</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	
+
+	<div class="ticket-popup">
+		<button class="btn close-popup" type="button">
+			<i class="icon icon-arrow-left"></i>
+		</button>
+		<a href="index.html" class="site-logo">
+			<img src="img/logo.svg" alt="logo" class="dark-logo">
+			<img src="img/logo-white.svg" alt="logo" class="light-logo">
+		</a>
+		<div class="offers-label">
+			<img src="img/icons/offers-icon.svg" alt="icon">
+		</div>
+		<div class="map-wrapper">
+			<div id="map" class="map"></div>
+		</div>
+		<div class="content-wrapper">
+			<ul class="clear" data-tickets-info>
+				<li>
+					<div class="small-ticket">
+						<div class="row collapsed-row middle-xs">
+							<div class="col-xs-6">
+								<img src="temp/provider1.png" alt="" class="airline-image dark">
+								<img src="temp/logo1-light.svg" alt="" class="airline-image light">
+							</div>
+							<div class="col-xs-6 align-right">
+								<div class="date">
+									<span class="wrap-icon">
+										<i class="icon icon-fly-up"></i>
+									</span>
+									August, 5
+								</div>
+							</div>
+						</div>
+						<div class="row timing middle-xs offseted">
+							<div class="col-xs-4">
+								<div class="time-primary">06:30</div>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="status">
+									<span>2 stops &nbsp;&nbsp;</span>
+									<img src="img/stops.svg" alt="" class="indicator">
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<div class="time-primary">16:20</div>
+							</div>
+						</div>
+						<div class="row timing middle-xs">
+							<div class="col-xs-4">
+								<span class="label">LHR</span>
+								<span class="place">London</span>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="duration light">
+									<i class="icon icon-duration"></i> 3h 20
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<span class="place">Athens</span>
+								<span class="label">ATH</span>
+							</div>
+						</div>
+					
+						<div data-expanded>
+							<div class="subtitle">Swiss Airlines <b>LX 1839</b></div>
+							<ul class="clear stops-list">
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm</div>
+									<div class="airport"><span>LHR</span> London Heathrow</div>
+								</li>
+								<li data-only-time>
+									<span class="badge">50 min</span>
+								</li>
+								<li data-clock>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm <span class="badge">Waiting 16h20</span></div>
+									<div class="airport"><span class="bold">ZRH</span> Zurich long traveling name or title or something</div>
+								</li>
+								<li data-only-time>
+									<span class="badge">5h 20</span>
+								</li>
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">12:50pm</div>
+									<div class="airport"><span class="bold">ATH</span> Athens international</div>
+								</li>
+							</ul>
+							<div class="static-alert danger">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+						</div>
+						<div class="expander">
+							<i class="icon icon-angle-down"></i>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="small-ticket">
+						<div class="row collapsed-row middle-xs">
+							<div class="col-xs-6">
+								<img src="temp/provider2.png" alt="" class="airline-image dark">
+								<img src="temp/logo2-light.svg" alt="airline-image light">
+							</div>
+							<div class="col-xs-6 align-right">
+								<div class="date">
+									<span class="wrap-icon">
+										<i class="icon icon-fly-up"></i>
+									</span>
+									September, 5
+								</div>
+							</div>
+						</div>
+					
+						<div class="row timing middle-xs offseted">
+							<div class="col-xs-4">
+								<div class="time-primary">06:30</div>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="status">
+									<span>direct &nbsp;&nbsp;</span>
+									<img src="img/straight.svg" alt="" class="indicator">
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<div class="time-primary">16:20</div>
+							</div>
+						</div>
+					
+						<div class="row timing middle-xs">
+							<div class="col-xs-4">
+								<span class="label">LHR</span>
+								<span class="place">London</span>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="duration light">
+									<i class="icon icon-duration"></i> 6h
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<span class="place">Athens</span>
+								<span class="label">ATH</span>
+							</div>
+						</div>
+					
+						<div data-expanded>
+							<div class="subtitle">Swiss Airlines <b>LX 1839</b></div>
+							<ul class="clear stops-list">
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm</div>
+									<div class="airport"><span class="bold">LHR</span> London Heathrow</div>
+								</li>
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">12:50pm</div>
+									<div class="airport"><span class="bold">ATH</span> Athens international</div>
+								</li>
+							</ul>
+							<div class="static-alert danger">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert primary">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert success">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert error">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+						</div>
+						<div class="expander">
+							<i class="icon icon-angle-down"></i>
+						</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking active">
+						<div class="price">249&euro;</div>
+						<div class="host">Pamediakopes.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking">
+						<div class="price">321&euro;</div>
+						<div class="host">Petas.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking">
+						<div class="price">32 412&euro;</div>
+						<div class="host">Pamediakopes.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/plugins/jquery.mousewheel.min.js"></script>
+
+	<script src="js/main.js"></script>
+	<script src="js/validator.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+	<script src="js/init/checkbox-class.js"></script>
+	<script src="js/init/validation.js"></script>
+	<script src="js/init/hero-parallax.js"></script>
+
+	<script src="js/init/cities-loading.js"></script>
+	<script src="js/init/copy-link.js"></script>
+	<script src="js/init/mobile-filter.js"></script>
+	<script src="js/init/main-menu.js"></script>
+
+</body>
+</html>

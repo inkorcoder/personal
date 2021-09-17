@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header collapsed fixed">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-4 sm-show">
+	<!-- 				<button type="button" data-toggle-copy>
+						<i class="icon icon-share"></i>
+					</button> -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="main-menu">
+		<div class="wrapper">
+			<div class="header">
+				<ul class="clear socials">
+					<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+				</ul>
+			</div>
+			<div class="body">
+				<ul class="clear menu">
+					<li><a href="#" class="active">Home</a></li>
+					<li><a href="#">Cities</a></li>
+					<li><a href="#">Airlines</a></li>
+					<li><a href="#">Map</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+			<div class="footer">
+				<ul class="clear links">
+					<li><a href="terms.html" class="link">Terms</a></li>
+					<li><a href="#" class="link">Privacy policy</a></li>
+					<li><a href="contacts.html" class="link">Contact Us</a></li>
+				</ul>
+				<div class="copyright">© 2016 Travelkiki.</div>
+				<div data-dropdown class="language">
+					<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+					<div class="dropdown">
+						<ul class="lang-list clear">
+							<li class="item active">
+								<a href="#" class="lang-select">
+									<img src="img/icons/en.svg" alt="en" class="img-icon">
+									English
+								</a>
+							</li>
+							<li class="item">
+								<a href="#" class="lang-select">
+									<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+									Greek
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<button type="button" data-main-menu-toggler>
+		<i></i>
+		<i></i>
+	</button>
+	
+	<!-- <div data-dropdown class="language">
+		<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+		<div class="dropdown">
+			<ul class="lang-list clear">
+				<li class="item active">
+					<a href="#" class="lang-select">
+						<img src="img/icons/en.svg" alt="en" class="img-icon">
+						English
+					</a>
+				</li>
+				<li class="item">
+					<a href="#" class="lang-select">
+						<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+						Greek
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+
+	<main>
+
+		<!-- search engine, just to be short -->
+		<section class="s-engine" id="newSearchEngine" v-bind:class="{collapsed: collapsed, 'has-filters': filters.enabled, 'hidden-background': scrollTop > 10, 'expanded': mobile.expanded, 'full-size': mobile.fullSize, 'hide-anchor': $refs.searchFilters && $refs.searchFilters.active}">
+				<div class="background-wrapper" data-parallax-ratio="1" v-cloak v-if="showBackground">
+					<div class="background" v-bind:class="{hidden: scrollTop > 10}" style="background-image: url(temp/book1.jpg);"></div>
+					<img src="temp/airline4.png" alt="" class="airline-logo">
+				</div>
+			<div class="fake-trigger" v-if="collapsed" v-on:click="collapsed = false" v-bind:class="{small: filters.enabled}"></div>
+			<form action="#" autocomplete="always">
+		
+				<div class="container">
+		
+					<div class="mobile-body"
+						v-bind:style="[mobile.swipeOffset ? {transform: 'translate3d(0,'+mobile.swipeOffset+'px,0)'} : {}]"
+						v-bind:class="{'transition': !mobile.swipeOffset}"
+					>
+		
+						<!-- fake for mobile -->
+						<div class="mobile-fake" v-bind:style="{opacity: 1-Math.min(1, mobile.getFadingProgress()*2)}"
+							v-on:click="mobile.expanded = true"
+						>
+							<div class="form-group" v-if="!to.selected && from.selected" v-cloak>
+								<label>{{from.selected.location}}, {{from.selected.country}}, {{from.selected.code}}</label>
+								<div class="input" data-dir="from">{{from.selected.airport}} <i class="icon icon-arrow-right"></i></div>
+							</div>
+							<div class="form-group" v-if="to.selected" v-cloak>
+								<label>{{to.selected.location}}, {{to.selected.country}}, {{to.selected.code}}</label>
+								<div class="input" data-dir="to">{{to.selected.airport}} <i class="icon icon-arrow-right"></i></div>
+							</div>
+						</div>
+						<!-- fake for mobile -->
+		
+						<!-- top filter -->
+						<div class="row top-filter">
+							<div class="col-xs-12 col-sm-4 col-sm-offset-3 col-lg-4 col-lg-offset-2">
+								<div class="form-group">
+									<div class="trip-type">
+										<input type="radio" name="trip-type" v-on:change="setType('roundtrip')" value="roundtrip" id="roundtripType" checked>
+										<label for="roundtripType">Roundtrip</label>
+										<input type="radio" name="trip-type" v-on:change="setType('oneway')" value="oneway" id="onewayType">
+										<label for="onewayType">Oneway</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4 col-md-3 col-lg-3 sm-show" id="passengersDesktopPlace">
+								<div data-dropdown="" data-desktop="#passengersDesktopPlace" data-mobile="#passengersMobilePlace">
+									<div class="sm-hide label">Passengers</div>
+									<button type="button" class="btn btn-link btn-block anchor" v-on:click="mobile.enterFullSize('passengers')">
+										<span v-cloak>
+											{{totalPassengers() || ""}} Passenger{{totalPassengers() > 1 || !totalPassengers() ? "s" : ""}}
+										</span>
+										<i class="icon2 icon-chevron-down-thick" v-cloak></i>
+									</button>
+									<div class="dropdown">
+										<div class="mobile-scrolled">
+											<div class="block">
+												<div class="title">
+													Adult <span class="badge">16+</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.adult < 1}">
+													<span class="minus" v-on:click="decreasePassenger('adult')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.adult">
+													<span class="plus" v-on:click="increasePassenger('adult')">+</span>
+												</div>
+											</div>
+											<div class="block">
+												<div class="title">
+													Child <span class="badge">2-15</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.children < 1}">
+													<span class="minus" v-on:click="decreasePassenger('children')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.children">
+													<span class="plus" v-on:click="increasePassenger('children')">+</span>
+												</div>
+											</div>
+											<div class="block">
+												<div class="title">
+													Baby <span class="badge">0-2</span>
+												</div>
+												<div class="calculator" v-bind:class="{disabled: passengers.babies < 1}">
+													<span class="minus" v-on:click="decreasePassenger('babies')">-</span>
+													<input type="text" readonly="readonly" disabled="disabled" v-bind:value="passengers.babies">
+													<span class="plus" v-on:click="increasePassenger('babies')">+</span>
+												</div>
+											</div>
+										</div>
+										<div class="sm-hide">
+											<button type="button" class="btn btn-block submit-btn" data-dismiss="passengers"
+												v-on:click="mobile.exitFullSize()"
+											>Ok</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- / top filter -->
+		
+						<div class="sm-hide dir-indicator">
+							<span class="from" v-bind:class="{filled: from.search}"></span>
+							<span class="arrow"></span>
+							<span class="to" v-bind:class="{filled: to.search}"></span>
+						</div>
+		
+						<!-- main search -->
+						<div class="row bottom-xs main-search">
+							<div class="col-xs-12 col-sm-3" data-from-col>
+								<div class="search-dropdown city" data-city="from" v-bind:class="{active: from.open}">
+									<div class="form-group" v-bind:class="{attention: !valid.from}">
+										<label for="fromCity" v-bind:class="{empty: !from.selected}">
+											From
+											<span v-cloak v-html="getActiveVariantString('from')">&nbsp;</span>
+										</label>
+										<input type="text" class="input" id="fromCity" placeholder="From City"
+											v-model="from.search"
+											v-bind:class="{filled: from.search}"
+											v-on:focus="from.open = true; mobile.enterFullSize('from_search')"
+											v-on:blur="hideSearch('from')"
+											autocorrect="off" autocapitalize="off" spellcheck="false"
+											v-on:input="handleSearch('from', '', $event); from.search = $event.target.value"
+											v-on:keydown="navigateByKeys('from', $event); handleSearch('from', '', $event); from.search = $event.target.value"
+											autocomplete="always"
+											tabindex="1"
+										>
+										<span class="line"></span>
+										<span class="input-fader"></span>
+										<button type="button" class="clear-input"
+											v-if="(from.search && !collapsed && !mobile.active) || (mobile.fullSize && from.search)"
+											v-on:mousedown="clearVariant('from')"
+											v-on:touchend="clearVariant('from')"
+											v-cloak tabindex="-1"
+										>
+											<i class="icon icon-close"></i>
+										</button>
+									</div>
+									<div class="dropdown"
+										v-bind:class="{active: from.open}"
+									>
+										<div class="scrolled" ref="fromList">
+											<ul class="clear airports-list" v-if="from.filtered.length">
+												<li v-for="(airport, index) in from.filtered"
+													v-on:mousedown="setActiveVariant('from', index)"
+													v-bind:class="{hightlighted: from.hightlighted === index}"
+													v-if="airport !== from.selected"
+												>
+													<div class="location">{{airport.location}}, {{airport.country}}</div>
+													<div class="name">{{airport.airport}} <span>{{airport.code}}</span></div>
+												</li>
+											</ul>
+											<div v-if="getSuggestion('from') && !from.filtered.length" class="airport-suggestion"
+												v-on:mousedown="activateSuggestion('from')"
+											>
+												<div class="location">Tap to choose your location</div>
+												<div class="name">
+													<i class="icon2 icon-location"></i> {{getSuggestion('from').location}}, {{getSuggestion('from').country}}
+												</div>
+											</div>
+											<div class="no-results" v-if="!from.filtered.length && !getSuggestion('from')"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-1 switch-col">
+								<button type="button" class="btn btn-link btn-block switch-button"
+									v-on:mousedown="switchPlaces($event)"
+									v-bind:class="{colored: from.selected && to.selected}"
+									tabindex="-1"
+								>
+									<i class="icon icon-arrows"></i>
+								</button>
+							</div>
+							<div class="col-xs-12 col-sm-3" data-to-col>
+								<div class="search-dropdown city" data-city="to" v-bind:class="{active: to.open}">
+									<div class="form-group" v-bind:class="{attention: !valid.to}">
+										<label for="toCity" v-bind:class="{empty: !to.selected}">
+											To
+											<span v-cloak v-html="getActiveVariantString('to')">&nbsp;</span>
+										</label>
+										<input type="text" class="input" id="toCity"
+											autocorrect="off" autocapitalize="off" spellcheck="false"
+											v-model="to.search"
+											v-bind:class="{filled: to.search}"
+											v-on:focus="to.open = true; mobile.enterFullSize('to_search')"
+											v-on:blur="hideSearch('to')"
+											v-on:input="handleSearch('to', '', $event); to.search = $event.target.value"
+											v-on:keydown="navigateByKeys('to', $event); handleSearch('to', '', $event); to.search = $event.target.value"
+											autocomplete="always"
+											tabindex="2"
+										>
+										<span class="line"></span>
+										<span class="input-fader"></span>
+										<ul class="clear fake-cities" v-if="!to.search && !to.open">
+											<li v-for="(city, index) in fakeCities" v-bind:class="{active: activeFakeCity === index}">{{city}}</li>
+										</ul>
+										<button type="button" class="clear-input"
+											v-if="(to.search && !collapsed && !mobile.active) || (mobile.fullSize && to.search)"
+											v-on:mousedown="clearVariant('to')"
+											v-on:touchend="clearVariant('to')"
+											v-cloak tabindex="-1"
+										>
+											<i class="icon icon-close"></i>
+										</button>
+									</div>
+									<div class="dropdown"
+										v-bind:class="{active: to.open}"
+									>
+										<div class="scrolled" ref="toList">
+											<ul class="clear airports-list" v-if="to.filtered.length">
+												<li v-for="(airport, index) in to.filtered"
+													v-on:mousedown="setActiveVariant('to', index)"
+													v-bind:class="{hightlighted: to.hightlighted === index}"
+													v-if="airport !== to.selected"
+												>
+													<div class="location">{{airport.location}}, {{airport.country}}</div>
+													<div class="name">{{airport.airport}} <span>{{airport.code}}</span></div>
+												</li>
+											</ul>
+											<div v-if="getSuggestion('to') && !to.filtered.length" class="airport-suggestion"
+												v-on:mousedown="activateSuggestion('to')"
+											>
+												<div class="location">Tap to choose your location</div>
+												<div class="name">
+													<i class="icon2 icon-location"></i> {{getSuggestion('to').location}}, {{getSuggestion('to').country}}
+												</div>
+											</div>
+											<div class="no-results" v-if="!to.filtered.length && !getSuggestion('to')"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3 calendar-col">
+								<div class="search-dropdown dates">
+									<div class="form-group" id="date-range-parent" v-bind:class="{attention: !valid.dates}">
+										<label class="empty" v-on:click="toggleCalendar()">
+											When
+											<span v-cloak>&nbsp;</span>
+										</label>
+										<input type="text" id="date-range" tabindex="3">
+										<button class="input" type="button" v-on:click="toggleCalendar()"
+											id="date-button" v-bind:class="{active: dates.departure && dates.arriving}"
+											tabindex="-1"
+										>
+											<span v-cloak>{{getDatesString() || 'Departure - Arriving'}}</span>
+											<i class="icon2 icon-chevron-down-thick" v-cloak></i>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-1 col-md-2 submit-search-col">
+								<!-- passengers for mobile -->
+								<div id="passengersMobilePlace"></div>
+								<!-- / passengers for mobile -->
+								<button class="btn btn-submit-search" type="button" v-bind:class="{active: isFormValid() && !collapsed}" v-on:click="submit()" tabindex="4">
+									<span>Search</span>
+									<i class="icon2 icon-search"></i>
+								</button>
+							</div>
+						</div>
+						<!-- main search -->
+		
+						<div class="row">
+							<div class="col-xs-12 col-md-10 col-md-offset-1">
+								<div class="relative" data-calendar-wrapper>
+									<calendar v-bind:model="'date-range'" v-bind:single="type === 'oneway'" v-bind:header="true" ref="calendar" v-bind:mobile="mobile" v-on:change="setDates($event)" v-on:onfocus="hideAllSearches()"></calendar>
+								</div>
+							</div>
+						</div>
+		
+					</div>
+		
+				</div>
+		
+				<!-- filters -->
+				<search-filters v-if="filters.enabled" v-bind:alliances="filters.alliances" ref="searchFilters" v-bind:class="{'disabled': mobile.expanded}" v-bind:mobile="mobile" v-on:toggle="$event ? mobile.enterFullSize() : mobile.exitFullSize()"></search-filters>
+				<!-- / filters -->
+		
+			</form>
+		
+			<!-- mobile fixed button -->
+			<button class="btn btn-submit-search fixed" v-cloak type="button"
+				v-bind:class="{active: isFormValid() && !collapsed, hidden: mobile.fullSize}"
+				v-on:click="submit()"
+				v-bind:style="{width: 'calc('+(mobile.getFadingProgress()*100)+'% - 30px)'}"
+			>
+				<span
+					v-bind:style="{width: 'calc('+(mobile.getFadingProgress()*100)+'% - 40px', transform: 'translateX('+(mobile.getFadingProgress()*20)+'px)'}"
+				>Search</span>
+				<i class="icon2 icon-search"></i>
+			</button>
+		
+			<div class="loading" v-bind:class="{preloading: preloading, postloading: postloading}"><span></span></div>
+		</section>
+
+		<div class="sm-hide form-hero-background" style="background-image: url(temp/book1.jpg);"></div>
+
+		<section class="section city-hero-section">
+			<div class="container-fluid">
+				<div class="city-hero">
+					<div class="row">
+						<div class="col-xs-12 col-sm-8 col-md-5">
+							<div class="name">London</div>
+							<div class="price">140&euro;</div>
+							<div class="premium">
+								<i class="icon icon-union-star"></i>
+								<div class="text">
+									Destination of the month
+									<small>
+										<b>4.5 million</b> visitors per month
+									</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-3 col-md-2">
+							<ul class="features">
+								<li><span data-tooltip="Departure date"><b>23</b>mon</span></li>
+								<li><span data-tooltip="Light rain"><i class="icon icon-weather-rain"></i>15&deg;</span></li>
+								<li><span data-tooltip="Price"><i class="icon icon-price-down"></i>1234&euro;</span></li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1 col-lg-3 col-lg-offset-2">
+							<div class="offset-top md-hide">&nbsp;</div>
+							<div class="marked-title">Book cheap <span>Flights</span></div>
+							<p class="paragraph">
+								Travel for vacation or for work? Whatever reason you travel for, Travelkiki.com finds you the cheapest London Flights easily and quickly.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section sm-collapsed">
+			<div class="container">
+				<div class="weather-carousel">
+					<div class="carousel owl-carousel">
+						<div class="item active">
+							<div class="day">mon</div>
+							<div class="date">24</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">tue</div>
+							<div class="date">25</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">wed</div>
+							<div class="date">26</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">thu</div>
+							<div class="date">27</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">fri</div>
+							<div class="date">28</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">sat</div>
+							<div class="date">29</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">sun</div>
+							<div class="date">30</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">mon</div>
+							<div class="date">31</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">tue</div>
+							<div class="date">1</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">wed</div>
+							<div class="date">2</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">thu</div>
+							<div class="date">3</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">fri</div>
+							<div class="date">4</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">sat</div>
+							<div class="date">5</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">sun</div>
+							<div class="date">6</div>
+							<i class="icon icon-weather-rain"></i>
+							<div class="temperature">16&deg;</div>
+						</div>
+						<div class="item">
+							<div class="day">mon</div>
+							<div class="date">7</div>
+							<div class="text">?</div>
+							<div class="caption">
+								We can’t show more than two weeks. Results for more than two weeks have a 43% accuracy.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-5">
+						<div class="marked-title">Flights from Greece to <span>London</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-ms-6 col-sm-5">
+						<p class="paragraph">
+							London, the city of <b>Big Ben, Buckingham Palace</b> and the famous red <b>double-decker buses</b>! If you are looking for cheap airtickets to London, then you are about to visit the second most important city in the world, following New York. 
+						</p>
+						<p class="paragraph">
+							A cosmopolitan metropolis, financial centre and a top notch art, fashion and culture hub, London is so vast – and yet so well structured. All the different cultures,
+						</p>
+					</div>
+					<div class="col-xs-12 col-ms-6 col-sm-5 col-sm-offset-2">
+						<p class="paragraph">
+							colours, scents and auras of the world are concentrated at the melting pot of the neighbourhoods of London, each and every one of them with its own unique character.
+						</p>
+						<p class="paragraph">
+							Once you book your accommodation in one of the cheap hotels you’ll find in London, you will be free to go out and explore. There is so much to see, taste, listen to and experience!
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-5">
+						<ul class="clear images-list">
+							<li><img src="temp/provider1.svg" alt=""></li>
+							<li><img src="temp/provider2.svg" alt=""></li>
+							<li><img src="temp/provider3.svg" alt=""></li>
+							<li><img src="temp/provider4.svg" alt=""></li>
+							<li><img src="temp/provider5.svg" alt=""></li>
+							<li><img src="temp/provider6.svg" alt=""></li>
+							<li><img src="temp/provider7.svg" alt=""></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section sm-collapsed mobile-spaced-top">
+			<div class="container align-center">
+				<div class="section-title">
+					<span class="paper-plane">London.</span> Airports
+				</div>
+				<div class="section-subtitle">London has five main airports.</div>
+			</div>
+			<div class="city-map">
+				<div class="map" id="map"></div>
+				<div class="city-detail active" data-index="0">
+					<div class="title"><i class="icon icon-airlines"></i>Luton</div>
+					<div class="paragraph">
+						London City Airport, 9.5 kilometres east of London, accessible by metro and train.
+					</div>
+				</div>
+				<div class="city-detail" data-index="1">
+					<div class="title"><i class="icon icon-airlines"></i>Stansted</div>
+					<div class="paragraph">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, dolores!
+					</div>
+				</div>
+				<div class="city-detail" data-index="2">
+					<div class="title"><i class="icon icon-airlines"></i>Heathrow</div>
+					<div class="paragraph">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, doloremque.
+					</div>
+				</div>
+				<div class="city-detail" data-index="3">
+					<div class="title"><i class="icon icon-airlines"></i>Gatwick</div>
+					<div class="paragraph">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, molestiae.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-5">
+						<div class="marked-title">Information about <span>London</span></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-ms-6 col-sm-5">
+						<p class="paragraph">
+							London, the capital of the United Kingdom, is one of the top world destinations, whether it’s holidays, short trips, shopping, studies or work you are looking for. As a result, it comes as no surprise that in London you will probably meet people from all over the world who live, work and coexist harmoniously.
+						</p>
+					</div>
+					<div class="col-xs-12 col-ms-6 col-sm-5 col-sm-offset-2">
+						<p class="paragraph">
+							The multicultural spirit is strongly reflected among the <b>7.7 million</b> residents of London. Locals and foreigners – students or not – really create a perfect mosaic of cultures and souls, having one enormous attribute in common: 
+							the city itself!
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section collapsed scrollable-section">
+			<div class="background" style="background: url(img/city-detail-scroll.jpg) no-repeat center; background-size: cover;"></div>
+			<div class="scrollable-progress"><span></span></div>
+			<div class="scrollable-content">
+				<div class="verticaly-middle">
+					<div class="inner">
+						<div class="row middle-xs">
+							<div class="col-xs-12 col-sm-8 col-md-4">
+								<ul class="clear images-slider">
+									<li class="active">
+										<figure class="image-cover">
+											<img src="temp/book1.jpg" alt="">
+										</figure>
+									</li>
+									<li>
+										<figure class="image-cover">
+											<img src="temp/book2.jpg" alt="">
+										</figure>
+									</li>
+									<li>
+										<figure class="image-cover">
+											<img src="temp/book3.jpg" alt="">
+										</figure>
+									</li>
+								</ul>
+								<ul class="clear images-dots">
+									<li class="active"><span></span></li>
+									<li><span></span></li>
+									<li><span></span></li>
+								</ul>
+							</div>
+							<div class="col-xs-12 col-sm-8">
+								<div data-tab="0" class="active">
+									<div class="marked-title">Tate <span>Modern</span></div>
+									<p class="paragraph collapsed-bottom">
+										A historic castle built by <b>William</b> the <b>Conqueror</b> in 1078, the Tower of London was later used as a royal residence, treasury, arsenal and prison. A symbol of oppression, yet a beautiful sight.
+									</p>
+								</div>
+								<div data-tab="1">
+									<div class="marked-title">About <span>Greece</span></div>
+									<p class="paragraph collapsed-bottom">
+										A historic castle built by <b>William</b> the <b>Conqueror</b> in 1078, the Tower of London was later used
+									</p>
+								</div>
+								<div data-tab="2">
+									<div class="marked-title">About <span>development</span></div>
+									<p class="paragraph collapsed-bottom">
+										A historic castle built by <b>William</b> the <b>Conqueror</b> in 1078, the Tower of London was later used as a royal residence, treasury, arsenal and prison. A symbol of oppression, yet a beautiful sight. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, odio.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="scrollable">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7 col-sm-offset-5 col-md-5 col-md-offset-7">
+							<div class="title" data-activate="0">Tate Modern</div>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, aliquam. Consectetur repudiandae voluptatem quasi, fuga voluptate dicta harum asperiores obcaecati praesentium, unde porro deleniti qui sapiente incidunt reiciendis, nostrum quidem?
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro perferendis illo harum ipsum autem excepturi ipsam quod animi. Id nobis ipsa, aperiam nisi! Ipsum nostrum aliquam nam! Neque, voluptas, assumenda.
+							</p>
+							<figure class="figure">
+								<img src="temp/book1.jpg" alt="">
+								<figcaption><i class="icon icon-info"></i>We can’t show more than two weeks.</figcaption>
+							</figure>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae perferendis facilis numquam magni iste atque officiis distinctio hic quisquam? Vero tenetur eveniet nihil culpa molestias ex repudiandae placeat aspernatur repellendus!
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit mollitia quisquam beatae modi aperiam autem dolore distinctio minus consectetur id voluptates, magni tempora facere debitis adipisci officiis illo nesciunt veniam.
+							</p>
+							<div class="title" data-activate="1">About Greece</div>
+							<figure class="figure">
+								<img src="temp/book2.jpg" alt="">
+								<figcaption>We can’t show more than two weeks.</figcaption>
+							</figure>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam eaque modi, sint placeat at pariatur. Dolore ratione repudiandae eaque, atque, ea illo vero provident necessitatibus illum, expedita eum nam commodi.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi deleniti ipsam nostrum, earum incidunt, praesentium porro repellendus excepturi, voluptas esse dolorum, perspiciatis cum veniam unde accusantium impedit dolores temporibus nihil.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime error quibusdam, itaque cum magnam autem optio, eaque saepe tenetur molestiae, maiores repellendus labore sit delectus sint blanditiis nemo fuga deserunt.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta deserunt recusandae alias, fuga magnam excepturi minus doloremque, inventore explicabo animi vel quo aspernatur vero, fugit maxime rerum nobis repellendus deleniti.
+							</p>
+							<div class="title" data-activate="2">About development</div>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa voluptatem aliquid quis illum incidunt reiciendis minus ea mollitia, vitae aliquam neque consectetur enim temporibus dolorum recusandae iure odit ipsum beatae.
+							</p>
+							<figure class="figure">
+								<img src="temp/book3.jpg" alt="">
+							</figure>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sint odio amet possimus, voluptatum illum modi minus quaerat excepturi eius, beatae eum harum vero velit impedit est architecto alias tempore.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi deleniti ipsam nostrum, earum incidunt, praesentium porro repellendus excepturi, voluptas esse dolorum, perspiciatis cum veniam unde accusantium impedit dolores temporibus nihil.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime error quibusdam, itaque cum magnam autem optio, eaque saepe tenetur molestiae, maiores repellendus labore sit delectus sint blanditiis nemo fuga deserunt.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta deserunt recusandae alias, fuga magnam excepturi minus doloremque, inventore explicabo animi vel quo aspernatur vero, fugit maxime rerum nobis repellendus deleniti.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa voluptatem aliquid quis illum incidunt reiciendis minus ea mollitia, vitae aliquam neque consectetur enim temporibus dolorum recusandae iure odit ipsum beatae.
+							</p>
+							<p class="paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem sint odio amet possimus, voluptatum illum modi minus quaerat excepturi eius, beatae eum harum vero velit impedit est architecto alias tempore.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<a href="#" class="scroll-top">
+		<i class="icon icon-arrow-up"></i>
+	</a>
+
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9 sm-show">
+					<ul class="clear menu">
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="#">Cities</a></li>
+						<li><a href="#">Airlines</a></li>
+						<li><a href="#">Map</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Jobs</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7">
+							<ul class="clear socials">
+								<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-5 align-right first-xs last-sm">
+	<!-- 						<a href="#" class="language">
+								EN<img src="img/icons/en.svg" alt="">
+							</a> -->
+							<div data-dropdown class="language">
+								<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+								<div class="dropdown">
+									<ul class="lang-list clear">
+										<li class="item active">
+											<a href="#" class="lang-select">
+												<img src="img/icons/en.svg" alt="en" class="img-icon">
+												English
+											</a>
+										</li>
+										<li class="item">
+											<a href="#" class="lang-select">
+												<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+												Greek
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="copyright">© 2016 Travelkiki.</span>
+						<a href="terms.html" class="link">Terms</a>
+						<a href="#" class="link">Privacy policy</a>
+						<a href="contacts.html" class="link">Contact Us</a>
+					</div>
+					<div class="col-xs-12 col-sm-4 align-right">
+						<a href="#" class="information">@ Inform me about Travelkiki</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	
+
+	<div class="ticket-popup">
+		<button class="btn close-popup" type="button">
+			<i class="icon icon-arrow-left"></i>
+		</button>
+		<a href="index.html" class="site-logo">
+			<img src="img/logo.svg" alt="logo" class="dark-logo">
+			<img src="img/logo-white.svg" alt="logo" class="light-logo">
+		</a>
+		<div class="offers-label">
+			<img src="img/icons/offers-icon.svg" alt="icon">
+		</div>
+		<div class="map-wrapper">
+			<div id="map" class="map"></div>
+		</div>
+		<div class="content-wrapper">
+			<ul class="clear" data-tickets-info>
+				<li>
+					<div class="small-ticket">
+						<div class="row collapsed-row middle-xs">
+							<div class="col-xs-6">
+								<img src="temp/provider1.png" alt="" class="airline-image dark">
+								<img src="temp/logo1-light.svg" alt="" class="airline-image light">
+							</div>
+							<div class="col-xs-6 align-right">
+								<div class="date">
+									<span class="wrap-icon">
+										<i class="icon icon-fly-up"></i>
+									</span>
+									August, 5
+								</div>
+							</div>
+						</div>
+						<div class="row timing middle-xs offseted">
+							<div class="col-xs-4">
+								<div class="time-primary">06:30</div>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="status">
+									<span>2 stops &nbsp;&nbsp;</span>
+									<img src="img/stops.svg" alt="" class="indicator">
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<div class="time-primary">16:20</div>
+							</div>
+						</div>
+						<div class="row timing middle-xs">
+							<div class="col-xs-4">
+								<span class="label">LHR</span>
+								<span class="place">London</span>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="duration light">
+									<i class="icon icon-duration"></i> 3h 20
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<span class="place">Athens</span>
+								<span class="label">ATH</span>
+							</div>
+						</div>
+					
+						<div data-expanded>
+							<div class="subtitle">Swiss Airlines <b>LX 1839</b></div>
+							<ul class="clear stops-list">
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm</div>
+									<div class="airport"><span>LHR</span> London Heathrow</div>
+								</li>
+								<li data-only-time>
+									<span class="badge">50 min</span>
+								</li>
+								<li data-clock>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm <span class="badge">Waiting 16h20</span></div>
+									<div class="airport"><span class="bold">ZRH</span> Zurich long traveling name or title or something</div>
+								</li>
+								<li data-only-time>
+									<span class="badge">5h 20</span>
+								</li>
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">12:50pm</div>
+									<div class="airport"><span class="bold">ATH</span> Athens international</div>
+								</li>
+							</ul>
+							<div class="static-alert danger">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+						</div>
+						<div class="expander">
+							<i class="icon icon-angle-down"></i>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="small-ticket">
+						<div class="row collapsed-row middle-xs">
+							<div class="col-xs-6">
+								<img src="temp/provider2.png" alt="" class="airline-image dark">
+								<img src="temp/logo2-light.svg" alt="airline-image light">
+							</div>
+							<div class="col-xs-6 align-right">
+								<div class="date">
+									<span class="wrap-icon">
+										<i class="icon icon-fly-up"></i>
+									</span>
+									September, 5
+								</div>
+							</div>
+						</div>
+					
+						<div class="row timing middle-xs offseted">
+							<div class="col-xs-4">
+								<div class="time-primary">06:30</div>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="status">
+									<span>direct &nbsp;&nbsp;</span>
+									<img src="img/straight.svg" alt="" class="indicator">
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<div class="time-primary">16:20</div>
+							</div>
+						</div>
+					
+						<div class="row timing middle-xs">
+							<div class="col-xs-4">
+								<span class="label">LHR</span>
+								<span class="place">London</span>
+							</div>
+							<div class="col-xs-4 align-center">
+								<div class="duration light">
+									<i class="icon icon-duration"></i> 6h
+								</div>
+							</div>
+							<div class="col-xs-4 align-right">
+								<span class="place">Athens</span>
+								<span class="label">ATH</span>
+							</div>
+						</div>
+					
+						<div data-expanded>
+							<div class="subtitle">Swiss Airlines <b>LX 1839</b></div>
+							<ul class="clear stops-list">
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">06:30pm</div>
+									<div class="airport"><span class="bold">LHR</span> London Heathrow</div>
+								</li>
+								<li>
+									<div class="date">Aug 5, Fr</div>
+									<div class="time">12:50pm</div>
+									<div class="airport"><span class="bold">ATH</span> Athens international</div>
+								</li>
+							</ul>
+							<div class="static-alert danger">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert primary">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert success">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+							<div class="static-alert error">
+								<i class="icon icon-info"></i>
+								Attention please, You will arrive the next day!
+							</div>
+						</div>
+						<div class="expander">
+							<i class="icon icon-angle-down"></i>
+						</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking active">
+						<div class="price">249&euro;</div>
+						<div class="host">Pamediakopes.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking">
+						<div class="price">321&euro;</div>
+						<div class="host">Petas.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+				<li class="spaced">
+					<div class="booking">
+						<div class="price">32 412&euro;</div>
+						<div class="host">Pamediakopes.gr</div>
+						<div class="text">Book</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/vue.js"></script>
+	<script src="js/lib/math.js"></script>
+	<script src="js/lib/array.js"></script>
+	<script src="js/plugins/jquery.mousewheel.min.js"></script>
+	<script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="js/plugins/owl.carousel.min.js"></script>
+	<script src="js/plugins/moment.js"></script>
+	<script src="js/plugins/nouislider.min.js"></script>
+	<script src="js/plugins/progress.js"></script>
+
+	<script src="js/main.js"></script>
+	<script src="js/validator.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+	<script src="js/init/checkbox-class.js"></script>
+	<script src="js/init/validation.js"></script>
+	<!-- <script src="js/init/hero-parallax.js"></script> -->
+
+	<script src="js/init/copy-link.js"></script>
+
+	<script src="js/init/scrollbar.js"></script>
+	<script src="js/init/activate.js"></script>
+	<script src="js/init/expander.js"></script>
+	<script src="js/init/dropdown.js"></script>
+	<!-- for mobile version -->
+	<script src="js/init/text-animation.js"></script>
+	<script src="js/init/validation.js"></script>
+	<script src="js/init/vue.calendar-component.js"></script>
+	<script src="js/init/vue.search-filters.js"></script>
+
+	<script src="js/plugins/mapbox-gl.js"></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+	<script src="js/lib/maps.utils.js"></script>
+	<script src="js/init/city-map.js"></script>
+
+	<script src="js/new.search.i18n.js"></script>
+	<script src="js/new.search.engine.js"></script>
+	<script src="js/init/main-menu.js"></script>
+
+	<script>
+		SEARCH_ENGINE.showBackground = true; // we need it to prevent form collapsing by click 
+
+		// fake cities in "to" input
+		SEARCH_ENGINE.fakeCities = ["Berlin", "Praga", "London", "Dubai", "San Francisco"];
+
+		// suggestion, are you from this city?
+		SEARCH_ENGINE.setSuggestion('from', {
+			"location": "Athens",
+			"airport": "Athens International Airport",
+			"code": "ATH",
+			"country": "Greece"
+		});
+		SEARCH_ENGINE.activateSuggestion('from');
+
+		SEARCH_ENGINE.setSuggestion('to', {
+			"location": "Kalamata",
+			"airport": "Kalamata International Airport",
+			"code": "KLX",
+			"country": "Greece"
+		});
+
+		// go to results smoothly
+		$('#newSearchEngine').on('custom.submit', function(event) {
+			SEARCH_ENGINE.filters.enabled = true;
+			setTimeout(function() {
+				location.href = 'tickets.html';
+			}, 300);
+		});
+
+	</script>
+
+
+</body>
+</html>

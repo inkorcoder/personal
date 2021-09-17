@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>EYE</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<header class="heading">
+		<div class="container-fluid">
+			<div class="row collapsed-row">
+				<div class="col-xs-2">
+					<a href="index.html" class="back-link"><i class="material-icons">arrow_back</i></a>
+				</div>
+				<div class="col-xs-8 align-center">
+					Валиот
+				</div>
+			</div>
+		</div>
+		<div class="controls">
+			<ul class="clear">
+				<li>
+					<button class="action"><i class="material-icons success">done_all</i></button>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+	<main>
+
+		<div class="card">
+			<div class="row collapsed-row bordered">
+				<div class="col-xs-4">
+					<div class="heading">
+						<div class="text">Свойства проекта</div>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="heading">
+						<div class="text">Файлов 23</div>
+						<div class="controls">
+							<ul class="clear">
+								<li>
+									<button class="action"><i class="material-icons">delete_forever</i></button>
+								</li>
+								<li>
+									<button class="action"><i class="material-icons">border_inner</i></button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row collapsed-row bordered">
+				<div class="col-xs-4">
+					<div class="body">
+						<table class="table ignore-hover">
+							<tbody>
+								<tr>
+									<td><input type="text" value="5" class="input transparent"></td>
+									<td class="align-right"><small>Длительность слайда</small></td>
+								</tr>
+								<tr>
+									<td><input type="text" value="10" class="input transparent"></td>
+									<td class="align-right"><small>Длительность пустот</small></td>
+								</tr>
+								<tr>
+									<td><input type="text" value="1" class="input transparent"></td>
+									<td class="align-right"><small>Множитель</small></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="switch-group">
+											<input type="radio" name="random" checked value="on" id="random1">
+											<label for="random1">Вкл</label>
+											<input type="radio" name="random" value="off" id="random2">
+											<label for="random2">Выкл</label>
+										</div>
+									</td>
+									<td class="align-right"><small>Случайный поряок</small></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="body">
+						<ul class="clear thumbnails-list">
+							<li class="wide">
+								<div class="file-label">
+									<input type="file" id="file" multiple="true">
+									<label for="file">
+										<span class="material-icons">add_a_photo</span>
+									</label>
+								</div>
+							</li>
+							
+							<li>
+								<a href="#image1">
+									<figure class="image-cover">
+										<img src="temp/1.jpg" alt="">
+									</figure>
+								</a>
+							</li>
+							<li>
+								<a href="#image2">
+									<figure class="image-cover">
+										<img src="temp/2.jpg" alt="">
+									</figure>
+									<i class="material-icons">bar_chart</i>
+								</a>
+							</li>
+							<li>
+								<a href="#image3">
+									<figure class="image-cover">
+										<img src="temp/3.jpg" alt="" class="vertical">
+									</figure>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+<!-- 
+	<div class="dropdown">
+		<button class="anchor">
+			<i class="material-icons">track_changes</i>
+		</button>
+		<div class="dropdown-menu">
+			<ul class="clear">
+				<li class="active"><a href="#">Все</a></li>
+				<li><a href="#">С1 - Мозжечок</a></li>
+				<li><a href="#">С2 - Периферия</a></li>
+				<li><a href="#">D1 - Префронт</a></li>
+				<li><a href="#">E2 - Окраина</a></li>
+				<li><a href="#">E3 - лоб</a></li>
+			</ul>
+		</div>
+	</div> -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+	<!-- https://material.io/tools/icons/?style=baseline -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="js/init/dropdown.js"></script>
+	<script src="js/init/table-checkbox.js"></script>
+	<script src="js/init/thumbnails.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../icons/icomoon.eot?y7ju8n');
+  src:  url('../icons/icomoon.eot?y7ju8n#iefix') format('embedded-opentype'),
+    url('../icons/icomoon.ttf?y7ju8n') format('truetype'),
+    url('../icons/icomoon.woff?y7ju8n') format('woff'),
+    url('../icons/icomoon.svg?y7ju8n#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logout .path1:before {
+  content: "\e900";
+  color: rgb(188, 196, 246);
+}
+.icon-logout .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(86, 107, 233);
+}
+.icon-login .path1:before {
+  content: "\e902";
+  color: rgb(188, 196, 246);
+}
+.icon-login .path2:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(86, 107, 233);
+}
+.icon-razor:before {
+  content: "\e906";
+}
+.icon-pdf:before {
+  content: "\e907";
+}
+.icon-razor2:before {
+  content: "\e909";
+}
+.icon-download:before {
+  content: "\e90a";
+  color: #566be9;
+}
+.icon-arrow-left:before {
+  content: "\e90b";
+}
+.icon-arrow-right:before {
+  content: "\e904";
+}
+.icon-arrow-up:before {
+  content: "\e905";
+}
+.icon-arrow-down:before {
+  content: "\e908";
+}
+.icon-chevron-down:before {
+  content: "\e90c";
+}
+.icon-chevron-up:before {
+  content: "\e913";
+}
+.icon-chevron-left:before {
+  content: "\e914";
+}
+.icon-chevron-right:before {
+  content: "\e915";
+}
+.icon-delete .path1:before {
+  content: "\e90d";
+  color: rgb(52, 54, 62);
+}
+.icon-delete .path2:before {
+  content: "\e90e";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-plus:before {
+  content: "\e90f";
+}
+.icon-minus:before {
+  content: "\e910";
+}
+.icon-star:before {
+  content: "\e911";
+  color: #566be9;
+}
+.icon-info:before {
+  content: "\e912";
+}

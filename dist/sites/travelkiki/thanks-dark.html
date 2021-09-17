@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Travelkiki :: Thank you</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header static">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12">
+					<button class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</button>
+					<a href="index.html" class="logo">
+						<img src="img/logo-white.svg" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="darken-theme">
+
+		<section class="section tickets-section" id="loadedTicket">
+			<div class="container">
+				<div class="align-center">
+					<h2 class="section-lead">Thank you for choosing us!</h2>
+					<div class="line-cover">
+						<canvas id="thanks-canvas" data-dot-color="#C0C0C0" data-line-color="#fff" data-bg-color="#23242a"></canvas>
+					</div>
+					<div class="intro">
+						Wait a while we are 
+						<span class="block-xs">redirecting you to Petas</span>
+					</div>
+					<figure class="logo"><img src="temp/company-logo2.svg" alt=""></figure>
+				</div>
+				<!-- ticket -->
+				<div class="ticket dark-ticket">
+					<div class="layout">
+						<div class="column collapsed">
+							<div class="map-wrapper">
+								<div class="rounder">
+									<img src="temp/map-dark.png">
+								</div>
+							</div>
+						</div>
+						<div class="column" data-double>
+							<div class="row middle-xs paddless-row">
+								<div class="col-xs-6">
+									<img src="temp/logo1-light.svg" alt="" class="airline-image">
+								</div>
+								<div class="col-xs-6 align-right">
+									<div class="date">
+										<span class="wrap-icon" data-tooltip="Depart">
+											<i class="icon icon-fly-up"></i>
+										</span>
+										July, 5
+									</div>
+								</div>
+							</div>
+							<div class="content">
+								<div class="row timing middle-xs collapsed-row">
+									<div class="col-xs-4" data-hover>06:30</div>
+									<div class="col-xs-4 align-center">
+										<div class="smaller">
+											direct
+											<img src="img/straight.svg" alt="" class="indicator">
+										</div>
+									</div>
+									<div class="col-xs-4 align-right" data-hover>16:20</div>
+								</div>
+								<div class="row labels middle-xs">
+									<div class="col-xs-4">ATH</div>
+									<div class="col-xs-4 align-center">
+										<div class="duration light">
+											<i class="icon icon-duration"></i> 3h 20
+										</div>
+									</div>
+									<div class="col-xs-4 align-right">LHR</div>
+								</div>
+							</div>
+							<div class="separator"></div>
+						</div>
+						<div class="column" data-double>
+							<div class="row middle-xs paddless-row">
+								<div class="col-xs-6">
+									<img src="temp/logo2-light.svg" alt="" class="airline-image">
+								</div>
+								<div class="col-xs-6 align-right">
+									<div class="date">
+										<span class="wrap-icon" data-tooltip="Return">
+											<i class="icon icon-fly-return"></i>
+										</span>
+										September, 8
+									</div>
+								</div>
+							</div>
+							<div class="content">
+								<div class="row timing middle-xs collapsed-row">
+									<div class="col-xs-4" data-hover>10:45</div>
+									<div class="col-xs-4 align-center">
+										<div class="smaller">
+											1 stop
+											<img src="img/stops.svg" alt="" class="indicator">
+										</div>
+									</div>
+									<div class="col-xs-4 align-right" data-hover>19:20</div>
+								</div>
+								<div class="row labels middle-xs">
+									<div class="col-xs-4">LHR</div>
+									<div class="col-xs-4 align-center">
+										<div class="duration light">
+											<i class="icon icon-duration"></i> 6h
+										</div>
+									</div>
+									<div class="col-xs-4 align-right">ATH</div>
+								</div>
+							</div>
+							<div class="separator faded"></div>
+						</div>
+						<div class="column small align-center no-corner-right no-border">
+							<div class="price">342&euro;</div>
+							<div class="price old-price"><span>520&euro;</span></div>
+							<div class="offers-state">
+								<div class="label-cover">
+									<div class="label-icon">
+										<img src="img/icons/percent-icon.svg" alt="icon">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+	<script>
+		var useDarkTheme = true; //darken theme
+	</script>
+
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/math.js"></script>
+	<script src="js/lib/array.js"></script>
+	<script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="js/plugins/owl.carousel.min.js"></script>
+	<script src="js/plugins/moment.js"></script>
+	<!-- <script src="js/plugins/jquery.daterangepicker.min.js"></script> -->
+	<script src="js/plugins/nouislider.min.js"></script>
+	<script src="js/plugins/jquery.mousewheel.min.js"></script>
+
+	<script src="js/main.js"></script>
+	<script src="js/validator.js"></script>
+
+	<script src="http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=4b2a78506f9ea61c408b16a2765ff6b1"></script>
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+	<script src="js/init/polyline.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+
+	<script src="js/init/scrollbar.js"></script>
+	<script src="js/init/activate.js"></script>
+	<script src="js/init/expander.js"></script>
+	<script src="js/init/dropdown.js"></script>
+	<script src="js/init/checkbox-class.js"></script>
+	<script src="js/init/tickets-single.js"></script>
+	<script src="js/init/validation.js"></script>
+	<script src="js/init/thanks-canvas.js"></script>
+
+	<script>
+		$('.form-section form').on('custom.submit', function(event) {
+			console.log(this, event);
+		});
+	</script>
+
+</body>
+</html>

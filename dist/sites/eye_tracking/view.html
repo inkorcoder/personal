@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>EYE</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<header class="heading">
+		<div class="container-fluid">
+			<div class="row collapsed-row">
+				<div class="col-xs-2">
+					<a href="index.html" class="back-link"><i class="material-icons">arrow_back</i></a>
+				</div>
+				<div class="col-xs-8 align-center">
+					Валиот
+				</div>
+			</div>
+		</div>
+		<div class="controls">
+			<ul class="clear">
+				<li>
+					<a href="#" class="action"><i class="material-icons">cloud</i></a>
+				</li>
+			</ul>
+		</div>
+	</header>
+
+	<main>
+
+		<div class="card">
+			<div class="heading has-controls">
+				<div class="text">Проведено исследований 5</div>
+				<div class="controls">
+					<ul class="clear">
+						<li class="hidden" id="visibleBtn">
+							<button class="action"><i class="material-icons">visibility</i></button>
+						</li>
+						<li class="hidden" id="deleteBtn">
+							<button class="action"><i class="material-icons">delete_forever</i></button>
+						</li>
+						<li>
+							<button class="action"><i class="material-icons">add</i></button>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="body">
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width: 50px;">
+								<div class="checkbox">
+									<input type="checkbox" id="ch1" data-select-all>
+									<label for="ch1"></label>
+								</div>
+							</th>
+							<th style="width: 40px;">№</th>
+							<th>Испытуемый</th>
+							<th class="align-right">Дата создания</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="checkbox">
+									<input type="checkbox" data-show-control="#visibleBtn, #deleteBtn" id="ch6">
+									<label for="ch6"></label>
+								</div>
+							</td>
+							<td>1</td>
+							<td>Ya Chin-Ho</td>
+							<td class="align-right">14 декабря, 15:08</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="checkbox">
+									<input type="checkbox" data-show-control="#visibleBtn, #deleteBtn" id="ch2">
+									<label for="ch2"></label>
+								</div>
+							</td>
+							<td>2</td>
+							<td>Nathaniel Phillips</td>
+							<td class="align-right">14 декабря, 15:08</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="checkbox">
+									<input type="checkbox" data-show-control="#visibleBtn, #deleteBtn" id="ch3">
+									<label for="ch3"></label>
+								</div>
+							</td>
+							<td>3</td>
+							<td>Fua Lamba</td>
+							<td class="align-right">14 декабря, 15:08</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="checkbox">
+									<input type="checkbox" data-show-control="#visibleBtn, #deleteBtn" id="ch4">
+									<label for="ch4"></label>
+								</div>
+							</td>
+							<td>4</td>
+							<td>Masood El Toure</td>
+							<td class="align-right">14 декабря, 15:08</td>
+						</tr>
+						<tr class="faded">
+							<td>
+								<div class="checkbox">
+									<input type="checkbox" data-show-control="#visibleBtn, #deleteBtn" id="ch5">
+									<label for="ch5"></label>
+								</div>
+							</td>
+							<td>5</td>
+							<td>Phakamile Sikali: скрыто</td>
+							<td class="align-right">14 декабря, 15:08</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="row collapsed-row bordered">
+				<div class="col-xs-4">
+					<div class="heading">
+						<div class="text">Свойства проекта</div>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="heading">
+						<div class="text">Файлов 23</div>
+					</div>
+				</div>
+			</div>
+			<div class="row collapsed-row bordered">
+				<div class="col-xs-4">
+					<div class="body">
+						<table class="table ignore-hover collapsed">
+							<tbody>
+								<tr>
+									<td>Длительность слайда</td>
+									<td class="align-right">5 сек</td>
+								</tr>
+								<tr>
+									<td>Длительность пустот между слайдами</td>
+									<td class="align-right">10 сек</td>
+								</tr>
+								<tr>
+									<td>Множитель</td>
+									<td class="align-right">1х</td>
+								</tr>
+								<tr>
+									<td>Случайный поряок</td>
+									<td class="align-right">ВКЛ</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-xs-8">
+					<div class="body">
+						<ul class="clear thumbnails-list">
+							
+							<li>
+								<a href="#image1">
+									<figure class="image-cover">
+										<img src="temp/1.jpg" alt="">
+									</figure>
+								</a>
+							</li>
+							<li>
+								<a href="#image2">
+									<figure class="image-cover">
+										<img src="temp/2.jpg" alt="">
+									</figure>
+									<i class="material-icons">bar_chart</i>
+								</a>
+							</li>
+							<li>
+								<a href="#image3">
+									<figure class="image-cover">
+										<img src="temp/3.jpg" alt="" class="vertical">
+									</figure>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+<!-- 
+	<div class="dropdown">
+		<button class="anchor">
+			<i class="material-icons">track_changes</i>
+		</button>
+		<div class="dropdown-menu">
+			<ul class="clear">
+				<li class="active"><a href="#">Все</a></li>
+				<li><a href="#">С1 - Мозжечок</a></li>
+				<li><a href="#">С2 - Периферия</a></li>
+				<li><a href="#">D1 - Префронт</a></li>
+				<li><a href="#">E2 - Окраина</a></li>
+				<li><a href="#">E3 - лоб</a></li>
+			</ul>
+		</div>
+	</div> -->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+	<!-- https://material.io/tools/icons/?style=baseline -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="js/init/dropdown.js"></script>
+	<script src="js/init/table-checkbox.js"></script>
+	<!-- <script src="js/init/thumbnails.js"></script> -->
+
+</body>
+</html>

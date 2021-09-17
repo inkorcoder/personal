@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<div class="copy-block">
+		<div class="container-fluid">
+			<div class="layout">
+				<div class="column">
+					<div data-tooltip="Copy to clipboard" data-tooltip-copied="Copied to clipboard!">
+						<button type="button" class="btn btn-round" data-copy-link="copyLink">
+							<i class="icon icon-copy"></i>
+						</button>
+						<button type="button" class="btn btn-link sm-hide" data-copy-link="copyLink">
+							Copy link
+						</button>
+					</div>
+				</div>
+				<div class="column">
+					<input type="text" readonly value="https://www.travelkiki.com/en/airlines/lufthansa/" id="copyLink">
+				</div>
+				<div class="column">
+					<div data-tooltip="Share with Facebook">
+						<button class="btn btn-round">
+							<i class="icon icon-facebook"></i>
+						</button>
+					</div>
+					<div data-tooltip="Share with Messenger">
+						<button class="btn btn-round">
+							<i class="icon icon-messenger"></i>
+						</button>
+					</div>
+					<div data-tooltip="Share with Viber">
+						<button class="btn btn-round">
+							<i class="icon icon-viber"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<ul class="clear breadcrumbs">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Airlines</a></li>
+				<li class="active">Lufthansa</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header static collapsed">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+					<button type="button" class="btn btn-round sm-hide" data-toggle-copy>
+						<i class="icon icon-share inactive"></i>
+						<i class="icon icon-close active"></i>
+					</button>
+				</div>
+				<div class="col-xs-4 align-center sm-show">
+	<!-- 				<div data-tooltip="Share">
+						<button type="button" class="btn btn-round dark" data-toggle-copy>
+							<i class="icon icon-share inactive"></i>
+							<i class="icon icon-close active"></i>
+						</button>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="main-menu">
+		<div class="wrapper">
+			<div class="header">
+				<ul class="clear socials">
+					<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+				</ul>
+			</div>
+			<div class="body">
+				<ul class="clear menu">
+					<li><a href="#" class="active">Home</a></li>
+					<li><a href="#">Cities</a></li>
+					<li><a href="#">Airlines</a></li>
+					<li><a href="#">Map</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+			<div class="footer">
+				<ul class="clear links">
+					<li><a href="terms.html" class="link">Terms</a></li>
+					<li><a href="#" class="link">Privacy policy</a></li>
+					<li><a href="contacts.html" class="link">Contact Us</a></li>
+				</ul>
+				<div class="copyright">© 2016 Travelkiki.</div>
+				<div data-dropdown class="language">
+					<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+					<div class="dropdown">
+						<ul class="lang-list clear">
+							<li class="item active">
+								<a href="#" class="lang-select">
+									<img src="img/icons/en.svg" alt="en" class="img-icon">
+									English
+								</a>
+							</li>
+							<li class="item">
+								<a href="#" class="lang-select">
+									<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+									Greek
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<button type="button" data-main-menu-toggler>
+		<i></i>
+		<i></i>
+	</button>
+	
+	<!-- <div data-dropdown class="language">
+		<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+		<div class="dropdown">
+			<ul class="lang-list clear">
+				<li class="item active">
+					<a href="#" class="lang-select">
+						<img src="img/icons/en.svg" alt="en" class="img-icon">
+						English
+					</a>
+				</li>
+				<li class="item">
+					<a href="#" class="lang-select">
+						<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+						Greek
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+
+	<div class="fixed-nav fixed collapsed">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-lg-2">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-1 col-lg-8 align-center">
+					<div data-tooltip="Share">
+						<button type="button" class="btn btn-round dark" data-toggle-copy>
+							<i class="icon icon-share inactive"></i>
+							<i class="icon icon-close active"></i>
+						</button>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8" id="nav-copy">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main>
+
+		<section class="section spaced-top">
+			<div class="container">
+				<div class="section-title align-center">
+					<span class="paper-plane">Travelkiki.</span> About us
+				</div>
+				<div class="section-subtitle align-center">
+					We don’t sell tickets, <br class="ms-hide"> but help to find them for free.
+				</div>
+
+				<div class="sm-hide">
+					<figure class="figure">
+						<img src="temp/about.jpg" alt="">
+					</figure>
+				</div>
+				<div class="about-article">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-lg-5">
+							<div class="marked-title">Meet us</div>
+							<div class="paragraph">
+								The price you see on Travelkki is the final price. 
+								We removed all hidden services and checkmarks. 
+								All is fair, as on nudist beaches of France.
+							</div>
+							<div class="paragraph">
+								We compare all available flight options for your request, and then send you to the official websites 
+								of airlines and agencies. For the search you do not 
+								owe us anything. Maybe just cute tip.
+							</div>
+
+							<div class="marked-title">Travelkiki team</div>
+							<div class="paragraph">
+								The price you see on Travelkki is the final price. 
+								We removed all hidden services and checkmarks. 
+								All is fair, as on nudist beaches of France.
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-lg-offset-1">
+							<div class="sm-show">
+								<figure class="figure">
+									<img src="temp/about.jpg" alt="">
+								</figure>
+							</div>
+							<ul class="clear persons-list">
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="image">
+										<img src="temp/person.jpg" alt="">
+									</div>
+									<div class="content">
+										<div class="name">George Goodyer</div>
+										<div class="bio">
+											<b>VP, Engineering</b> <br>
+											George Goodyer is VP of Engineering & acts 
+											as Engineering Lead on our worldwide.
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<a href="#" class="scroll-top">
+		<i class="icon icon-arrow-up"></i>
+	</a>
+
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9 sm-show">
+					<ul class="clear menu">
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="#">Cities</a></li>
+						<li><a href="#">Airlines</a></li>
+						<li><a href="#">Map</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Jobs</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7">
+							<ul class="clear socials">
+								<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-5 align-right first-xs last-sm">
+	<!-- 						<a href="#" class="language">
+								EN<img src="img/icons/en.svg" alt="">
+							</a> -->
+							<div data-dropdown class="language">
+								<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+								<div class="dropdown">
+									<ul class="lang-list clear">
+										<li class="item active">
+											<a href="#" class="lang-select">
+												<img src="img/icons/en.svg" alt="en" class="img-icon">
+												English
+											</a>
+										</li>
+										<li class="item">
+											<a href="#" class="lang-select">
+												<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+												Greek
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="copyright">© 2016 Travelkiki.</span>
+						<a href="terms.html" class="link">Terms</a>
+						<a href="#" class="link">Privacy policy</a>
+						<a href="contacts.html" class="link">Contact Us</a>
+					</div>
+					<div class="col-xs-12 col-sm-4 align-right">
+						<a href="#" class="information">@ Inform me about Travelkiki</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/vue.js"></script>
+	<script src="js/lib/math.js"></script>
+	<script src="js/lib/array.js"></script>
+	<script src="js/lib/graph.js"></script>
+	<script src="js/plugins/jquery.mousewheel.min.js"></script>
+	<script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="js/plugins/owl.carousel.min.js"></script>
+	<script src="js/plugins/moment.js"></script>
+	<script src="js/plugins/nouislider.min.js"></script>
+	<script src="js/plugins/progress.js"></script>
+
+	<script src="js/main.js"></script>
+	<script src="js/validator.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+	<script src="js/init/checkbox-class.js"></script>
+	<script src="js/init/validation.js"></script>
+	<script src="js/init/hero-parallax.js"></script>
+
+	<script src="js/init/copy-link.js"></script>
+
+	<script src="js/init/scrollbar.js"></script>
+	<script src="js/init/activate.js"></script>
+	<script src="js/init/expander.js"></script>
+	<script src="js/init/dropdown.js"></script>
+	<!-- for mobile version -->
+	<script src="js/init/validation.js"></script>
+	<script src="js/init/main-menu.js"></script>
+
+	<script>
+		// $('.form-section form').on('custom.submit', function(event) {
+		// 	location.href = 'tickets.html';
+		// });
+	</script>
+
+</body>
+</html>

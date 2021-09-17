@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>BIC</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<header class="main-header">
+		<div class="container-fluid">
+			<div class="row middle-xs">
+				<div class="col-xs-6">
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+					<a href="bic.com" class="logo larger">
+						<img src="img/logo2.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-6 align-right">
+					<div data-tooltip="Ranking">
+						<a href="#" class="btn btn-round">
+							<i class="icon icon-star"></i>
+						</a>
+					</div>
+					<div data-tooltip="Information">
+						<a href="#" class="btn btn-round">
+							<i class="icon icon-info"></i>
+						</a>
+					</div>
+					<div data-tooltip="Logout">
+						<a href="#" class="btn btn-round transparent">
+							<i class="icon icon-logout">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+						</a>
+					</div>
+					<div data-tooltip="Login">
+						<a href="#" class="btn btn-round transparent">
+							<i class="icon icon-login">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="footer">
+				<a href="index.html" class="back">
+					<i class="icon icon-arrow-left"></i>
+				</a>
+				<a href="index.html" class="home">
+					<img src="img/item1.png" alt="">
+				</a>
+				<ul class="breadcrumbs">
+					<li>
+						<a href="#">
+							<span class="image">
+								<img src="img/item1.png" alt="">
+							</span>
+							U.S. Females, s.p.e.p.
+						</a>
+					</li>
+					<li><a href="#">Spa (5Mvb)</a></li>
+					<li><a href="#" class="active">Soleil 5MvB with Lubras</a></li>
+					<li>Simple text</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	<main class="results">
+
+		<form action="#" class="filter">
+			<div class="column">
+				<select class="selectbox" multiple="true" name="" id="wave">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+				<label for="wave">Wave</label>
+			</div>
+			<div class="column">
+				<select class="selectbox" multiple="true" name="" id="product">
+					<option value="1">3-blade razor</option>
+					<option value="2">570 handle + 5 MvB head</option>
+					<option value="3">570 handle + 5 MvB Retainer head</option>
+					<option value="4">5-blade razor</option>
+					<option value="5">5-blade razor (featuring the Motion Sphere) </option>
+					<option value="6">B by</option>
+					<option value="7">B by handle + B Plus Sensitive</option>
+					<option value="8">B by handle + B Plus with easy glide</option>
+					<option value="9">B by handle + B Plus with forma coat</option>
+					<option value="10">B by handle + B Plus with lubra</option>
+				</select>
+				<label for="product">Product</label>
+			</div>
+			<div class="column">
+				<select class="selectbox" multiple="true" name="" id="method">
+					<option value="1">comparative</option>
+					<option value="2">durability</option>
+					<option value="3">monadic</option>
+				</select>
+				<label for="method">Method</label>
+			</div>
+			<div class="column">
+				<select class="selectbox" multiple="true" name="" id="brand">
+					<option value="1">BIC</option>
+					<option value="2">DORCO</option>
+					<option value="3">EQUATE</option>
+					<option value="4">GILLETTE</option>
+					<option value="5">Harry's</option>
+					<option value="6">King of Shaves</option>
+					<option value="7">Schick</option>
+				</select>
+				<label for="brand">Brand</label>
+			</div>
+			<div class="column">
+				<button class="btn reset" type="reset"></button>
+				<button class="btn submit btn-block" type="submit">
+					Apply
+					<i class="icon icon-arrow-right"></i>
+				</button>
+			</div>
+		</form>
+
+		<div class="container">
+			<div class="card">
+				<table class="table highlight" id="resultsTable">
+					<thead>
+						<tr>
+							<th>Wave</th>
+							<th>Brand</th>
+							<th>Product</th>
+							<th>Method</th>
+							<th><i class="icon icon-pdf"></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>10</td>
+							<td>BIC</td>
+							<td><a href="detail.html">Olay</a>, <a href="detail.html">Spa (5Mvb)</a></td>
+							<td>Monadic</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></a></td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>BIC</td>
+							<td><a href="detail.html">Spa (5Mvb) final formula of soap durability</a>, <a href="detail.html">Intuition</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>DORCO</td>
+							<td><a href="detail.html">Intuition</a>, <a href="detail.html">Nivea Shaver</a></td>
+							<td>Comparative</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>Harry's</td>
+							<td><a href="detail.html">Nivea Shaver</a>, <a href="detail.html">Intuition</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>DORCO</td>
+							<td><a href="detail.html">Spa (5Mvb) final formula of soap durability</a>, <a href="detail.html">Intuition</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>Harry's</td>
+							<td><a href="detail.html">Intuition</a>, <a href="detail.html">Nivea Shaver</a></td>
+							<td>Comparative</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td>DORCO</td>
+							<td><a href="detail.html">Intuition</a>, <a href="detail.html">Nivea Shaver</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>Harry's</td>
+							<td><a href="detail.html">Spa (5Mvb) final formula of soap durability</a>, <a href="detail.html">Intuition</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>BIC</td>
+							<td><a href="detail.html">Spa (5Mvb) final formula of soap durability</a>, <a href="detail.html">Intuition</a></td>
+							<td>Comparative</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>DORCO</td>
+							<td><a href="detail.html">Intuition</a>, <a href="detail.html">Nivea Shaver</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>Harry's</td>
+							<td><a href="detail.html">Soleil Glow with Plasma Coating Adaptor</a></td>
+							<td>Comparative</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>BIC</td>
+							<td><a href="detail.html">Intuition</a>, <a href="detail.html">Nivea Shaver</a></td>
+							<td>Durability</td>
+							<td><a href="detail.html"><i class="icon icon-download"></i></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</main>
+
+	<footer class="main-footer">
+		<div class="container">
+			Copyright © 2018 BIC.
+		</div>
+	</footer>
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/init/validation.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<script src="js/init/select2-init.js"></script>
+
+	<script src="js/validator.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="js/init/tables.js"></script>
+
+</body>
+</html>

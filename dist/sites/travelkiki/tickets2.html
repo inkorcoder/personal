@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body data-route="main">
+
+	<!-- .collapsed - for collapsed (small) header + "back" arrow -->
+	<header class="main-header collapsed fixed">
+		<div class="container-fluid relative">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4">
+					<a href="index.html" class="btn btn-back">
+						<span class="text"><i class="icon icon-arrow-left"></i></span>
+					</a>
+					<a href="index.html" class="logo">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<div class="col-xs-4 sm-show">
+	<!-- 				<button type="button" data-toggle-copy>
+						<i class="icon icon-share"></i>
+					</button> -->
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main>
+
+		<!-- form & map -->
+		<section class="form-section">
+			<div class="filter">
+				<form action="#" id="form" autocomplete="off" v-on:submit.prevent="onSend($event)" v-bind:class="{collapsed: collapsed}">
+					<!-- static -->
+					<div class="static">
+						<div class="container-fluid">
+							<div class="row moddle-xs">
+								<div class="col-xs-2 col-xs-offset-2">{{type}}</div>
+								<div class="col-xs-2">
+									<span class="passengers-icon" v-bind:style="{backgroundImage: 'url(img/icons/passenger'+Math.min(passengersCount, 4)+'.svg)'}"></span>
+									Passenger<span v-cloak>{{passengersCount > 1 ? 's' : ''}}</span> 
+								</div>
+								<div class="col-xs-2">
+									{{from.substring(0, 3)}}
+									―
+									<i class="icon icon-plane"></i>
+									―
+									{{to.substring(0, 3)}}
+								</div>
+								<div class="col-xs-2">{{date}}</div>
+								<div class="col-xs-2 align-right">
+									<span class="text"><i class="icon icon-drop"></i></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- filter -->
+					<div class="container filter-body">
+						<div class="layout offset-bottom">
+							<div class="column align-center">
+								<div class="checkboxes">
+									<input type="radio" name="way-type" v-model="type" value="roundtrip" id="roundTrip" checked>
+									<label class="btn btn-link" for="roundTrip" data-overlay="ROUNDTRIP">ROUNDTRIP</label>
+									<input type="radio" name="way-type" v-model="type" value="oneway" id="onewayTrip">
+									<label class="btn btn-link" for="onewayTrip" data-overlay="ONE WAY">ONE WAY</label>
+								</div>
+							</div>
+							<div class="column small"></div>
+							<div class="column">
+								<div data-dropdown>
+									<button type="button" class="btn btn-link btn-block anchor">
+										<span class="text align-center">
+											<span class="passengers-icon"
+												v-bind:style="{
+													backgroundImage: 'url(img/icons/passenger'+Math.min(passengersCount, 4)+'.svg)'
+												}"
+											></span>
+											Passenger<span v-cloak>{{passengersCount > 1 ? 's' : ''}}</span> 
+											<i class="icon icon-drop"></i>
+										</span>
+									</button>
+									<div class="dropdown max-width">
+										<div class="block">
+											<div class="title">
+												<i class="icon icon-adult"></i> Adults
+												<span class="badge">16+</span>
+											</div>
+											<div class="calculator">
+												<span class="minus" v-on:click="decrement('adult', 0)">
+													<i class="icon icon-minus"></i>
+												</span>
+												<input type="text"
+													v-bind:value="passengers.adult"
+													maxlength="1"
+													v-on:input="setPassengerCount('adult', $event)"
+												>
+												<span class="plus" v-on:click="increment('adult', 9)">
+													<i class="icon icon-plus"></i>
+												</span>
+											</div>
+										</div>
+										<div class="block">
+											<div class="title">
+												<i class="icon icon-children"></i> Children
+												<span class="badge">2-15</span>
+											</div>
+											<div class="calculator">
+												<span class="minus" v-on:click="decrement('childrens', 0)">
+													<i class="icon icon-minus"></i>
+												</span>
+												<input type="text"
+													v-bind:value="passengers.childrens"
+													maxlength="1"
+													v-on:input="setPassengerCount('childrens', $event)"
+												>
+												<span class="plus" v-on:click="increment('childrens', 9)">
+													<i class="icon icon-plus"></i>
+												</span>
+											</div>
+										</div>
+										<div class="block">
+											<div class="title">
+												<i class="icon icon-babies"></i> Babies
+												<span class="badge">0-2</span>
+											</div>
+											<div class="calculator">
+												<span class="minus" v-on:click="decrement('babies',0)">
+													<i class="icon icon-minus"></i>
+												</span>
+												<input type="text"
+													v-bind:value="passengers.babies"
+													maxlength="1"
+													v-on:input="setPassengerCount('babies', $event)"
+												>
+												<span class="plus" v-on:click="increment('babies', 9)">
+													<i class="icon icon-plus"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="column align-center">
+								<div class="checkboxes">
+									<input type="checkbox" id="onlyDirect">
+									<label for="onlyDirect" class="btn btn-link btn-block anchor">
+										<span class="text">
+											<i class="icon icon-unchecked"></i> DIRECT FLYGHTS ONLY
+										</span>
+									</label>
+								</div>
+							</div>
+							<div class="column"></div>
+						</div>
+					</div>
+					<!-- search -->
+					<div class="container search">
+						<div class="layout">
+							<div class="column">
+								<div class="form-group">
+									<input type="text" class="input grey" id="fromCity"
+										v-model="from"
+										v-on:focus="showDropdown('from')"
+										v-on:blur="hideDropdown('from')"
+										v-bind:class="{filled: from}"
+									>
+									<label for="fromCity" v-cloak>
+										{{from || focus.from ? from.substring(from.length-15, from.length) : placeholder.from}}
+										<span class="caret" v-if="focus.from"></span>
+										<span class="autocomplete" v-if="focus.from">{{from ? "" : placeholder.from}}</span>
+									</label>
+									<i class="icon icon-fly-up input-icon"></i>
+									<span class="input-clear" v-cloak v-if="from" v-on:click="clearModel('from')">&times;</span>
+									<div class="dropdown min-width" v-bind:class="{active: focus.from}">
+										<ul class="clear cities-list">
+											<li v-for="(city, cityIndex) in getCities('from')"
+												v-bind:class="{hovered: activeCityIndex === cityIndex && getCities('from').length > 1}"
+												v-on:mouseover="activeCityIndex = cityIndex"
+												v-on:click="setActiveOption('from', city, null, $event)"
+											>
+												<i class="icon icon-building"></i>
+												<b v-html="highlight('from', city.name)"></b>, {{city.country}}
+												<ul class="clear airports-list"
+													v-if="city.airports && city.airports.length"
+													v-bind:class="{expanded: city.expanded}"
+												>
+													<li v-for="airport in city.airports"
+														v-on:click="setActiveOption('from', city, airport, $event)"
+													>
+														<i class="icon icon-enter"></i>
+														<div><b>{{airport.code}}</b> {{airport.name}}</div>
+														<small>City center {{airport.toCenter}}</small>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<div v-if="!getCities('from').length" class="empty">There is no results</div>
+									</div>
+								</div>
+							</div>
+							<div class="column align-center small">
+								<button type="button" class="btn btn-link btn-block">
+									<span class="text"><i class="icon icon-arrows"></i></span>
+									<span class="animation"></span>
+								</button>
+							</div>
+							<div class="column">
+							<div class="form-group">
+								<input type="text" class="input grey" id="toCity"
+									v-model="to"
+									v-on:focus="showDropdown('to')"
+									v-on:blur="hideDropdown('to')"
+									v-bind:class="{filled: to}"
+								>
+								<label for="toCity" v-cloak>
+									{{to || focus.to ? to.substring(to.length-15, to.length) : placeholder.to}}
+									<span class="caret" v-if="focus.to"></span>
+									<span class="autocomplete" v-if="focus.to">{{to ? "" : placeholder.to}}</span>
+								</label>
+								<i class="icon icon-fly-up input-icon"></i>
+								<span class="input-clear" v-cloak v-if="to" v-on:click="clearModel('to')">&times;</span>
+								<div class="dropdown min-width" v-bind:class="{active: focus.to}">
+									<ul class="clear cities-list">
+										<li v-for="(city, cityIndex) in getCities('to')"
+											v-bind:class="{hovered: activeCityIndex === cityIndex && getCities('to').length > 1}"
+											v-on:mouseover="activeCityIndex = cityIndex"
+											v-on:click="setActiveOption('to', city, null, $event)"
+										>
+											<i class="icon icon-building"></i>
+											<b v-html="highlight('to', city.name)"></b>, {{city.country}}
+											<ul class="clear airports-list"
+												v-if="city.airports && city.airports.length"
+												v-bind:class="{expanded: city.expanded}"
+											>
+												<li v-for="airport in city.airports"
+													v-on:click="setActiveOption('to', city, airport, $event)"
+												>
+													<i class="icon icon-enter"></i>
+													<div><b>{{airport.code}}</b> {{airport.name}}</div>
+													<small>City center {{airport.toCenter}}</small>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<div v-if="!getCities('to').length" class="empty">There is no results</div>
+								</div>
+							</div>
+							</div>
+							<div class="column">
+								<input type="hidden" v-bind:value="dateFrom">
+								<input type="hidden" v-bind:value="dateTo">
+								<div class="form-group" id="date-range-parent">
+									<input type="text" class="input grey" id="date-range"
+										v-model="date"
+										v-on:focus="showCalendar()"
+										v-bind:class="{filled: date}"
+									>
+									<label for="date-range" v-cloak>{{date}}</label>
+									<i class="icon icon-calendar input-icon"></i>
+									<span class="input-clear" v-cloak v-on:click="clearCalendar()" v-if="date">&times;</span>
+								</div>
+							</div>
+							<div class="column align-right">
+								<button type="submit" class="btn btn-primary">
+									<span class="text">Search</span>
+									<span class="animation"></span>
+								</button>
+							</div>
+						</div>
+						<div class="relative">
+							<calendar v-on:change="updateDates($event)" ref="calendar"></calendar>
+						</div>
+					</div>
+
+					<div class="darken">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-2">
+									<div data-dropdown>
+										<button type="button" class="btn btn-block anchor">
+											<i class="icon icon-stops"></i>
+											Stops
+											<span>Direct <i class="icon icon-plus"></i></span>
+										</button>
+										<div class="dropdown">
+											<div class="checkbox">
+												<input type="checkbox" id="direct" checked>
+												<label for="direct">
+													<span></span>
+													<dl>
+														<dt>Direct</dt><dd>243&euro;</dd>
+													</dl>
+												</label>
+											</div>
+											<div class="checkbox">
+												<input type="checkbox" id="stop">
+												<label for="stop">
+													<span></span>
+													<dl>
+														<dt>1 Stop</dt><dd>243&euro;</dd>
+													</dl>
+												</label>
+											</div>
+											<div class="checkbox">
+												<input type="checkbox" id="stops">
+												<label for="stops">
+													<span></span>
+													<dl>
+														<dt>2 + Stops</dt><dd>243&euro;</dd>
+													</dl>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<div data-dropdown>
+										<button type="button" class="btn btn-block anchor">
+											<i class="icon icon-fly-up"></i>
+											Depart
+											<span><span class="departTimeLabel1">06</span>:00 <span class="departTimeLabel2">22</span>:00</span>
+										</button>
+										<div class="dropdown">
+											<div class="block">
+												<input type="hidden" id="departTimeRange1" value="10">
+												<input type="hidden" id="departTimeRange2" value="20">
+												<div class="row range-labels">
+													<div class="col-xs-6"><span class="departTimeLabel1">10</span>:00</div>
+													<div class="col-xs-6 align-right primary"><span class="departTimeLabel2">20</span>:00</div>
+												</div>
+												<div class="range-slider">
+													<div
+														data-range-time="#departTimeRange1,#departTimeRange2"
+														data-range-labels=".departTimeLabel1,.departTimeLabel2"
+														data-start="0" data-end="23" data-step="1"
+														data-values="8,14"
+													></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<div data-dropdown>
+										<button type="button" class="btn btn-block anchor">
+											<i class="icon icon-fly-return"></i>
+											Return
+											<span><span class="returnTimeLabel1">06</span>:00 <span class="returnTimeLabel2">22</span>:00</span>
+										</button>
+										<div class="dropdown">
+											<div class="block">
+												<input type="hidden" id="returnTimeRange1" value="10">
+												<input type="hidden" id="returnTimeRange2" value="20">
+												<div class="row range-labels">
+													<div class="col-xs-6"><span class="returnTimeLabel1">10</span>:00</div>
+													<div class="col-xs-6 align-right primary"><span class="returnTimeLabel2">20</span>:00</div>
+												</div>
+												<div class="range-slider">
+													<div
+														data-range-time="#returnTimeRange1,#returnTimeRange2"
+														data-range-labels=".returnTimeLabel1,.returnTimeLabel2"
+														data-start="0" data-end="23" data-step="1"
+														data-values="14,20"
+													></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<div data-dropdown>
+										<button type="button" class="btn btn-block anchor">
+											<i class="icon icon-duration"></i>
+											Duration
+											<span><span class="durtationLabel1">5</span>h</span>
+										</button>
+										<div class="dropdown">
+											<div class="block">
+												<input type="hidden" id="durtationRange1" value="10">
+												<div class="row range-labels">
+													<div class="col-xs-6">2h</div>
+													<div class="col-xs-6 align-right primary">25h</div>
+												</div>
+												<div class="range-slider">
+													<div
+														data-range-time="#durtationRange1"
+														data-range-labels=".durtationLabel1"
+														data-start="2" data-end="25" data-step="1"
+														data-value="5"
+													></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<div data-dropdown id="airlinesDropdown">
+										<button type="button" class="btn btn-block anchor">
+											Airlines
+											<span>all</span>
+										</button>
+										<div class="dropdown">
+											<div class="block header">
+												<div class="row">
+													<div class="col-xs-6">
+														<div class="title">Airlines</div>
+													</div>
+													<div class="col-xs-6 align-right">
+														<div class="checkbox round">
+															<input type="checkbox" id="selectAllAirlines" data-activate="#airlinesDropdown">
+															<label for="selectAllAirlines">
+																<span></span>
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+											<button class="btn btn-light btn-expander" type="button" id="expandAirlines">Alliances</button>
+											<ul class="clear light" data-expand="#expandAirlines">
+												<li>
+													<div class="checkbox">
+														<input type="checkbox" id="all1">
+														<label for="all1"><span></span>Star Alliance</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox">
+														<input type="checkbox" id="all2">
+														<label for="all2"><span></span>Oneworld</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox">
+														<input type="checkbox" id="all3">
+														<label for="all3"><span></span>Sky Team</label>
+													</div>
+												</li>
+											</ul>
+											<div class="scrolled">
+												<ul class="clear">
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air1">
+															<label for="air1"><span></span>Aegean</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air2">
+															<label for="air2"><span></span>Aer Lingus</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air3">
+															<label for="air3"><span></span>Aeroflot</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air4">
+															<label for="air4"><span></span>Star Alliance</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air5">
+															<label for="air5"><span></span>Oneworld</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air6">
+															<label for="air6"><span></span>Sky Team</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air7">
+															<label for="air7"><span></span>Aer Lingus</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air8">
+															<label for="air8"><span></span>Aeroflot</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air9">
+															<label for="air9"><span></span>Star Alliance</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air10">
+															<label for="air10"><span></span>Oneworld</label>
+														</div>
+													</li>
+													<li>
+														<div class="checkbox">
+															<input type="checkbox" id="air11">
+															<label for="air11"><span></span>Sky Team</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-2">
+									<button class="btn btn-block anchor" type="reset">
+										<i class="icon icon-filter"></i>
+										<span>Clear</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="fader"></div>
+					</div>
+				</form>
+			</div>
+		</section>
+		<div class="main-map" data-main-page>
+			<div class="map" id="map"></div>
+		</div>
+		<!-- / form & map -->
+
+		<!-- who we are -->
+		<section class="section" data-main-page>
+			<div class="container">
+				<div class="section-title align-center"><span class="paper-plane">Travelkiki.</span> Who we are?</div>
+				<div class="section-subtitle align-center">We don’t sell tickets, but help to find them for free.</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<ul class="clear questions-list">
+							<li class="active"><span>Why i need to use Travelkiki?</span></li>
+							<li><span>Price without commissions & fees?</span></li>
+							<li><span>Where do you get the tickets from?</span></li>
+							<li><span>Will I be deceived?</span></li>
+						</ul>
+						<p class="paragraph">
+							<b>Travelkiki</b> is the largest metasearch engine in Greece. We compare all available options for flights on your request, and then send you for purchase on the official websites of airlines and agencies.
+						</p>
+						<a href="#" class="btn">
+							<span class="text">READ MORE</span>
+							<span class="animation"></span>
+						</a>
+					</div>
+					<div class="col-xs-5 col-xs-offset-2">
+						<ul class="clear answers-list">
+							<li class="active">
+								<div class="title">Fair <span>price</span> without commissions & fees</div>
+								<p class="paragraph">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro unde, nam tenetur, minima amet reiciendis saepe magnam ut molestias necessitatibus harum explicabo alias? Dicta vero ducimus voluptas mollitia hic culpa.
+								</p>
+							</li>
+							<li>
+								<div class="title">Fair price without <span>commissions</span> & fees</div>
+								<p class="paragraph">
+									The price you see on <b>Travelkki</b> is the final price. <br>
+									We removed all hidden services and checkmarks. <br>
+									All is fair, as on nudist beaches of France.
+								</p>
+								<p class="paragraph">
+									We compare all available flight options for your request, and then send you to the official websites of airlines and agencies. For the search you do not owe us anything. Maybe just cute tip.
+								</p>
+							</li>
+							<li>
+								<div class="title">unde optio ducimus <span>velit aspernatur</span> molestias sed.</div>
+								<p class="paragraph">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit neque quo iste nostrum, facere eum architecto quas mollitia dicta, quae minima, saepe libero, adipisci excepturrehenderit natus voluptates maiores consequatur culpa mollitia similique, dolor possimus quo sequi tempora debitis esse perferendis, deserunt molestiae!
+								</p>
+							</li>
+							<li>
+								<div class="title">libero <span>numquam</span> animi porro quia non!</div>
+								<p class="paragraph">
+									Lorem ipsum dolor sit amet, one numquam soluta! Animi facilis neque nam dolore, error hic dolorem quibusdam quae cupiditate, nemo sequi, ipsa incidunt non odit?
+								</p>
+								<p class="paragraph">
+									Facere vitae ea dolore, accusantium natus fugiat. Voluptate, esse, pariatur? Est laborum hic autem fugit incidunt unde nmus. Sit veritatis, sint molestiae dolorem commodi quisquam, rerum ipsum nemo.
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / who we are -->
+
+		<!-- features -->
+		<section class="section" data-main-page>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="feature">
+							<i class="icon icon-droid"></i>
+							<div class="text">
+								<div class="title">Chat bot</div>
+								For Facebook, Viber &amp; Slack.
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="feature">
+							<i class="icon icon-droid"></i>
+							<div class="text">
+								<div class="title">Chat bot</div>
+								For Facebook, Viber &amp; Slack.
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="feature">
+							<i class="icon icon-droid"></i>
+							<div class="text">
+								<div class="title">Chat bot</div>
+								For Facebook, Viber &amp; Slack.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / features -->
+
+		<!-- blog -->
+		<section class="section" data-main-page>
+			<div class="container">
+				<div class="section-title align-center"><span>Blog.</span> Travel inspiration.</div>
+				<div class="section-subtitle align-center">Get inspired, find the best deals and start an unforgettable journey</div>
+				<div class="blog-carousel">
+					<div class="carousel owl-carousel">
+						<div class="item large">
+							<a href="#" class="blog-item">
+								<div class="image-wrapper">
+									<div class="image-cover">
+										<!-- .vertical - if iamge don't fill all area -->
+										<img src="temp/blog1.jpg" alt="" class="vertical">
+									</div>
+								</div>
+								<div class="category">categorie</div>
+								<div class="title">Coney island beach & Boardwalk.</div>
+							</a>
+						</div>
+						<div class="item">
+							<a href="#" class="blog-item small">
+								<div class="row">
+									<div class="col-xs-5 col-ms-7">
+										<div class="image-wrapper">
+											<div class="image-cover">
+												<img src="temp/blog2.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-7 col-ms-5">
+										<div class="category">categorie</div>
+										<div class="title">Rumbling volcanoes.</div>
+									</div>
+								</div>
+							</a>
+							<a href="#" class="blog-item small">
+								<div class="row">
+									<div class="col-xs-5 col-ms-7">
+										<div class="image-wrapper">
+											<div class="image-cover">
+												<img src="temp/blog3.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-7 col-ms-5">
+										<div class="category">categorie</div>
+										<div class="title">Rumbling volcanoes that spew rivers.</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item">
+							<a href="#" class="blog-item small">
+								<div class="row">
+									<div class="col-xs-5 col-ms-7">
+										<div class="image-wrapper">
+											<div class="image-cover">
+												<img src="temp/blog3.jpg" alt="">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-7 col-ms-5">
+										<div class="category">categorie</div>
+										<div class="title">Rumbling volcanoes that spew rivers.</div>
+									</div>
+								</div>
+							</a>
+							<a href="#" class="blog-item small">
+								<div class="row">
+									<div class="col-xs-5 col-ms-7">
+										<div class="image-wrapper">
+											<div class="image-cover">
+												<img src="temp/blog5.jpg" alt="" class="vertical">
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-7 col-ms-5">
+										<div class="category">categorie</div>
+										<div class="title">Rumbling volcanoes that.</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item small">
+							<a href="#" class="more">
+								<span class="text">
+									Find<br>
+									more<br>
+									<i class="icon icon-arrow-right"></i>
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / blog -->
+
+		<section class="section" data-main-page>
+			<div class="backgrounds">
+				<div style="background-image: url(temp/book1.jpg);" class="active"></div>
+				<div style="background-image: url(temp/book2.jpg);"></div>
+				<div style="background-image: url(temp/book3.jpg);"></div>
+			</div>
+			<div class="container relative">
+				<div class="row middle-xs">
+					<div class="col-xs-8">
+						<div class="section-title"><span class="paper-plane smaller">Book.</span> last minute ticket.</div>
+						<div class="section-subtitle">Validity of offers is limited. Ticket list is updating every <b>30 minutes</b>.</div>
+						<a href="#" class="btn">
+							<span class="text">SEE ALL TICKETS</span>
+							<span class="animation"></span>
+						</a>
+					</div>
+					<div class="col-xs-4">
+						<div class="book-carousel">
+							<div class="carousel owl-carousel">
+								<div class="item">
+									<a href="#" class="book-item">
+										<div class="image-cover">
+											<img src="temp/book1.jpg" alt="">
+										</div>
+										<div class="content">
+											<i class="icon icon-duration"></i>
+											<div class="label">One way</div>
+											<div class="title">New York</div>
+											<div class="price">570€</div>
+											<div class="date"><i class="icon icon-calendar"></i>September 19</div>
+										</div>
+									</a>
+								</div>
+								<div class="item">
+									<a href="#" class="book-item">
+										<div class="image-cover">
+											<img src="temp/book2.jpg" alt="">
+										</div>
+										<div class="content">
+											<i class="icon icon-duration"></i>
+											<div class="label">One way</div>
+											<div class="title">Barcelona</div>
+											<div class="price">220€</div>
+											<div class="date"><i class="icon icon-calendar"></i>September 21</div>
+										</div>
+									</a>
+								</div>
+								<div class="item">
+									<a href="#" class="book-item">
+										<div class="image-cover">
+											<img src="temp/book3.jpg" alt="">
+										</div>
+										<div class="content">
+											<i class="icon icon-duration"></i>
+											<div class="label">One way</div>
+											<div class="title">Detroit</div>
+											<div class="price">12 220€</div>
+											<div class="date"><i class="icon icon-calendar"></i>September 23</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-10">
+						<div class="sorting">
+							<div class="layout">
+								<div class="column">
+									<div class="results">
+										<span>2 233</span>Results sorted by
+									</div>
+								</div>
+								<div class="column align-right">
+									<a href="#tickets" class="link">
+										<i class="icon icon-like"></i>
+										Recomended
+										<span data-recomended-price data-prefix="320€">320€</span>
+									</a>
+									<a href="#tickets/cheapest" class="link">
+										<i class="icon icon-cheapest"></i>
+										Cheapest
+										<span data-cheapest-price data-prefix="182€">182€</span>
+									</a>
+									<a href="#tickets/shortest" class="link">
+										<i class="icon icon-clock"></i>
+										Shortest
+										<span data-shortest-price data-prefix="410€">410€</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<ul class="clear">
+								<li>
+									<a href="ticket.html" class="ticket">
+										<div class="layout">
+											<div class="column collapsed no-corner">
+												<div class="map-wrapper">
+													<div class="rounder">
+														<img src="temp/map.png">
+													</div>
+												</div>
+											</div>
+											<div class="column no-corner-left">
+												<div class="row middle-xs">
+													<div class="col-xs-6">
+														<img src="temp/provider1.png" alt="" class="airline-image">
+													</div>
+													<div class="col-xs-6 align-right">
+														<div class="duration">
+															<i class="icon icon-duration"></i> 3h 20
+														</div>
+													</div>
+												</div>
+												<div class="content">
+													<div class="row timing middle-xs">
+														<div class="col-xs-4">06:30</div>
+														<div class="col-xs-4 align-center"><img src="img/plane.svg" alt="" class="indicator"><img src="img/straight.svg" alt="" class="indicator"></div>
+														<div class="col-xs-4 align-right">16:20</div>
+													</div>
+													<div class="row labels middle-xs">
+														<div class="col-xs-4">ATH</div>
+														<div class="col-xs-4 align-center">direct</div>
+														<div class="col-xs-4 align-right">LHR</div>
+													</div>
+												</div>
+											</div>
+											<div class="column">
+												<div class="row">
+													<div class="col-xs-6">
+														<img src="temp/provider2.png" alt="" class="airline-image">
+													</div>
+													<div class="col-xs-6 align-right">
+														<div class="duration danger">
+															<i class="icon icon-duration"></i> 3h 20
+														</div>
+													</div>
+												</div>
+												<div class="content">
+													<div class="row timing middle-xs">
+														<div class="col-xs-4">06:30</div>
+														<div class="col-xs-4 align-center"><img src="img/plane.svg" alt="" class="indicator"><img src="img/stops.svg" alt="" class="indicator"></div>
+														<div class="col-xs-4 align-right">16:20</div>
+													</div>
+													<div class="row labels middle-xs">
+														<div class="col-xs-4">LHR</div>
+														<div class="col-xs-4 align-center">stops</div>
+														<div class="col-xs-4 align-right">ATH</div>
+													</div>
+												</div>
+											</div>
+											<div class="column small align-center">
+												<div class="price">342&euro;</div>
+											</div>
+										</div>
+									</a>
+								</li>
+<!-- 								<li v-for="ticket in tickets">
+									<ticket v-bind:data="ticket"></ticket>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main>
+
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-9 sm-show">
+					<ul class="clear menu">
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="#">Cities</a></li>
+						<li><a href="#">Airlines</a></li>
+						<li><a href="#">Map</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Jobs</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7">
+							<ul class="clear socials">
+								<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+								<li><a href="#"><i class="icon icon-twitter"></i></a></li>
+								<li><a href="#"><i class="icon icon-pinterest"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-xs-12 col-sm-5 align-right first-xs last-sm">
+	<!-- 						<a href="#" class="language">
+								EN<img src="img/icons/en.svg" alt="">
+							</a> -->
+							<div data-dropdown class="language">
+								<div class="anchor"><img src="img/icons/language.svg" alt="language icon"></div>
+								<div class="dropdown">
+									<ul class="lang-list clear">
+										<li class="item active">
+											<a href="#" class="lang-select">
+												<img src="img/icons/en.svg" alt="en" class="img-icon">
+												English
+											</a>
+										</li>
+										<li class="item">
+											<a href="#" class="lang-select">
+												<img src="img/icons/gr.svg" alt="gr" class="img-icon">
+												Greek
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-8">
+						<span class="copyright">© 2016 Travelkiki.</span>
+						<a href="terms.html" class="link">Terms</a>
+						<a href="#" class="link">Privacy policy</a>
+						<a href="contacts.html" class="link">Contact Us</a>
+					</div>
+					<div class="col-xs-12 col-sm-4 align-right">
+						<a href="#" class="information">@ Inform me about Travelkiki</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	
+
+	<script src="js/lib/jquery.min.js"></script>
+	<!-- <script src="js/lib/vue.js"></script> -->
+	<script src="js/lib/math.js"></script>
+	<!-- <script src="js/lib/array.js"></script> -->
+	<script src="js/plugins/perfect-scrollbar.jquery.min.js"></script>
+	<script src="js/plugins/owl.carousel.min.js"></script>
+	<!-- <script src="js/plugins/moment.js"></script> -->
+	<!-- <script src="js/plugins/jquery.daterangepicker.min.js"></script> -->
+	<script src="js/plugins/nouislider.min.js"></script>
+
+	<script src="js/main.js"></script>
+
+
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=greek" rel="stylesheet">
+
+	<!-- <script src="http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=4b2a78506f9ea61c408b16a2765ff6b1"></script> -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+	<!-- <script src="js/init/polyline.js"></script> -->
+	<!-- <script src='https://api.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script> -->
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+	<script src="js/lib/maps.utils.js"></script>
+	<script src="js/init/map.js"></script>
+
+	<script src="js/init/scrollbar.js"></script>
+	<script src="js/init/activate.js"></script>
+	<script src="js/init/expander.js"></script>
+	<script src="js/init/dropdown.js"></script>
+	<!-- <script src="js/init/vue.calendar-component.js"></script> -->
+	<!-- <script src="js/init/vue.form-secion.js"></script> -->
+	<!-- <script src="js/init/vue.ticket-component.js"></script> -->
+	<!-- <script src="js/init/vue.tickets-list.js"></script> -->
+
+</body>
+</html>

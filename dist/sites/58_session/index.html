@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>58 :: Main</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body class="main-page">
+
+
+	<!-- first section -->
+	<section class="preloader-section">
+			<div class="verticaly-middle full-height">
+				<div class="inner">
+					<div class="container">
+						<div class="align-center">
+							<img src="img/logo.svg" alt="logo">
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	<!-- / first section -->
+
+	<!-- header -->
+	<header class="fixed-header main-header" id="mainHeader">
+		<div class="container">
+			<div class="row middle-xs paddless-row ">
+				<div class="col-xs-1 ">
+					<button class="btn toggle-btn" type="button" data-menu="#mainMenu">
+						<span class="line"></span>
+						<span class="line"></span>
+					</button>
+				</div>
+				<div class="col-xs-11 relative">
+					<a href="#58session" class="header-logo">
+						<img src="img/logo.svg" alt="logo">
+					</a>
+					<!-- nav -->
+					<nav class="header-nav" id="mainMenu">
+						<a href="#58session" class="nav-item">
+							<div class="link-outer">
+								<div class="link-icon">
+									<i class="icon icon-prototype-simple"></i>
+								</div>
+								<input type="text">
+								<div class="title">Home</div>
+								<div class="caption">
+									Something quick & short about methodology.
+								</div>
+							</div>
+						</a>
+						<a href="#methodology" class="nav-item">
+							<div class="link-outer">
+								<div class="link-icon">
+									<i class="icon icon-prototype-simple"></i>
+								</div>
+								<div class="title">Methodology</div>
+								<div class="caption">
+									Something quick & short about methodology.
+								</div>
+							</div>
+						</a>
+						<a href="#" class="nav-item">
+							<div class="link-outer">
+								<div class="link-icon">
+									<i class="icon icon-prototype-simple"></i>
+								</div>
+								<div class="title">How it works</div>
+								<div class="caption">
+									Something quick & short about methodology.
+								</div>
+							</div>
+						</a>
+						<a href="#" class="nav-item">
+							<div class="link-outer">
+								<div class="link-icon">
+									<i class="icon icon-prototype-simple"></i>
+								</div>
+								<div class="title">Articles</div>
+								<div class="caption">
+									Something quick & short about methodology.
+								</div>
+							</div>
+						</a>
+						<a href="#resources" class="nav-item">
+							<div class="link-outer">
+								<div class="link-icon">
+									<svg width="29" height="32" viewBox="0 0 29 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path class="path-move" d="M9.59356 13.4491C9.25332 13.7893 9.25332 14.335 9.59356 14.6752L14.1899 19.2716C14.3569 19.4385 14.5815 19.5284 14.7998 19.5284C15.0181 19.5284 15.2427 19.4449 15.4097 19.2716L20.006 14.6752C20.3463 14.335 20.3463 13.7893 20.006 13.4491C19.6658 13.1088 19.1201 13.1088 18.7799 13.4491L15.6664 16.5625V1.68207C15.6664 1.2006 15.2813 0.81543 14.7998 0.81543C14.3183 0.81543 13.9332 1.2006 13.9332 1.68207V16.5625L10.8197 13.4491C10.4795 13.1088 9.92737 13.1088 9.59356 13.4491Z" fill="#7E7CE0"/>
+	
+										<path class="path-fill" d="M28.968 20.5489L25.9508 9.63569C25.8802 9.38533 25.7069 9.18633 25.4758 9.07719L25.3923 9.03868C25.2768 8.98732 25.1548 8.96164 25.0328 8.96164H19.5955C19.114 8.96164 18.7289 9.34681 18.7289 9.82828C18.7289 10.3097 19.114 10.6949 19.5955 10.6949H24.4487L26.9972 19.9262H20.2567C19.7752 19.9262 19.3901 20.3114 19.3901 20.7928V21.576C19.3901 22.7251 18.4592 23.656 17.3101 23.656H12.0204C10.8714 23.656 9.94052 22.7251 9.94052 21.576V20.7928C9.94052 20.3114 9.55535 19.9262 9.07388 19.9262H2.59657L5.15797 10.6757H10.0111C10.4926 10.6757 10.8778 10.2905 10.8778 9.80902C10.8778 9.32756 10.4926 8.94238 10.0111 8.94238H4.56737C4.4454 8.94238 4.32343 8.96806 4.20788 9.01942L4.12442 9.05793C3.89332 9.16707 3.71357 9.36607 3.64938 9.61643L0.632195 20.5296C0.612937 20.6067 0.600098 20.6837 0.600098 20.7607V25.3122C0.600098 28.7595 3.40543 31.5648 6.85272 31.5648H22.7475C26.1948 31.5648 29.0001 28.7595 29.0001 25.3122V20.78C29.0001 20.6966 28.9937 20.6195 28.968 20.5489ZM27.2668 25.3122C27.2668 27.803 25.2383 29.8315 22.7475 29.8315H6.85272C4.36194 29.8315 2.33337 27.803 2.33337 25.3122V21.6595H8.22009C8.26502 23.7202 9.95978 25.3828 12.0333 25.3828H17.323C19.3965 25.3828 21.0913 23.7202 21.1362 21.6595H27.2797V25.3122H27.2668Z" fill="#3B3D46"/>
+									</svg>
+								</div>
+								<div class="title">Resources</div>
+								<div class="caption">
+									Something quick & short about methodology.
+								</div>
+							</div>
+						</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<!-- / header -->
+
+	<!-- tree nav -->
+	<div class="tree">
+		<div class="canvas-wrapper">
+			<div class="canvas-inner">
+				<canvas id="tree"></canvas>
+			</div>
+		</div>
+		<ul class="clear titles">
+			<li class="active">The 58<br> session</li>
+			<li class="next">Use<br> cases</li>
+			<li class="hiddened" data-methodology-anchor>Method<br><span class="sub">ology</span></li>
+			<li class="hiddened">Rules</li>
+			<li class="hiddened">Why it<br> works</li>
+			<li class="hiddened">Reso<br>urces</li>
+			<li class="hiddened">Testi<br>monials</li>
+			<li class="hiddened">Used By</li>
+		</ul>
+	</div>
+
+	<!-- / tree nav -->
+
+	<div id="fullpage" class="fullpage">
+
+		<!-- secound section -->
+		<section data-point="0" class="section">
+			<div class="section-outer">
+				<div class="align-center">
+				</div>
+				<!-- <img src="temp/color1.jpg" alt="" id="getColor"> -->
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="paragraph text-animated">
+								58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology, 
+								<a href="#" class="black in-bl underlined">Design Thinking</a>, rapid Productivity hacks and its secret sauce, People. Bring together a world-class team of consultants, creatives and scientists to solve problems for the digital economy.
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="paragraph spaced-top text-animated">
+								58 is not a workshop. It’s a <span class="black">58hrs</span> "war-room" session, consisting of world-class makers, industry experts, C-Level decision makers and end-users. All working together, without interruptions, under extremely tight deadlines to solve a problem.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / secound section -->
+
+		<!-- third section -->
+		<section data-point="1" class="section">
+			<div class="section-outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-icon">
+									<img src="img/icons/prototype-icon.svg" alt="icon" class="image-icon">
+								</div>
+								<div class="case-title">Prototype edition</div>
+								<div class="paragraph">
+									58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology, Design Thinking, rapid Productivity hacks and its secret sauce, People. Bring together a world-class team of consultants, creatives and scientists to solve problems for the digital economy.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-icon">
+									<img src="img/icons/strategy-icon.svg" alt="icon" class="image-icon">
+								</div>
+								<div class="case-title">Strategy edition</div>
+								<div class="paragraph">
+									If you ve even taken up the task of creating a business plan, a growth roadmap, or Product Strategy, you know that 90% of the work can be done in 3 days with the right people in the room and the lack of distraction. That’s this edition is about. Bringing in experts to work with your team to do the work of a month in 3 days.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-icon">
+									<img src="img/icons/last-minute-icon.svg" alt="icon" class="image-icon">
+								</div>
+								<div class="case-title">Last minute edition</div>
+								<div class="paragraph">
+									There are times when not everything goes according to plan, where you find yourself against the clock. We’ll stand by your side. Depending on the challenge, we build a hands on team (max 8 ppl) working at your premises to deliver the work in 3 days
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / third section -->
+
+		<!-- fourth section -->
+		<section data-point="2" class="section relative" id="methodolodySection">
+			<div class="section-outer">
+				<div class="verticaly-middle">
+					<div class="inner">
+						<div class="container" data-fade-on-relocation>
+							<div class="row">
+								<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+									<div class="paragraph text-animated">
+										58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology, 
+										<a href="#" class="in-bl black underlined primary">Design Thinking</a>, rapid Productivity hacks and its secret sauce, People. Bring together a world-class team of consultants, creatives and scientists to solve problems for the digital economy.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="methodolody-start light" style="background-image: url(temp/methodology-back1.jpg);" id="methodologyPageContainer">
+					<div class="scroll-icon">
+						<div class="chevron"></div>
+						<div class="mouse">
+							<div class="roller"></div>
+						</div>
+						<div class="text">Scroll<br>down for</div>
+					</div>
+					<button class="btn toggle-btn" type="button" id="loadMethodology">
+						<span class="cover">
+							<span class="line"></span>
+							<span class="line"></span>
+							<span class="line"></span>
+						</span>
+					</button>
+					<div data-fade-on-expand>
+						<div class="container title-container" data-overflow-hidden>
+							<div class="section-title" data-slide-down>ology</div>
+						</div>
+						<div class="container navigation-container">
+							<div class="row" data-overflow-hidden>
+								<div class="col-xs-12 col-sm-7 col-sm-offset-5">
+									<nav class="inner-nav animated-part" data-slide-down-rev>
+										<ul class="nav-list clear">
+											<li class="item"><a href="#" class="link" data-onload="ground-zero.html"><span>Ground Zero</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="prework.html"><span>Prework</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="preparation.html"><span>Preparation</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="the-work.html"><span>The Work</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="breaks.html"><span>Breaks</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="end.html"><span>End</span></a></li>
+											<li class="item"><a href="#" class="link" data-onload="post.html"><span>Post</span></a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="row methodology-navigation">
+								<div class="col-xs-12">
+									<div data-overflow-hidden>
+										<nav class="header-nav inner-nav spy-nav align-right" data-slide-up>
+											<a href="#ground-zero" class="nav-item active">
+												<div class="link-outer">Ground Zero</div>
+											</a>
+											<a href="#prework" class="nav-item">
+												<div class="link-outer">Prework</div>
+											</a>
+											<a href="#preparation" class="nav-item">
+												<div class="link-outer">Preparation</div>
+											</a>
+											<a href="#the-work" class="nav-item">
+												<div class="link-outer">The work</div>
+											</a>
+											<a href="#breaks" class="nav-item">
+												<div class="link-outer">Breaks</div>
+											</a>
+											<a href="#end" class="nav-item">
+												<div class="link-outer">End</div>
+											</a>
+											<a href="#post" class="nav-item">
+												<div class="link-outer">Post</div>
+											</a>
+										</nav>
+									</div>
+								</div>
+							</div>
+							<div class="row middle-xs">
+								<div class="col-xs-12 col-sm-3 col-sm-offset-2" data-overflow-hidden>
+									<div class="caption-side animated-part" data-slide-down-rev>
+										Bring together a world-class <br>
+										team of consultants
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-6" data-overflow-hidden>
+									<div class="section-title animated-part" data-slide-up-rev>methodology</div>
+								</div>
+								<div class="col-xs-1">
+									<div class="fade"></div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-6 col-xs-offset-6">
+									<h2 class="page-title" data-overflow-hidden>
+										<div data-slide-down class="slower">
+											WE ARE <br>
+											THE<br>
+											<span class="primary">REACTION</span><br>
+											OF OUR<br>
+											TIMES.
+										</div>
+									</h2>
+									<div class="case-block">
+										<div class="paragraph">
+											Ground Zero is a product to help organisations thrive in challenging environments. It combines Agile
+											<a href="#" class="black in-bl underlined">Methodology</a>,
+											Design Thinking, rapid Productivity While the digital economy is changing the world, companies struggle to keep up with the pace of change. This is also true of the companies that help other companies, consultancies. They are slow, expensive, and their delivery is often below standards
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		<!-- / fourth section -->
+
+		<!-- fifth section -->
+		<section data-point="3" class="section">
+			<div class="section-outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-title">To win</div>
+								<div class="paragraph">
+									During the session you work as a team towards a very straightforward challenge. To win. Nothing else matters.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">No Going Back.</div>
+								<div class="paragraph">
+									The deadline is usually so tight that the 58 process is not even considered a project. Thus not much asynchronous communication is going on. No approval layers, less middlemen, only the people directly involved to the project. In the 58 session you rarely have co-ordinators and when you do so, you make sure they're also bringing more value beyond just their project management skills (like strategic thinking).
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">Strategy edition</div>
+								<div class="paragraph">
+									If you ve even taken up the task of creating a business plan, a growth roadmap, or Product Strategy, you know that 90% of the work can be done in 3 days with the right people in the room and the lack of distraction. That’s this edition is about. Bringing in experts to work with your team to do the work of a month in 3 days.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-title">High performersn</div>
+								<div class="paragraph">
+									In every company you have high performers and then everyone else. During the 58 session you have your best talent in the room working towards winning.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">Best talent in the room</div>
+								<div class="paragraph">
+									There’s also this: During the 58 session there are almost no approval layers, since the decision maker (the guy leading the session) is in the room, and 24/7 available.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">Respect Time.</div>
+								<div class="paragraph">
+									Where you work, there might be a feedback process where all ideas are welcome, even the ones that are “meh”, and there’s this process where every idea gets its own space before it’s rejected.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / fifth section -->
+
+		<!-- sixth section -->
+		<section data-point="4" class="section">
+			<div class="section-outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-title">Clear straightforward challenge.</div>
+								<div class="paragraph">
+									During the session you work as a team towards a very straightforward challenge. To win. Nothing else matters.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">It’s not even a project</div>
+								<div class="paragraph">
+									The deadline is usually so tight that the 58 process is not even considered a project. Thus not much asynchronous communication is going on. No approval layers, less middlemen, only the people directly involved to the project. In the 58 session you rarely have co-ordinators and when you do so, you make sure they're also bringing more value beyond just their project management skills (like strategic thinking).
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">Strategy edition</div>
+								<div class="paragraph">
+									If you ve even taken up the task of creating a business plan, a growth roadmap, or Product Strategy, you know that 90% of the work can be done in 3 days with the right people in the room and the lack of distraction. That’s this edition is about. Bringing in experts to work with your team to do the work of a month in 3 days.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="case-title">Top Talent in the room.</div>
+								<div class="paragraph">
+									In every company you have high performers and then everyone else. During the
+									<a href="#" class="black underlined in-bl">58 session</a>
+									 you have your best talent in the room working towards winning.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="case-title">Decision Maker in the room.</div>
+								<div class="paragraph">
+									There’s also this: During the 58 session there are almost no approval layers, since the decision maker (the guy leading the session) is in the room, and 24/7 available.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / sixth section -->
+
+		<!-- seventh section -->
+		<section data-point="5" class="section">
+			<div class="section-outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">Facebook held accountable for something</div>
+								<div class="paragraph">
+									Perhaps in anticipation of the criticisms likely to attend any Facebook anniversary celebration, the company published a lengthy blog post about the work it.
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">Perhaps Facebook is uniquely</div>
+								<div class="paragraph">
+									These points are worth making, though I’d add two notes. One, you can support the system that produced Facebook and still think it ought to be regulated in a more.
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">Strategy edition</div>
+								<div class="paragraph">
+									If you ve even taken up the task of creating a business plan, a growth roadmap, or Product Strategy, you know that 90% of the work can be done in 3 days with the right people in the room and the lack of distraction. That’s this edition is about. Bringing in experts to work with your team to do the work of a month in 3 days.
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">Silicon Valley in Congress</div>
+								<div class="paragraph">
+									Facebook provided a way to reconnect with people from all.
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">One of my favorite takes</div>
+								<div class="paragraph">
+									What’s more important, they say, is that we live in a world that almost inevitably would have produced something like Facebook
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+							<div class="case-block load-cover text-animated">
+								<div class="case-title">Respect Time.</div>
+								<div class="paragraph">
+									Where you work, there might be a feedback process where all ideas are welcome, even the ones that are “meh”, and there’s this process where every idea gets its own space before it’s rejected.
+								</div>
+								<a href="test.txt" class="loaded-link" download>
+									<div class="link-title">
+										<span class="text">Download</span>
+										<span class="image-icon">
+											<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-move" d="M5.82695 8.18518C5.60651 8.40562 5.60651 8.75914 5.82695 8.97958L8.80489 11.9575C8.91303 12.0657 9.0586 12.1239 9.20001 12.1239C9.34142 12.1239 9.48699 12.0698 9.59513 11.9575L12.5731 8.97958C12.7935 8.75914 12.7935 8.40562 12.5731 8.18518C12.3526 7.96475 11.9991 7.96475 11.7787 8.18518L9.76149 10.2024V0.561484C9.76149 0.249548 9.51194 0 9.20001 0C8.88807 0 8.63852 0.249548 8.63852 0.561484V10.2024L6.62134 8.18518C6.40091 7.96475 6.04322 7.96475 5.82695 8.18518Z" fill="#7E7CE0"/>
+											<path d="M18.3792 12.7852L16.4244 5.71469C16.3787 5.55248 16.2664 5.42355 16.1167 5.35284L16.0626 5.32789C15.9877 5.29462 15.9087 5.27798 15.8297 5.27798H12.3069C11.995 5.27798 11.7454 5.52753 11.7454 5.83946C11.7454 6.1514 11.995 6.40095 12.3069 6.40095H15.4512L17.1024 12.3818H12.7353C12.4233 12.3818 12.1738 12.6313 12.1738 12.9433V13.4507C12.1738 14.1952 11.5707 14.7982 10.8262 14.7982H7.39911C6.65462 14.7982 6.05154 14.1952 6.05154 13.4507V12.9433C6.05154 12.6313 5.802 12.3818 5.49006 12.3818H1.29349L2.95299 6.38847H6.09729C6.40923 6.38847 6.65878 6.13892 6.65878 5.82699C6.65878 5.51505 6.40923 5.2655 6.09729 5.2655H2.57035C2.49132 5.2655 2.4123 5.28214 2.33744 5.31541L2.28337 5.34037C2.13364 5.41107 2.01718 5.54001 1.97559 5.70221L0.0207957 12.7727C0.00831827 12.8227 0 12.8726 0 12.9225V15.8713C0 18.1048 1.81754 19.9223 4.051 19.9223H14.349C16.5825 19.9223 18.4 18.1048 18.4 15.8713V12.935C18.4 12.8809 18.3959 12.831 18.3792 12.7852ZM17.2771 15.8713C17.2771 17.485 15.9628 18.7993 14.349 18.7993H4.051C2.43725 18.7993 1.12297 17.485 1.12297 15.8713V13.5048H4.9369C4.96601 14.8398 6.06402 15.9171 7.40742 15.9171H10.8346C12.178 15.9171 13.276 14.8398 13.3051 13.5048H17.2854V15.8713H17.2771Z" fill="#3B3D46"/>
+											</svg>
+											
+										</span>
+									</div>
+									<div class="info">
+										Click to download methodology, <br>file size 112mb
+									</div>
+								</a>
+							</div>
+				
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / seventh section -->
+
+		<!-- eigth section -->
+		<section data-point="6" class="section">
+			<div class="section-outer">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block text-animated">
+								<div class="paragraph">
+									58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology, 
+									<a href="#" class="black in-bl underlined">Design Thinking</a>, rapid Productivity hacks and its secret sauce, People. Bring together a world-class team of consultants, creatives and scientists to solve problems for the digital economy.
+								</div>
+							</div>
+							<div class="case-block text-animated">
+								<div class="paragraph">
+									58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<div class="testimonial-item text-animated">
+								<div class="head">
+									<figure class="photo">
+										<img src="temp/user1.jpg" alt="user">
+									</figure>
+									<div class="name">
+										Tahmina Currie
+										<span class="position">Product Designer</span>
+									</div>
+									<i class="social-icon icon icon-twitter"></i>
+								</div>
+								<div class="paragraph">
+									Two, while I believe a Facebook-like service was inevitable, I don’t think its current size or level of power proceed logically from what came before them.
+								</div>
+								<div class="date">June 10, 2018</div>
+							</div>
+							<div class="testimonial-item text-animated">
+								<div class="head">
+									<figure class="photo">
+										<img src="temp/user2.jpg" alt="user">
+									</figure>
+									<div class="name">
+										Walter Dickerson
+										<span class="position">George</span>
+									</div>
+									<i class="social-icon icon icon-facebook"></i>
+								</div>
+								<div class="paragraph">
+									Pennsylvania Attorney General Josh Shapiro and Illinois counterpart
+								</div>
+								<div class="date">June 10, 2018</div>
+							</div>
+							<div class="testimonial-item text-animated">
+								<div class="head">
+									<figure class="photo">
+										<img src="temp/user1.jpg" alt="user">
+									</figure>
+									<div class="name">
+										Tahmina Currie
+										<span class="position">Product Designer</span>
+									</div>
+									<i class="social-icon icon icon-twitter"></i>
+								</div>
+								<div class="paragraph">
+									Two, while I believe a Facebook-like service was inevitable, I don’t think its current size or level of power proceed logically from what came before them.
+								</div>
+								<div class="date">June 10, 2018</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / eigth section -->
+
+		<!-- ninth section -->
+		<section data-point="7" class="section">
+			<div class="section-outer footer-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+							<div class="case-block">
+								<div class="case-title">Silicon Valley in Congres</div>
+								<div class="paragraph">
+									Erik Larson, David McLaughlin, and Sara Forden report that at least three more states are pursuing new inquiries into Facebook’s handling of user data.
+								</div>
+								<div class="paragraph">
+									58 is a product to help organisations thrive in challenging environments. It combines Agile Methodology.
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<ul class="partners-list clear">
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/disney-logo.svg" alt="disney logo" class="logo-image">
+									</span>
+								</li>
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/facebook-logo.svg" alt="facebook logo" class="logo-image">
+									</span>
+								</li>
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/google-logo.svg" alt="google logo" class="logo-image">
+									</span>
+								</li>
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/microsoft-logo.svg" alt="microsoft logo" class="logo-image">
+									</span>
+								</li>
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/paypal-logo.svg" alt="paypal logo" class="logo-image">
+									</span>
+								</li>
+								<li class="item">
+									<span class="inner-cover">
+										<img src="img/partners/slack-logo.svg" alt="slack logo" class="logo-image">
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<footer class="main-footer" id="mainFooter">
+					<div class="container">
+						<div class="row middle-xs">
+							<div class="col-xs-12 col-sm-3">
+								<a href="#" class="footer-logo">
+									<img src="img/reborrn-logo.svg" alt="reborn">
+								</a>
+							</div>
+							<div class="col-xs-12 col-sm-9">
+								<ul class="clear footer-nav">
+									<li class="item"><a href="#58session" class="link">Home</a></li>
+									<li class="item"><ahref="#methodology" class="link">Methodology</a></li>
+									<li class="item"><a href="#" class="link">How it Works</a></li>
+									<li class="item"><a href="#" class="link">Articles</a></li>
+									<li class="item"><a href="#" class="link">Resources</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</section>
+		<!-- / ninth section -->
+
+		<!-- main footer -->
+		<!-- #= include includes/main-footer.html -->
+		<!-- / main footer -->
+	</div>
+
+
+	<!-- methodology section preview -->
+	<div id="methodolodyPreview" class="methodolody-preview light" style="background-image: url(../temp/methodology-back1.jpg);" data-before="ology">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-10 col-sm-offset-2">
+						<!-- nav -->
+						<nav class="header-nav inner-nav spy-nav">
+							<a href="#ground-zero" class="nav-item active" data-onload="ground-zero.html">
+								<div class="link-outer">Ground Zero</div>
+							</a>
+							<a href="#prework" class="nav-item" data-onload="prework.html">
+								<div class="link-outer">Prework</div>
+							</a>
+							<a href="#preparation" class="nav-item" data-onload="preparation.html">
+								<div class="link-outer">Preparation</div>
+							</a>
+							<a href="#the-work" class="nav-item" data-onload="the-work.html">
+								<div class="link-outer">The work</div>
+							</a>
+							<a href="#breaks" class="nav-item" data-onload="breaks.html">
+								<div class="link-outer">Breaks</div>
+							</a>
+							<a href="#end" class="nav-item" data-onload="end.html">
+								<div class="link-outer">End</div>
+							</a>
+							<a href="#post" class="nav-item" data-onload="post.html">
+								<div class="link-outer">Post</div>
+							</a>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="light-outer">
+				<div class="container relative">
+					<div class="row bottom-xs paddless-row">
+						<div class="col-xs-12 col-sm-1">
+							<button class="btn scroll-down" type="button">
+								<span class="image-icon">
+									<i class="icon icon-mouse"></i>
+								</span>
+								<span class="text">Scroll down for</span>
+							</button>
+						</div>
+						<div class="col-xs-12 col-sm-5 col-sm-offset-5">
+							<h2 class="page-title">
+								WE ARE <br>
+								THE <br>
+								<span class="primary">REACTION</span> <br>
+								OF OUR <br>
+								TIMES.
+							</h2>
+						</div>
+						<div class="col-xs-12 col-sm-1 align-right">
+							<button class="btn toggle-btn" type="button" data-close-page="#methodolodySection, #methodolodyPreview">
+								<span class="line"></span>
+								<span class="line"></span>
+								<span class="line"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- methodology section preview -->
+
+
+	<!-- page footer -->
+	<!-- #= include includes/page-footer.html -->
+	<!-- / page footer -->
+
+	<div class="methodology-temp-fake"></div>
+
+
+	<link rel="stylesheet" href="https://use.typekit.net/ehy0gxn.css">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900&amp;subset=latin-ext" rel="stylesheet">
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/plugins/mousewheel.js"></script>
+	<script src="js/plugins/jquery.mousewheel.min.js"></script>
+
+	<!-- <script src="js/init/fullpage-init.js"></script> -->
+	<script src="js/init/main-menu.js"></script>
+	<script src="js/init/methodology-load.js"></script>
+
+
+	<script src="js/init/gallery-popup.js"></script>
+	<script src="js/init/change-color.js"></script>
+	<script src="js/init/scroll-animation.js"></script>
+	<script src="js/init/sticky-block.js"></script>
+	<script src="js/init/round-canvas.js"></script>
+
+	<script src="js/main.js"></script>
+
+	<script src="js/easing.js"></script>
+	<script src="js/random.js"></script>
+	<script src="js/vector.js"></script>
+	<script src="js/bezier.js"></script>
+
+
+	<script src="js/_tree.js"></script>
+	<script src="js/app.js"></script>
+
+	<script src="js/image-color.js"></script>
+
+
+
+</body>
+</html>

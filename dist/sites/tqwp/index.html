@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body>
+
+	<main id="app">
+
+		<button v-on:click="toggleAside($event)" class="aside-toggler"  v-bind:class="{'active': aside}">
+			<i></i><i></i><i></i>
+		</button>
+		<aside v-bind:class="{'open': aside}">
+			<div class="offset-bottom">
+				<h2>Параметры Тиля-Смола</h2>
+				<a href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B_%D0%A2%D0%B8%D0%BB%D1%8F_%E2%80%94_%D0%A1%D0%BC%D0%BE%D0%BB%D0%BB%D0%B0" target="_blank">
+					Ссылка на Википедию
+				</a>
+			</div>
+			<hr>
+			<div class="row paddless-row">
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="diameter">
+							S<sub>d</sub>
+							<div data-hint class="bottom left">
+								?
+								<div>
+									<div class="row">
+										<div class="col-xs-12">
+											<img src="img/diameter.gif" class="adaptive">
+										</div>
+										<div class="col-xs-12">
+											<b>Эффективную площадь диффузора</b> нужно искать в документации к динамику, если таковой нет - это расстояние между противоположными серединами подвеса
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
+						<input type="text" id="diameter" v-model="sd" maxlength="4" v-on:input="handleInputChanging($event)" v-onlydigits>
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="resonance">
+							F<sub>s</sub>
+							<div data-hint class="bottom">
+								?
+								<div>
+									<div class="row">
+										<div class="col-xs-12">
+											<img src="img/fs.jpg" class="adaptive">
+										</div>
+										<div class="col-xs-12 offset-top">
+											<b>Резонансную частоту динамика</b> искать в документации можно, но часто она расходится с реальной, поэтому лучше динамики размять и замерить вручную. <br>
+											Для трубы точная настройка не требуется, поэтому если головки слегка рознятся (пример: 44гц и 48гц) то можно выбрать среднее значение 46гц.
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
+						<input type="text" id="resonance" v-model="fs" maxlength="4" v-on:input="handleInputChanging($event)" v-onlydigits>
+						<sup>Гц.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="thickness">
+							h<sub>мат.</sub>
+							<div data-hint class="bottom right">
+								?
+								<div>
+									Толщина материала, может быть какая угодно (в разумных пределах), например фанера толщиной 20мм <br>
+									Это значение берется для всего короба, если хотите двойную переднюю или заднюю станку, то она не учитывается, после сборки их нужно будет прикрепить снаружи
+								</div>
+							</div>
+						</label>
+						<input type="text" id="thickness" v-model="thickness" maxlength="2" v-on:input="handleInputChanging($event)" v-onlydigits>
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<small>S<sub>d</sub> влияет на сечение трубы (ширину, глубину)</small>
+					<small>F<sub>s</sub> на длинну трубы (рупора) (высота колонки)</small>
+				</div>
+			</div>
+			<hr>
+			<div class="row paddless-row">
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="width">Ширина</label>
+						<input type="text" id="width" v-model="size.x" maxlength="4" v-on:input="handleInputChanging($event)">
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="height">Высота</label>
+						<input type="text" id="height" readonly="true" v-model="size.y" maxlength="4">
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="depth">Глубина</label>
+						<input type="text" id="depth" readonly="true" v-model="size.z" maxlength="4">
+						<sup>мм.</sup>
+					</div>
+				</div>
+			</div>
+			<div class="row paddless-row">
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="partition">Перегородка</label>
+						<input type="text" id="partition" readonly="true" v-model="partition.y" maxlength="4">
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="port">Порт</label>
+						<input type="text" id="port" readonly="true" v-model="port.z" maxlength="2">
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<div class="form-group">
+						<label for="holeDiameter">Посад. Отв.</label>
+						<input type="text" id="holeDiameter" v-model="holeDiameter" maxlength="3" v-on:input="handleInputChanging($event)">
+						<sup>мм.</sup>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<small>** закрашенные поля высчитываются автоматически, их нельзя редактировать</small>
+				</div>
+			</div>
+
+			<hr>
+			<div class="row">
+				<div class="col-xs-4">
+					<div class="mini-box">
+						<div title="Верхняя" class="top" v-bind:class="{'active': activePanel == 'top'}" v-on:click="showHelper('top')"></div>
+						<div title="Передняя" class="front" v-bind:class="{'active': activePanel == 'front'}" v-on:click="showHelper('front')"></div>
+						<div title="Задняя" class="rear" v-bind:class="{'active': activePanel == 'rear'}" v-on:click="showHelper('rear')"></div>
+						<div title="Правая" class="right" v-bind:class="{'active': activePanel == 'right'}" v-on:click="showHelper('right')"></div>
+						<div title="Порт" class="port" v-bind:class="{'active': activePanel == 'port'}" v-on:click="showHelper('port')"></div>
+						<div title="Перегородка" class="partition" v-bind:class="{'active': activePanel == 'partition'}" v-on:click="showHelper('partition')"></div>
+						<div title="Нижняя" class="bottom" v-bind:class="{'active': activePanel == 'bottom'}" v-on:click="showHelper('bottom')"></div>
+					</div>
+				</div>
+				<div class="col-xs-8 align-center">
+					<div v-if="activePanel" v-cloak>
+						<h3>
+							{{lang.sides[activePanel]}} {{ activePanel !== "port" && activePanel !== "partition" ? lang.sides.side : ''}}
+						</h3>
+						<dl v-for="item in planeDetailKeys">
+							<dt>{{lang[item.key]}}</dt>
+							<dd>{{Math.getSideParameters(activePanel)[item.key]}} <span v-html="lang[item.unit]"></span></dd>
+						</dl>
+					</div>
+					<div class="verticaly-middle">
+						<div class="inner" v-if="!activePanel">Виберите стенку слева</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row collapsed-row">
+				<div class="col-xs-7">
+					<small>Длинна волны:</small>
+					<div v-cloak>
+						{{Math.getWaveLength(fs).toFixed(2)}} {{lang.m}}
+						<div data-hint class="left">
+							?
+							<div>
+								Скорость распространения звука при комнатной температуре ({{Math.Speed}}) деленное на частоту ({{fs}} {{lang.hz}})
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<small>Fs трубы:</small>
+					<div v-cloak>
+						{{fs*Math.FS}} {{lang.hz}}
+						<div data-hint class="small">
+							?
+							<div>
+								Частота 0.75 от частоты ({{fs}})
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 offset-top"><div>Параметры рупора:</div></div>
+				<div class="col-xs-5">
+					<small>Длинна рупора:</small>
+					<div v-cloak>
+						{{(horn.l / 1000).toFixed(1)}} {{lang.m}}
+						<div data-hint class="left">
+							?
+							<div>
+								Четверть волны ({{(waveLength / 4).toFixed(2)}} {{lang.m}}) умноженная на коэфициент удлиннения ({{(elongation).toFixed(1)}})
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-7">
+					<small>Коеф. удлиннения рупора:</small>
+					<div v-cloak>
+						{{(elongation).toFixed(1)}} раз
+						<div data-hint class="small">
+							?
+							<div>
+								<b>S<sub>L</sub> / S<sub>0</sub></b> - во сколько раз происходит расширение трубы <br>
+								<small>S<sub>L</sub> - площадь самой трубы</small>
+								<small>S<sub>0</sub> - площадь начальной части рупора</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 offset-top">
+					<div>Параметры порта:</div>
+					<div class="row collapsed-row">
+						<div class="col-xs-3">
+							<small>Ширина:</small>
+							<div v-cloak>{{Math.floor(port.x)}} {{lang.mm}}</div>
+						</div>
+						<div class="col-xs-3">
+							<small>Высота:</small>
+							<div v-cloak>{{Math.floor(port.y)}} {{lang.mm}}</div>
+						</div>
+						<div class="col-xs-6">
+							<small>Площадь:</small>
+							<div v-cloak>{{Math.floor(port.x * port.y)}} <span v-html="lang.mm2"></span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<ul class="clear">
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="frontSide" checked v-on:click="toggleSide('front', $event.target.checked)">
+						<label for="frontSide">Передяя стенка</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="rearSide" checked v-on:click="toggleSide('rear', $event.target.checked)">
+						<label for="rearSide">Задняя стенка</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="leftSide" checked v-on:click="toggleSide('left', $event.target.checked)">
+						<label for="leftSide">Левая стенка</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="rightSide" v-on:click="toggleSide('right', $event.target.checked)">
+						<label for="rightSide">Правая стенка</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="partitionSide" checked v-on:click="toggleSide('partition', $event.target.checked)">
+						<label for="partitionSide">Внутренняя перегородка</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="portSide" checked v-on:click="toggleSide('port', $event.target.checked)">
+						<label for="portSide">Перегородка порта</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="topSide" checked v-on:click="toggleSide('top', $event.target.checked)">
+						<label for="topSide">Верх</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="bottomSide" checked v-on:click="toggleSide('bottom', $event.target.checked)">
+						<label for="bottomSide">Низ</label>
+					</div>
+				</li>
+				<li>
+					<div class="checkbox">
+						<input type="checkbox" id="speaker" checked v-on:click="toggleSide('speaker', $event.target.checked)">
+						<label for="speaker">Динамик</label>
+					</div>
+				</li>
+			</ul>
+		</aside>
+
+	</main>
+
+	<script src="js/lang/ru.js"></script>
+	<script src="js/lib/math.js"></script>
+	<script src="js/lib/vue.min.js"></script>
+	<script src="js/lib/vue.only-digits.js"></script>
+	<script src="js/lib/three.min.js"></script>
+	<script src="js/lib/csg.js"></script>
+	<script src="js/lib/ThreeCSG.js"></script>
+	<script src="js/lib/OBJLoader.js"></script>
+	<script src="js/lib/OrbitControls.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+</html>
