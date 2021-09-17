@@ -1,5 +1,5 @@
 (function(){
-
+   
 	var k = 0.1;
 	var friction = .97;
 	var frictionOffset = 5;
@@ -189,7 +189,7 @@
 		}
 
 		this.setActivePoint = function(index){
-			
+
 		}
 
 		this.getWorldPointFrom = function(action){
