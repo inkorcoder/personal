@@ -259,7 +259,7 @@ maps.animateMultiPath = function(map, paths, duration, onChange, onStart, onEnd,
 };
 
 maps.getWeather = function(city, callback){
-	var protocol = location.match(/https/gim) ? "https" : "http";
+	var protocol = location.href.match(/https/gim) ? "https" : "http";
 	$.ajax({
 		method: "GET",
 		url: protocol+"://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=4b2a78506f9ea61c408b16a2765ff6b1",
