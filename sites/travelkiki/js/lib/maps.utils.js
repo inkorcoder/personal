@@ -259,9 +259,10 @@ maps.animateMultiPath = function(map, paths, duration, onChange, onStart, onEnd,
 };
 
 maps.getWeather = function(city, callback){
+	var protocol = location.match(/https/gim) ? "https" : "http";
 	$.ajax({
 		method: "GET",
-		url: "http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=4b2a78506f9ea61c408b16a2765ff6b1",
+		url: protocol+"://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=4b2a78506f9ea61c408b16a2765ff6b1",
 		success: function(data){
 			callback.call(null, data);
 		},
@@ -303,7 +304,7 @@ maps.showWeather = function(city, map, origin, position){
 	var name = city.title.replace(/[A-Z]{3}/g, '').trim();
 	maps.getWeather(name, function(res){
 		if (res){
-			var template = 
+			var template =
 			"<span class=\"temperature\">"+
 			"<span class=\"image\"><span><i class=\"icon icon-weather-"+maps.getWeatherCode(res.weather[0].id)+"\"></i></span></span>"+
 			"<span class=\"deg\"><span>"+(res.main.temp - 273.15).toFixed(0)+"&deg;</span></span>"+
@@ -311,7 +312,7 @@ maps.showWeather = function(city, map, origin, position){
 			"<span class=\"name "+origin+"\"><span>"+name+"</span></span>"+
 			"<span class=\"caption\"><span>Arrival, August 6, Sa</span></span>";
 		} else {
-			var template = 
+			var template =
 			"<span class=\"name "+origin+"\"><span>"+name+"</span></span>"+
 			"<span class=\"caption\"><span>Weather couldn't be loaded</span></span>";
 		}
