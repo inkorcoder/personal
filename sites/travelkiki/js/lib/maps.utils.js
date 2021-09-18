@@ -262,7 +262,7 @@ maps.getWeather = function(city, callback){
 	var protocol = location.href.match(/https/gim) ? "https" : "http";
 	$.ajax({
 		method: "GET",
-		url: protocol+"://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=4b2a78506f9ea61c408b16a2765ff6b1",
+		url: "https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=4b2a78506f9ea61c408b16a2765ff6b1",
 		success: function(data){
 			callback.call(null, data);
 		},
